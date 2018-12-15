@@ -1,0 +1,24 @@
+body {
+  color: $off-white;
+  a {
+    color: $off-white;
+    &:hover {
+      color: $off-white;
+    }
+  }
+}
+
+div#main-content.container-fluid {
+  color: $off-white;
+}
+
+div.side-menu {
+  color: $neutral-dark-text;
+  ul {
+    li {
+      a {
+        color: $neutral-dark-text;
+      }
+    }
+  }
+}
