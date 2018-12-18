@@ -1,0 +1,14 @@
+<p>
+  paints works!
+</p>
+<ul>
+<li *ngFor="let filter of activeFilters">{{filter}}</li>
+</ul>
+<hr />
+<p>All types of paint:  {{types}}</p>
+<p>All unique tags used for paints:  {{tags}}</p>
+
+
+<ul>
+<li *ngFor="let paint of paintToolsService.allPaints">{{paint.name}} ({{paint.hex}}), {{paint.brand}}</li>
+</ul>
