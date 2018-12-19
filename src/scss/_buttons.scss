@@ -1,0 +1,98 @@
+@mixin hiddenButtonTail {
+  background-color: white;
+  border-radius: 50%;
+  height: 48px;
+  width: 34px;
+  top: -6px;
+}
+$pushButtonPointAlignValue: -18px;
+
+
+// *** BOTH LEFT AND RIGHT ARROW BUTTONS *** //
+.btn-arrow-right,
+.btn-arrow-left {
+    position: relative;
+    padding-left: 25px;
+    padding-right: 25px;
+    // POINTED AND ROUNDED SIDES
+    &:before,
+    &:after,
+    &:before,
+    &:after {
+        content:"";
+        position: absolute;
+        top: 4px;
+        width: 28px;
+        height: 28px;
+        background: inherit;
+        border: inherit;
+    }
+    &:before,
+    &:before {
+        left: -12px;
+    }
+    &:after,
+    &:after {
+        right: -12px;
+    }
+}
+
+// *** RIGHT ARROW BUTTON ONLY *** //
+.btn-arrow-right {
+    padding-left: 42px;
+    // POINTED SIDE
+    &:after {
+      border-left-color: transparent;
+      border-bottom-color: transparent;
+
+      border-radius: 0px 2px 0px 0px;
+      -webkit-border-radius: 0px 2px 0px 0px;
+      -moz-border-radius: 0px 2px 0px 0px;
+
+        transform: rotate(45deg);
+        -webkit-transform: rotate(45deg);
+        -moz-transform: rotate(45deg);
+        -o-transform: rotate(45deg);
+        -ms-transform: rotate(45deg);
+    }
+    // ROUNDED SIDE
+    &:before {
+      @include hiddenButtonTail;
+      left: $pushButtonPointAlignValue;
+      border-left-color: transparent;
+      border-bottom-color: transparent;
+      border-top-color: transparent;
+    }
+    &.backdrop-invisible:before {
+      background-color: $neutral-dark;
+    }
+}
+
+// *** LEFT ARROW BUTTON ONLY *** //
+.btn-arrow-left {
+    padding-right: 42px;
+    &:before { // POINTED SIDE
+      border-left-color: transparent;
+      border-bottom-color: transparent;
+
+      border-radius: 0px 2px 0px 0px;
+      -webkit-border-radius: 0px 2px 0px 0px;
+      -moz-border-radius: 0px 2px 0px 0px;
+
+        transform: rotate(225deg);
+        -webkit-transform: rotate(225deg);
+        -moz-transform: rotate(225deg);
+        -o-transform: rotate(225deg);
+        -ms-transform: rotate(225deg);
+    }
+    &:after {
+      @include hiddenButtonTail;
+      right: $pushButtonPointAlignValue;
+      border-right-color: transparent;
+      border-bottom-color: transparent;
+      border-top-color: transparent;
+    }
+    &.backdrop-invisible:after {
+      background-color: $neutral-dark;
+    }
+}

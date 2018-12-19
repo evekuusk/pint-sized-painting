@@ -3,10 +3,44 @@
 div.side-menu {
   background-color: $neutral-off-white;
   height: 100%;
+  h5.menu-title {
+    text-align: center;
+    padding: 1rem;
+    a {
+      color: $neutral-dark;
+      border-bottom: 2px solid transparent;
+      transition: border-bottom-color 200ms;
+      &:hover {
+        text-decoration: none;
+        border-bottom-color: $pink-accent-medium-light;
+      }
+    }
+  }
   ul {
     list-style: none;
     li {
-
+      a {
+        transition: color 200ms;
+        &:after {
+          border-right: 2px solid transparent;
+          border-bottom: 2px solid transparent;
+          width: 10px;
+          height: 10px;
+          transform: rotate(-45deg);
+          content: "";
+          display: inline-block;
+          margin-left: 0.5rem;
+          transition: border-right-color 300ms, border-bottom-color 300ms;
+        }
+        &:hover {
+          text-decoration: none;
+          color: $pink-accent-dark;
+          &:after {
+            border-right-color: $pink-accent-medium-light;
+            border-bottom-color: $pink-accent-medium-light;
+          }
+        }
+      }
     }
   }
 }

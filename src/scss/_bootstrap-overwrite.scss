@@ -1,18 +1,57 @@
+// *** LAYOUT *** //
+.row {
+    margin-left: 0;
+    margin-right: 0;
+}
+
+// *** NAVIGATION *** //
 .navbar-nav {
   margin-left: auto;
   margin-right: 3rem;
   @include basicHeavyText;
   font-weight: bold;
   font-size: 1rem;
+  .nav-item {
+    a.nav-link {
+      &.active {
+        border-bottom: 2px solid $pink-accent-highlight;
+      }
+    }
+  }
 }
 
+// *** COMPONENT ELEMENTS *** //
 div.card {
   color: $neutral-dark-text;
   margin: 1rem;
+  .btn-primary {
+    float: right;
+    margin-right: 1.5rem;
+  }
 }
 
+.btn {
+  font-size: 16px;
+  line-height: 24px;
+  margin-top: 1rem;
+}
 
-.row{
-    margin-left: 0;
-    margin-right: 0;
+.btn-primary {
+  background-color: $pink-accent-medium-light;
+  border-color: $pink-accent-medium-dark;
+  color: $off-white;
+  &:hover {
+    background-color: $pink-accent-highlight;
+    border-color: $pink-accent-dark;
+  }
+}
+
+.btn-secondary {
+  background-color: $pink-accent-light;
+  border-color: $pink-accent-medium-light;
+  color: $off-white;
+  &:hover {
+    background-color: $pink-accent-highlight;
+    border-color: $pink-accent-medium-dark;
+  }
 }

@@ -9,6 +9,7 @@ import { HomePageComponent } from './components/pages/home-page/home-page.compon
 // about
 import { AboutPageComponent } from './components/pages/about-page/about-page.component';
 import { FaqPageComponent } from './components/pages/about-page/children/faq-page/faq-page.component';
+import { BioPageComponent } from './components/pages/about-page/children/bio-page/bio-page.component';
 
 // tutorials
 import { TutorialsPageComponent } from './components/pages/tutorials-page/tutorials-page.component';
@@ -33,7 +34,17 @@ const routes: Routes = [
   },
   {
     path: 'about',
-    component: AboutPageComponent
+    component: AboutPageComponent,
+    children: [
+      {
+        path: '',
+        component: BioPageComponent
+      },
+      {
+        path: 'faq',
+        component: FaqPageComponent
+      }
+    ]
   },
   {
     path: 'tutorials',

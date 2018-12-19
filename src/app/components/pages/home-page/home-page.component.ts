@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ArrayToolsService } from '../../../services/array-tools.service';
 
-let homepageLinks = ['about', 'gallery', 'services', 'tutorials', 'tools']
+let homepageLinks = [['about', 'About the artist and contact info'], ['gallery', 'Portfolio of painted miniatures'], ['services', 'Available painting services'], ['tutorials', 'How-to guides from start to finish'], ['tools', 'Handy web tools for mini painting']]
 
+// max characters per line for description: 0000000000000000 0000000000000000 0000000000000000
 
 
 

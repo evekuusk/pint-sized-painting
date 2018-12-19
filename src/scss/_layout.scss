@@ -1,20 +1,12 @@
 // *** MIXINS AND VARIABLES *** //
 
+
 // *** STYLES BY PAGE HIERARCHY *** //
 // --- main body --- //
 body {
   background: $neutral-dark;
 }
 
-// --- side menus --- //
-// NOTE:  remove this once side menu has been isolated out as a component
-div.side-menu {
-  background-color: $neutral-off-white;
-  height: 100%;
-  ul {
-    list-style: none;
-    li {
-
-    }
-  }
+main {
+  min-height: calc(100vh - #{$footer-height});
 }

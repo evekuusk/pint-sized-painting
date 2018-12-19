@@ -10,7 +10,7 @@ import { AppComponent } from './app.component';
 // *** LAYOUT *** //
 import { HeaderComponent } from './components/layout/header/header.component';
 import { FooterComponent } from './components/layout/footer/footer.component';
-import { SideToolsMenuComponent } from './components/layout/side-tools-menu/side-tools-menu.component';
+// side menu
 import { SideMenuComponent } from './components/layout/side-menu/side-menu.component';
 
 // *** TOOLS *** //
@@ -45,6 +45,7 @@ import { ServicesPageComponent } from './components/pages/services-page/services
 // *** SERVICES *** //
 import { ArrayToolsService } from './services/array-tools.service';
 import { PaintToolsService } from './services/paint-tools.service';
+import { BioPageComponent } from './components/pages/about-page/children/bio-page/bio-page.component';
 
 @NgModule({
   declarations: [
@@ -63,8 +64,8 @@ import { PaintToolsService } from './services/paint-tools.service';
     PaintsPageComponent,
     ToolsListPageComponent,
     ToolsDetailPageComponent,
-    SideToolsMenuComponent,
-    SideMenuComponent
+    SideMenuComponent,
+    BioPageComponent
   ],
   imports: [
     BrowserModule,

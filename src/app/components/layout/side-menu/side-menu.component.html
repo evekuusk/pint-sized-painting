@@ -1,8 +1,11 @@
-<p>
-  side-menu works!
-</p>
 <div class="side-menu">
-  {{currentSiteSection}}
-</div>
+  <h5 class="menu-title"><a href="#" routerLink="/{{currentSiteSection}}" >{{currentSiteSection | lowercase}} menu</a></h5>
+  <ul *ngIf="currentSiteSection === 'tools'">
+    <li><a href="#" routerLink="/tools" routerLinkActive="active">all tools</a></li>
+    <li><a href="#" routerLink="paints" routerLinkActive="active">paints</a></li>
+  </ul>
 
-<hr />
+  <ul *ngIf="currentSiteSection === 'gallery'">
+    <li>gallery menu</li>
+  </ul>
+</div>

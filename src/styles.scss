@@ -3,13 +3,8 @@
 
 // @import "~font-awesome/css/font-awesome.css";
 @import 'scss/_colours';
+@import 'scss/_var';
 @import 'scss/_layout';
 @import 'scss/_text';
 @import 'scss/_bootstrap-overwrite';
-@import 'scss/_homepage-grid';
-
-
-
-main {
-  min-height: calc(100vh - 75px);
-}
+@import 'scss/_buttons';

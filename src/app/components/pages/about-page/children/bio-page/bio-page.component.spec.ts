@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { SideToolsMenuComponent } from './side-tools-menu.component';
+import { BioPageComponent } from './bio-page.component';
 
-describe('SideToolsMenuComponent', () => {
-  let component: SideToolsMenuComponent;
-  let fixture: ComponentFixture<SideToolsMenuComponent>;
+describe('BioPageComponent', () => {
+  let component: BioPageComponent;
+  let fixture: ComponentFixture<BioPageComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ SideToolsMenuComponent ]
+      declarations: [ BioPageComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(SideToolsMenuComponent);
+    fixture = TestBed.createComponent(BioPageComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

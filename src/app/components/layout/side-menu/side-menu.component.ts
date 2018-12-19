@@ -6,12 +6,19 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./side-menu.component.scss']
 })
 export class SideMenuComponent implements OnInit {
-  // currentSiteSection: string;
+  pathname: string;
+  currentSiteSectionArr: string[];
+  currentSiteSection: string;
   constructor() { }
 
   ngOnInit() {
-    this.currentSiteSection = window.location.href;
-    console.log(this.currentSiteSection)
+    this.pathname = window.location.pathname;
+    if (this.pathname[0] === '/') {
+      this.pathname = this.pathname.substring(1);
+    }
+    this.currentSiteSectionArr = this.pathname.split('/')
+    this.currentSiteSection = this.currentSiteSectionArr[0]
+
   }
 
 }
