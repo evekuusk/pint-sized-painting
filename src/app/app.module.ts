@@ -11,6 +11,7 @@ import { AppComponent } from './app.component';
 import { HeaderComponent } from './components/layout/header/header.component';
 import { FooterComponent } from './components/layout/footer/footer.component';
 import { SideToolsMenuComponent } from './components/layout/side-tools-menu/side-tools-menu.component';
+import { SideMenuComponent } from './components/layout/side-menu/side-menu.component';
 
 // *** TOOLS *** //
 import { PaintsComponent } from './components/tools/paints/paints.component';
@@ -62,7 +63,8 @@ import { PaintToolsService } from './services/paint-tools.service';
     PaintsPageComponent,
     ToolsListPageComponent,
     ToolsDetailPageComponent,
-    SideToolsMenuComponent
+    SideToolsMenuComponent,
+    SideMenuComponent
   ],
   imports: [
     BrowserModule,

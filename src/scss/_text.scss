@@ -1,19 +1,46 @@
-body {
-  color: $off-white;
-  a {
-    color: $off-white;
-    &:hover {
-      color: $off-white;
-    }
-  }
+// *** MIXINS AND VARIABLES *** //
+
+@mixin basicText {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 300;
+  font-size: 0.95rem;
+}
+
+@mixin basicHeavyText {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 400;
+}
+
+@mixin mainHeaderText {
+  font-family: 'Josefin Sans', sans-serif;
+  font-weight: 400;
+}
+
+@mixin secondaryHeaderText {
+  font-family: 'Raleway', sans-serif;
+  font-weight: 500;
+}
+
+
+
+// *** STYLES BY PAGE HIERARCHY *** //
+// --- header --- //
+a.navbar-brand.title {
+  font-family: 'Comfortaa', sans-serif;
+}
+.navbar-light .navbar-nav .nav-link {
+  transition: color 300ms;
 }
 
 div#main-content.container-fluid {
   color: $off-white;
 }
 
+// --- side menus --- //
 div.side-menu {
   color: $neutral-dark-text;
+  @include basicHeavyText;
+  font-size: 1rem;
   ul {
     li {
       a {
@@ -23,6 +50,27 @@ div.side-menu {
   }
 }
 
-.navbar-light .navbar-nav .nav-link {
-  transition: color 300ms;
+// --- main body --- //
+// NOTE:  component-specific styles remain in their respective stylesheets, these are for global baseline styles
+body {
+  color: $off-white;
+  @include basicText;
+  h1, h2, h3 {
+    @include mainHeaderText;
+  }
+
+  h4, h5, h6 {
+    @include secondaryHeaderText;
+  }
+  a {
+    color: $off-white;
+    &:hover {
+      color: $off-white;
+    }
+  }
+}
+
+// --- footer --- //
+footer.page-footer {
+  @include secondaryHeaderText;
 }
