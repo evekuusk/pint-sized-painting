@@ -29,6 +29,12 @@ export class PaintToolsService {
   allColourFamilies: string[];
   allPaints: Paint[];
 
+  // object arrays for filtering
+  allBrandsFilterSelections: object[];
+  allTypesFilterSelections: object[];
+  allTagsFilterSelections: object[];
+  allColourFamiliesFilterSelections: object[];
+
   // filters
   filteredBrands: string[];
   filteredTypes: string[];
@@ -42,6 +48,7 @@ export class PaintToolsService {
 
   constructor(private arrayToolsService: ArrayToolsService) {
 
+    // *** ALL PAINTS *** //
     this.allPaints = [
       {
         hex: "#202020",
@@ -1173,26 +1180,58 @@ export class PaintToolsService {
       },
     ];
 
-          this.allBrands = arrayToolsService.removeNullItems(arrayToolsService.removeDuplicates(arrayToolsService.getKeyValues(this.allPaints, 'brand')));
+    // *** create master lists of unique brands, types, tags, and colour families *** //
+    this.allBrands = arrayToolsService.removeNullItems(arrayToolsService.removeDuplicates(arrayToolsService.getKeyValues(this.allPaints, 'brand')));
+    this.allTypes = arrayToolsService.removeNullItems(arrayToolsService.removeDuplicates(arrayToolsService.getNestedValues(arrayToolsService.getKeyValues(this.allPaints, 'types'))));
+    this.allTags = arrayToolsService.removeNullItems(arrayToolsService.removeDuplicates(arrayToolsService.getNestedValues(arrayToolsService.getKeyValues(this.allPaints, 'tags'))));
+    this.allColourFamilies = arrayToolsService.removeNullItems(arrayToolsService.removeDuplicates(arrayToolsService.getNestedValues(arrayToolsService.getKeyValues(this.allPaints, 'colourFamilies'))));
 
-          this.allTypes = arrayToolsService.removeNullItems(arrayToolsService.removeDuplicates(arrayToolsService.getNestedValues(arrayToolsService.getKeyValues(this.allPaints, 'types'))));
+    // *** create filter selections objects array for brands, types, tags, and colour families to dynamically generate checkboxes in view *** //
+    this.allTypesFilterSelections = [];
+    for (let i = 0; i < this.allTypes.length; i++) {
+      this.allTypesFilterSelections.push({
+        id: i,
+        name: this.allTypes[i]
+      })
+    }
 
-          this.allTags = arrayToolsService.removeNullItems(arrayToolsService.removeDuplicates(arrayToolsService.getNestedValues(arrayToolsService.getKeyValues(this.allPaints, 'tags'))));
+    this.allBrandsFilterSelections = [];
+    for (let i = 0; i < this.allBrands.length; i++) {
+      this.allBrandsFilterSelections.push({
+        id: i,
+        name: this.allBrands[i]
+      })
+    }
 
-          this.allColourFamilies = arrayToolsService.removeNullItems(arrayToolsService.removeDuplicates(arrayToolsService.getNestedValues(arrayToolsService.getKeyValues(this.allPaints, 'colourFamilies'))));
+    this.allTagsFilterSelections = [];
+    for (let i = 0; i < this.allTags.length; i++) {
+      this.allTagsFilterSelections.push({
+        id: i,
+        name: this.allTags[i]
+      })
+    }
+
+    this.allColourFamiliesFilterSelections = [];
+    for (let i = 0; i < this.allColourFamilies.length; i++) {
+      this.allColourFamiliesFilterSelections.push({
+        id: i,
+        name: this.allColourFamilies[i]
+      })
+    }
 
 
-          this.filtersObj = {
-            filteredBrandsResult: this.allBrands,
-            filteredTypesResult: this.allTypes,
-            filteredTagsResult: this.allTags,
-            filteredColourFamiliesResult: this.allColourFamilies
+    // *** create filters object, array, and filtered paints result *** //
+    this.filtersObj = {
+      filteredBrandsResult: this.allBrands,
+      filteredTypesResult: this.allTypes,
+      filteredTagsResult: this.allTags,
+      filteredColourFamiliesResult: this.allColourFamilies
 
-          }
+    }
 
-          this.filtersArr = arrayToolsService.generateArrayFromObject(this.filtersObj)
+    this.filtersArr = arrayToolsService.generateArrayFromObject(this.filtersObj)
 
-          this.filteredPaintsResult = this.allPaints;
+    this.filteredPaintsResult = this.allPaints;
 
 
   }

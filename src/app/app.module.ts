@@ -1,8 +1,10 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgArrayPipesModule, NgStringPipesModule } from 'angular-pipes';
+import {MatCheckboxModule} from '@angular/material';
 
 // *** MAIN *** //
 import { AppRoutingModule } from './app-routing.module';
@@ -11,8 +13,10 @@ import { AppComponent } from './app.component';
 // *** LAYOUT *** //
 import { HeaderComponent } from './components/layout/header/header.component';
 import { FooterComponent } from './components/layout/footer/footer.component';
+import { BackToTopComponent } from './components/layout/back-to-top/back-to-top.component';
 // side menu
 import { SideMenuComponent } from './components/layout/side-menu/side-menu.component';
+import { SideMenuLayoutComponent } from './components/layout/side-menu-layout/side-menu-layout.component';
 
 // *** TOOLS *** //
 import { PaintsComponent } from './components/tools/paints/paints.component';
@@ -27,6 +31,8 @@ import { HomePageComponent } from './components/pages/home-page/home-page.compon
 // about
 import { AboutPageComponent } from './components/pages/about-page/about-page.component';
 import { FaqPageComponent } from './components/pages/about-page/children/faq-page/faq-page.component';
+import { BioPageComponent } from './components/pages/about-page/children/bio-page/bio-page.component';
+import { ContactPageComponent } from './components/pages/about-page/children/contact-page/contact-page.component';
 
 // tutorials
 import { TutorialsPageComponent } from './components/pages/tutorials-page/tutorials-page.component';
@@ -42,16 +48,17 @@ import { GalleryPageComponent } from './components/pages/gallery-page/gallery-pa
 
 // services
 import { ServicesPageComponent } from './components/pages/services-page/services-page.component';
+import { ServicesListPageComponent } from './components/pages/services-page/children/services-list-page/services-list-page.component';
+import { ServicesDetailPageComponent } from './components/pages/services-page/children/services-detail-page/services-detail-page.component';
+import { PricesPageComponent } from './components/pages/services-page/children/prices-page/prices-page.component';
 
 // *** SERVICES *** //
 import { ArrayToolsService } from './services/array-tools.service';
 import { PaintToolsService } from './services/paint-tools.service';
-import { BioPageComponent } from './components/pages/about-page/children/bio-page/bio-page.component';
-import { ContactPageComponent } from './components/pages/about-page/children/contact-page/contact-page.component';
-import { PricesPageComponent } from './components/pages/services-page/children/prices-page/prices-page.component';
-import { ServicesListPageComponent } from './components/pages/services-page/children/services-list-page/services-list-page.component';
-import { ServicesDetailPageComponent } from './components/pages/services-page/children/services-detail-page/services-detail-page.component';
-import { SideMenuLayoutComponent } from './components/layout/side-menu-layout/side-menu-layout.component';
+import { FormToolsService } from './services/form-tools.service';
+
+
+
 
 @NgModule({
   declarations: [
@@ -76,7 +83,8 @@ import { SideMenuLayoutComponent } from './components/layout/side-menu-layout/si
     PricesPageComponent,
     ServicesListPageComponent,
     ServicesDetailPageComponent,
-    SideMenuLayoutComponent
+    SideMenuLayoutComponent,
+    BackToTopComponent
   ],
   imports: [
     BrowserModule,
@@ -84,9 +92,12 @@ import { SideMenuLayoutComponent } from './components/layout/side-menu-layout/si
     NgbModule,
     BrowserAnimationsModule,
     NgArrayPipesModule,
-    NgStringPipesModule
+    NgStringPipesModule,
+    FormsModule,
+    ReactiveFormsModule,
+    MatCheckboxModule
   ],
-  providers: [ArrayToolsService, PaintToolsService],
+  providers: [ArrayToolsService, PaintToolsService, FormToolsService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

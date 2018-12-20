@@ -1,0 +1,29 @@
+@import '../../../../scss/_global-component-import';
+
+a#back-to-top {
+  display: none;
+  position: fixed;
+  bottom: 0.5rem;
+  right: 1.5rem;
+  padding: 1rem;
+  transition: background-color 300ms, bottom 200ms;
+  border-bottom-right-radius: 100%;
+  border-top-right-radius: 3px;
+  border-bottom-left-radius: 3px;
+  transform: rotate(45deg);
+  span {
+    transition: border-color 200ms, height 300ms, width 300ms;
+    display: block;
+    border-top: 4px solid $pink-accent-highlight;
+    border-left: 4px solid $pink-accent-highlight;
+    height: 2rem;
+    width: 2rem;
+  }
+  &:hover {
+    background-image: linear-gradient(135deg, rgba(255, 255, 255, 0.25), $transparent);
+    bottom: 1rem;
+    span {
+      border-color: white;
+    }
+  }
+}

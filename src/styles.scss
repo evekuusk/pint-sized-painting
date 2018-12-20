@@ -1,10 +1,16 @@
 /* You can add global styles to this file, and also import other style files */
 @import "~bootstrap/dist/css/bootstrap.min.css";
+// @import "~@angular/material/prebuilt-themes/indigo-pink.css";
+// @import 'scss/material-theme';
 
 // @import "~font-awesome/css/font-awesome.css";
 @import 'scss/_colours';
 @import 'scss/_var';
+@import 'scss/material-theme';
+
+
 @import 'scss/_layout';
 @import 'scss/_text';
 @import 'scss/_bootstrap-overwrite';
 @import 'scss/_buttons';
+@import 'scss/_forms';

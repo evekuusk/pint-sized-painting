@@ -25,3 +25,8 @@ main {
 .side-menu-content {
   padding: 2rem 3rem;
 }
+
+.buttons-col {
+  display: flex;
+  flex-direction: column;
+}

@@ -48,6 +48,9 @@ div.card {
       box-shadow: none;
     }
   }
+  &:active, &:focus, &:visited {
+    box-shadow: none;
+  }
 }
 
 .btn-primary {
