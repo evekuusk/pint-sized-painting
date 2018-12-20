@@ -48,7 +48,7 @@ export class PaintToolsService {
         name: "Abaddon Black",
         className: "abaddon-black",
         brand: "citadel",
-        types: [],
+        types: ['base', 'air'],
         tags: ['dark', 'neutral'],
         colourFamilies: [],
         temperatureRatio: [0,0],
@@ -838,7 +838,7 @@ export class PaintToolsService {
       {
         hex: "#e0ddb2",
         name: "Screaming Skull",
-        className: "sceaming-skull",
+        className: "screaming-skull",
         brand: "citadel", types: [], tags: [], colourFamilies: [], temperatureRatio: [0,0], warm: false, cool: false
       },
       {
@@ -1191,6 +1191,8 @@ export class PaintToolsService {
           }
 
           this.filtersArr = arrayToolsService.generateArrayFromObject(this.filtersObj)
+
+          this.filteredPaintsResult = this.allPaints;
 
 
   }

@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { NgArrayPipesModule, NgStringPipesModule } from 'angular-pipes';
 
 // *** MAIN *** //
 import { AppRoutingModule } from './app-routing.module';
@@ -46,6 +47,11 @@ import { ServicesPageComponent } from './components/pages/services-page/services
 import { ArrayToolsService } from './services/array-tools.service';
 import { PaintToolsService } from './services/paint-tools.service';
 import { BioPageComponent } from './components/pages/about-page/children/bio-page/bio-page.component';
+import { ContactPageComponent } from './components/pages/about-page/children/contact-page/contact-page.component';
+import { PricesPageComponent } from './components/pages/services-page/children/prices-page/prices-page.component';
+import { ServicesListPageComponent } from './components/pages/services-page/children/services-list-page/services-list-page.component';
+import { ServicesDetailPageComponent } from './components/pages/services-page/children/services-detail-page/services-detail-page.component';
+import { SideMenuLayoutComponent } from './components/layout/side-menu-layout/side-menu-layout.component';
 
 @NgModule({
   declarations: [
@@ -65,13 +71,20 @@ import { BioPageComponent } from './components/pages/about-page/children/bio-pag
     ToolsListPageComponent,
     ToolsDetailPageComponent,
     SideMenuComponent,
-    BioPageComponent
+    BioPageComponent,
+    ContactPageComponent,
+    PricesPageComponent,
+    ServicesListPageComponent,
+    ServicesDetailPageComponent,
+    SideMenuLayoutComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     NgbModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    NgArrayPipesModule,
+    NgStringPipesModule
   ],
   providers: [ArrayToolsService, PaintToolsService],
   bootstrap: [AppComponent]

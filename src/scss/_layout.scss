@@ -10,3 +10,18 @@ body {
 main {
   min-height: calc(100vh - #{$footer-height});
 }
+
+.flex-cols {
+  display: flex;
+  flex-direction: column;
+}
+
+.flex-spaced {
+  display: flex;
+  justify-content: space-around;
+  align-items: flex-start;
+}
+
+.side-menu-content {
+  padding: 2rem 3rem;
+}

@@ -10,6 +10,7 @@ import { HomePageComponent } from './components/pages/home-page/home-page.compon
 import { AboutPageComponent } from './components/pages/about-page/about-page.component';
 import { FaqPageComponent } from './components/pages/about-page/children/faq-page/faq-page.component';
 import { BioPageComponent } from './components/pages/about-page/children/bio-page/bio-page.component';
+import { ContactPageComponent } from './components/pages/about-page/children/contact-page/contact-page.component';
 
 // tutorials
 import { TutorialsPageComponent } from './components/pages/tutorials-page/tutorials-page.component';
@@ -25,6 +26,9 @@ import { GalleryPageComponent } from './components/pages/gallery-page/gallery-pa
 
 // services
 import { ServicesPageComponent } from './components/pages/services-page/services-page.component';
+import { ServicesListPageComponent } from './components/pages/services-page/children/services-list-page/services-list-page.component';
+import { ServicesDetailPageComponent } from './components/pages/services-page/children/services-detail-page/services-detail-page.component';
+import { PricesPageComponent } from './components/pages/services-page/children/prices-page/prices-page.component';
 
 
 const routes: Routes = [
@@ -43,6 +47,10 @@ const routes: Routes = [
       {
         path: 'faq',
         component: FaqPageComponent
+      },
+      {
+        path: 'contact',
+        component: ContactPageComponent
       }
     ]
   },
@@ -76,11 +84,23 @@ const routes: Routes = [
   },
   {
     path: 'services',
-    component: ServicesPageComponent
-  },
-  {
-    path: 'faq',
-    component: FaqPageComponent
+    component: ServicesPageComponent,
+    children: [
+      {
+        path: '',
+        component: ServicesListPageComponent
+      },
+      {
+        path: 'id',
+        component: ServicesDetailPageComponent,
+        children: [
+          {
+            path: 'prices',
+            component: PricesPageComponent
+          }
+        ]
+      }
+    ]
   },
   {
     path: '**',

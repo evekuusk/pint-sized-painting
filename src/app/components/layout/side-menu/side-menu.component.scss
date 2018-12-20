@@ -16,7 +16,14 @@ div.side-menu {
       }
     }
   }
-  ul {
+
+  button.btn.btn-arrow-right.side-menu-btn {
+    margin-top: 0.5rem;
+    &:before {
+      display: none;
+    }
+  }
+  ul.minimal-list {
     list-style: none;
     li {
       a {

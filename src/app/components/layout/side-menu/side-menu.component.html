@@ -1,11 +1,36 @@
 <div class="side-menu">
   <h5 class="menu-title"><a href="#" routerLink="/{{currentSiteSection}}" >{{currentSiteSection | lowercase}} menu</a></h5>
-  <ul *ngIf="currentSiteSection === 'tools'">
-    <li><a href="#" routerLink="/tools" routerLinkActive="active">all tools</a></li>
-    <li><a href="#" routerLink="paints" routerLinkActive="active">paints</a></li>
-  </ul>
 
-  <ul *ngIf="currentSiteSection === 'gallery'">
-    <li>gallery menu</li>
-  </ul>
+  <div *ngIf="currentSiteSection === 'tools'" class="flex-cols">
+    <!-- <li><a href="#" routerLink="/tools" routerLinkActive="active">all tools</a></li>
+    <li><a href="#" routerLink="paints" routerLinkActive="active">paints</a></li> -->
+
+    <button type="button" href="#" [routerLinkActiveOptions]="{exact:true}" routerLink="/tools" routerLinkActive="active disabled" class="btn btn-secondary btn-arrow-right side-menu-btn">all tools</button>
+
+    <button type="button" href="#" [routerLinkActiveOptions]="{exact:true}" routerLink="paints" routerLinkActive="active disabled" class="btn btn-secondary btn-arrow-right side-menu-btn">paints</button>
+  </div>
+
+  <div *ngIf="currentSiteSection === 'gallery'" class="flex-cols">
+    <!-- <li>gallery menu</li> -->
+  </div>
+
+  <div *ngIf="currentSiteSection === 'about'" class="flex-cols">
+    <button type="button" href="#" [routerLinkActiveOptions]="{exact:true}" routerLink="/about" routerLinkActive="active disabled" class="btn btn-secondary btn-arrow-right side-menu-btn">bio</button>
+
+    <button type="button" href="#" [routerLinkActiveOptions]="{exact:true}" routerLink="faq" routerLinkActive="active disabled" class="btn btn-secondary btn-arrow-right side-menu-btn">faq</button>
+
+    <button type="button" href="#" [routerLinkActiveOptions]="{exact:true}" routerLink="contact" routerLinkActive="active disabled" class="btn btn-secondary btn-arrow-right side-menu-btn">contact</button>
+  </div>
+
+  <div *ngIf="currentSiteSection === 'services'" class="flex-cols">
+
+    <button type="button" href="#" [routerLinkActiveOptions]="{exact:true}" routerLink="/services" routerLinkActive="active disabled" class="btn btn-secondary btn-arrow-right side-menu-btn">all services</button>
+
+    <button type="button" href="#" [routerLinkActiveOptions]="{exact:true}" routerLink="prices" routerLinkActive="active disabled" class="btn btn-secondary btn-arrow-right side-menu-btn">prices</button>
+
+
+  </div>
+
+
+
 </div>

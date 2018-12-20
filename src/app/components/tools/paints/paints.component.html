@@ -4,11 +4,23 @@
 <ul>
 <li *ngFor="let filter of activeFilters">{{filter}}</li>
 </ul>
-<hr />
+
 <p>All types of paint:  {{types}}</p>
 <p>All unique tags used for paints:  {{tags}}</p>
 
+<hr />
 
-<ul>
-<li *ngFor="let paint of paintToolsService.allPaints">{{paint.name}} ({{paint.hex}}), {{paint.brand}}</li>
+<div ngbDropdown class="d-inline-block">
+      <button class="btn btn-outline-primary" id="dropdownBasic1" ngbDropdownToggle>Toggle dropdown</button>
+      <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+        <button class="dropdown-item">Action - 1</button>
+        <button class="dropdown-item">Another Action</button>
+        <button class="dropdown-item">Something else is here</button>
+      </div>
+    </div>
+
+<hr />
+
+<ul class="paint-swatches-list">
+<li *ngFor="let paint of paintToolsService.filteredPaintsResult" [ngClass]="[paint.className, 'paint-swatch']"><span class="colour" placement="top" ngbPopover="{{paint.types | join: ', '}} ({{paint.brand | titlecase}})" popoverTitle="Paint Details"></span><span class="name">{{paint.name}}</span></li>
 </ul>

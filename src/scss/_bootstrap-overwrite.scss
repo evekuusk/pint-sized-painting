@@ -36,22 +36,50 @@ div.card {
   margin-top: 1rem;
 }
 
+.btn-primary, .btn-secondary {
+  color: $off-white;
+  &.disabled {
+    opacity: 1;
+    &:hover {
+      background-color: $medium-grey;
+      border-color: $medium-grey;
+    }
+    &:active, &:focus, &:visited {
+      box-shadow: none;
+    }
+  }
+}
+
 .btn-primary {
   background-color: $pink-accent-medium-light;
   border-color: $pink-accent-medium-dark;
-  color: $off-white;
   &:hover {
     background-color: $pink-accent-highlight;
     border-color: $pink-accent-dark;
+  }
+  &:active {
+    background-color: $pink-accent-medium-light;
+    border-color: $pink-accent-medium-dark;
   }
 }
 
 .btn-secondary {
   background-color: $pink-accent-light;
   border-color: $pink-accent-medium-light;
-  color: $off-white;
   &:hover {
     background-color: $pink-accent-highlight;
     border-color: $pink-accent-medium-dark;
   }
+  &:active {
+    background-color: $pink-accent-light;
+    border-color: $pink-accent-medium-light;
+  }
+}
+
+.popover-body, .popover-header {
+  text-align: center;
+}
+
+.ngb-popover-window.bs-popover-bottom .arrow, ngb-popover-window.bs-popover-top .arrow {
+  margin-left: -8px !important;
 }
