@@ -30,7 +30,6 @@ export class PaintToolsService {
   allPaints: Paint[];
 
   // object arrays for filtering
-  allBrandsFilterSelections: object[];
   allTypesFilterSelections: object[];
   allTagsFilterSelections: object[];
   allColourFamiliesFilterSelections: object[];
@@ -51,8 +50,6 @@ export class PaintToolsService {
   updateFilteredPaintsArr() {
     this.filtersArr = this.arrayToolsService.generateArrayFromObject(this.filtersObj)
   }
-
-
 
   comparePaints() { // UNFINISHED
     let filteredTypes = this.filtersObj['filteredTypesResult'];
@@ -1219,14 +1216,6 @@ export class PaintToolsService {
       })
     }
 
-    this.allBrandsFilterSelections = [];
-    for (let i = 0; i < this.allBrands.length; i++) {
-      this.allBrandsFilterSelections.push({
-        id: i,
-        name: this.allBrands[i]
-      })
-    }
-
     this.allTagsFilterSelections = [];
     for (let i = 0; i < this.allTags.length; i++) {
       this.allTagsFilterSelections.push({
@@ -1246,7 +1235,6 @@ export class PaintToolsService {
 
     // *** create filters object, array, and filtered paints result *** //
     this.filtersObj = {
-      filteredBrandsResult: this.allBrands,
       filteredTypesResult: this.allTypes,
       filteredTagsResult: this.allTags,
       filteredColourFamiliesResult: this.allColourFamilies

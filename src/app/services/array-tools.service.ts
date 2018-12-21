@@ -61,9 +61,8 @@ export class ArrayToolsService {
 
   }
 
-  compareArraysOverlap(mandatoryArr, checkedArr) { // UNFINISHED
-    mandatoryArr = mandatoryArr.sort()
-    checkedArr = checkedArr.sort()
+  compareArraysOverlap(a, b) {
+
   }
 
 

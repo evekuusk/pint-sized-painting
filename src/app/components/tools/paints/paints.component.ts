@@ -16,28 +16,32 @@ import * as $ from 'jquery';
   providers: [ PaintToolsService ]
 })
 export class PaintsComponent implements OnInit {
-  types: string[];
-  tags: string[];
-  colourFamilies: string[];
+  allPaintTypes: string[];
+  allPaintTags: string[];
+  allPaintColourFamilies: string[];
   activeFilters: object;
   activeFiltersArr = this.paintToolsService.filtersArr;
 
   // filtering selections form
   form: FormGroup;
   paintTypes = this.paintToolsService.allTypesFilterSelections;
-  filteredPaintTypesInclude: string[];
-  paintBrands = this.paintToolsService.allBrandsFilterSelections;
-  filteredPaintBrandsInclude: string[];
   paintTags = this.paintToolsService.allTagsFilterSelections;
-  filteredPaintTagsInclude: string[];
   paintColourFamilies = this.paintToolsService.allColourFamiliesFilterSelections;
-  filteredPaintColourFamiliesInclude: string[];
+
+  // temporary filter arrays
+  filteredPaintTagsBucket: string[];
+  filteredPaintTypesBucket: string[];
+  filteredPaintColourFamiliesBucket: string[];
+
+  // submitted values
+  filteredPaintTagsSubmitted: string[];
+  filteredPaintTypesSubmitted: string[];
+  filteredPaintColourFamiliesSubmitted: string[];
 
   // selection booleans
   allPaintsSelected: boolean;
   zeroPaintsSelected: boolean;
   allPaintTypesSelected: boolean;
-  allPaintBrandsSelected: boolean;
   allPaintTagsSelected: boolean;
   allPaintColourFamiliesSelected: boolean;
   zeroPaintTypesSelected: boolean;
@@ -46,13 +50,11 @@ export class PaintsComponent implements OnInit {
 
   constructor(private paintToolsService: PaintToolsService, private formBuilder: FormBuilder, private formToolsService: FormToolsService) {
     const paintTypeControls = this.paintTypes.map(c => new FormControl(false));
-    const paintBrandControls = this.paintBrands.map(c => new FormControl(false));
     const paintTagControls = this.paintTags.map(c => new FormControl(false));
     const paintColourFamilyControls = this.paintColourFamilies.map(c => new FormControl(false));
 
     this.form = this.formBuilder.group({
       paintTypes: new FormArray(paintTypeControls),
-      paintBrands: new FormArray(paintBrandControls),
       paintTags: new FormArray(paintTagControls),
       paintColourFamilies: new FormArray(paintColourFamilyControls)
     });
@@ -63,31 +65,24 @@ export class PaintsComponent implements OnInit {
     const selectedPaintTypes = this.form.value.paintTypes
       .map((v, i) => v ? this.paintTypes[i]["name"] : null)
       .filter(v => v !== null);
-    this.filteredPaintTypesInclude = selectedPaintTypes;
-
-    // paint brands
-    const selectedPaintBrands = this.form.value.paintBrands
-      .map((v, i) => v ? this.paintBrands[i]["name"] : null)
-      .filter(v => v !== null);
-    this.filteredPaintBrandsInclude = selectedPaintBrands;
+    this.filteredPaintTypesSubmitted = selectedPaintTypes;
 
     // paint tags
     const selectedPaintTags = this.form.value.paintTags
       .map((v, i) => v ? this.paintTags[i]["name"] : null)
       .filter(v => v !== null);
-    this.filteredPaintTagsInclude = selectedPaintTags;
+    this.filteredPaintTagsSubmitted = selectedPaintTags;
 
     // paint colour families
     const selectedPaintColourFamilies = this.form.value.paintColourFamilies
       .map((v, i) => v ? this.paintColourFamilies[i]["name"] : null)
       .filter(v => v !== null);
-    this.filteredPaintColourFamiliesInclude = selectedPaintColourFamilies;
+    this.filteredPaintColourFamiliesSubmitted = selectedPaintColourFamilies;
 
     this.activeFilters = {
-      filteredBrandsResult: this.filteredPaintBrandsInclude,
-      filteredTypesResult: this.filteredPaintTypesInclude,
-      filteredTagsResult: this.filteredPaintTagsInclude,
-      filteredColourFamiliesResult: this.filteredPaintColourFamiliesInclude
+      filteredTypesResult: this.filteredPaintTypesSubmitted,
+      filteredTagsResult: this.filteredPaintTagsSubmitted,
+      filteredColourFamiliesResult: this.filteredPaintColourFamiliesSubmitted
     }
 
     this.paintToolsService.updateFilteredPaints(this.activeFilters);
@@ -95,7 +90,6 @@ export class PaintsComponent implements OnInit {
   }
 
   clearAll() {
-    // this.activeFilters = this.paintToolsService.filtersObj;
     this.clearThis('types')
     this.clearThis('tags')
     this.clearThis('colour')
@@ -120,17 +114,56 @@ export class PaintsComponent implements OnInit {
   	return siblings;
   };
 
-  updateArrWithChangedValue(keepChecked, changedCheckboxName, formGroupNamesArr) {
-    // *** PROBLEM IS HERE...NOT WORKING AS EXPECTED...MUST RETURN ARRAY OF ONLY MATCHING CHECKED ITEMS IN THE RESPECTIVE ARRAY GROUP *** //
-    if (keepChecked === false) {
-      for (let i = 0; i < formGroupNamesArr.length; i++) {
-        if ( formGroupNamesArr[i] === changedCheckboxName) {
-          formGroupNamesArr.splice(i, 1);
-        }
+  removeValueFromArray(array, value) {
+    let tempArray = [];
+    for (let i = 0; i < array.length; i++) {
+      if (array[i].trim() === value.trim()) {
+        continue
+      } else {
+        tempArray.push(array[i])
       }
     }
-    console.log('updateArrWithChangedValue() formGroupNamesArr: ', formGroupNamesArr)
-    return formGroupNamesArr
+    return tempArray;
+  }
+
+  addThisToBucket(category, value) {
+    if (category === 'types') {
+      this.filteredPaintTypesBucket.push(value)
+    } else if (category === 'tags') {
+      this.filteredPaintTagsBucket.push(value)
+    } else if (category === 'colour') {
+      this.filteredPaintColourFamiliesBucket.push(value)
+    }
+  }
+
+  removeThisFromBucket(category, value) {
+    if (category === 'types') {
+      this.filteredPaintTypesBucket = this.removeValueFromArray(this.filteredPaintTypesBucket, value)
+    } else if (category === 'tags') {
+      this.filteredPaintTagsBucket = this.removeValueFromArray(this.filteredPaintTagsBucket, value)
+    } else if (category === 'colour') {
+      this.filteredPaintColourFamiliesBucket = this.removeValueFromArray(this.filteredPaintColourFamiliesBucket, value)
+    }
+  }
+
+  fillThisBucket(category) {
+    if (category === 'types') {
+      this.filteredPaintTypesBucket = this.allPaintTypes;
+    } else if (category === 'tags') {
+      this.filteredPaintTagsBucket = this.allPaintTags;
+    } else if (category === 'colour') {
+      this.filteredPaintColourFamiliesBucket = this.allPaintColourFamilies;
+    }
+  }
+
+  emptyThisBucket(category) {
+    if (category === 'types') {
+      this.filteredPaintTypesBucket = [];
+    } else if (category === 'tags') {
+      this.filteredPaintTagsBucket = [];
+    } else if (category === 'colour') {
+      this.filteredPaintColourFamiliesBucket = [];
+    }
   }
 
   onChange(e) {
@@ -143,89 +176,116 @@ export class PaintsComponent implements OnInit {
     let formArrayName = targetElement.parentNode
     let formArrayNameStr
     formArrayNameStr = $(formArrayName).attr('formarrayname')
-
     let parentNode = targetElement.parentNode.parentNode
     let targetGroupSiblings = $(parentNode).children("label[formarrayname='" + formArrayNameStr + "']")
     let targetElementName = $(targetElement).find('span.mat-checkbox-label').text()
     let groupSiblingNamesArr = []
-    for (let i = 0; i < targetGroupSiblings.length; i++) {
-      let siblingName = $(targetGroupSiblings[i]).find('span.mat-checkbox-label').text()
-      groupSiblingNamesArr.push(siblingName)
+
+    console.log('formArrayNameStr: ', formArrayNameStr)
+    console.log('targetElementName: ', targetElementName)
+
+    // REVISE ARRAY STRING NAME
+    if (formArrayNameStr === 'paintTypes') {
+      formArrayNameStr = 'types'
+    } else if (formArrayNameStr === 'paintTags') {
+      formArrayNameStr = 'tags'
+    } else if (formArrayNameStr === 'paintColourFamilies') {
+      formArrayNameStr = 'colour'
     }
 
-    console.log('maximum available items from this filter: ', groupSiblingNamesArr)
-    let updatedCheckedNamesArr = this.updateArrWithChangedValue(changedCheckValue, targetElementName, groupSiblingNamesArr)
-    console.log('selected from this filter: ', updatedCheckedNamesArr)
-    this.checkSelectedBoolsInCategory(formArrayNameStr, updatedCheckedNamesArr, groupSiblingNamesArr, changedCheckValue)
+    // ADJUST RESPECTIVE BUCKET
+    if (changedCheckValue === false) {
+      this.removeThisFromBucket(formArrayNameStr, targetElementName)
+    } else {
+      this.addThisToBucket(formArrayNameStr, targetElementName)
+    }
+
+    this.checkSelectedBoolsInCategory(formArrayNameStr, changedCheckValue)
   }
 
-  checkSelectedBoolsInCategory(category, checkedItemsOfGroup, allItemsOfGroup, changedValue) {
-    console.log('checkSelectedBoolsInCategory checkedItemsOfGroup length: ', checkedItemsOfGroup.length)
+  checkSelectedBoolsInCategory(category, changedValue) {
     if (category === 'types') {
-      if (changedValue === false) {
-        this.allPaintTypesSelected = false;
-      } else {
+      if (this.filteredPaintTypesBucket.length > 0) {
+        // types filter is not empty
         this.zeroPaintTypesSelected = false;
-      }
-      if (checkedItemsOfGroup === allItemsOfGroup) {
-        this.allPaintTypesSelected = true;
         this.zeroPaintsSelected = false;
-        if ((this.allPaintTagsSelected === true) && (this.allPaintColourFamiliesSelected === true)) {
-          this.allPaintsSelected = true;
+        let bucketSize = this.filteredPaintTypesBucket.length
+        console.log(bucketSize === this.allPaintTypes.length)
+        if (bucketSize === this.allPaintTypes.length) {
+          // all paint types selected
+          this.allPaintTypesSelected = true;
+          console.log(this.allPaintTypesSelected)
+          // check if this checked was the last needed for all paint selections to fulfill
+          if ((this.allPaintTagsSelected === true) && (this.allPaintColourFamiliesSelected === true)) {
+            this.allPaintsSelected = true;
+          }
+        } else {
+          // some paint types selected but not all
+          this.allPaintTypesSelected = false;
+          this.allPaintsSelected = false;
         }
-      } else if (checkedItemsOfGroup.length === 0) {
+      } else {
+        // types filter is empty
         this.zeroPaintTypesSelected = true;
-        this.allPaintsSelected = false;
         if ((this.zeroPaintTagsSelected === true) && (this.zeroPaintColourFamiliesSelected === true)) {
           this.zeroPaintsSelected = true;
         }
-      } else {
-        this.allPaintTypesSelected = false;
-        this.zeroPaintTypesSelected = false;
       }
+
     } else if (category === 'tags') {
-      if (changedValue === false) {
-        this.allPaintTagsSelected = false;
-      } else {
+      if (this.filteredPaintTagsBucket.length > 0) {
+        // tags filter is not empty
         this.zeroPaintTagsSelected = false;
-      }
-      if (checkedItemsOfGroup === allItemsOfGroup) {
-        this.allPaintTagsSelected = true;
         this.zeroPaintsSelected = false;
-        if ((this.allPaintTypesSelected === true) && (this.allPaintColourFamiliesSelected === true)) {
-          this.allPaintsSelected = true;
+        let bucketSize = this.filteredPaintTagsBucket.length
+        console.log(bucketSize === this.allPaintTags.length)
+        if (bucketSize === this.allPaintTags.length) {
+          // all paint tags selected
+          this.allPaintTagsSelected = true;
+          console.log(this.allPaintTagsSelected)
+          // check if this checked was the last needed for all paint selections to fulfill
+          if ((this.allPaintTypesSelected === true) && (this.allPaintColourFamiliesSelected === true)) {
+            this.allPaintsSelected = true;
+          }
+        } else {
+          // some paint tags selected but not all
+          this.allPaintTagsSelected = false;
+          this.allPaintsSelected = false;
         }
-      } else if (checkedItemsOfGroup.length === 0) {
+      } else {
+        // tags filter is empty
         this.zeroPaintTagsSelected = true;
-        this.allPaintsSelected = false;
-        if ((this.zeroPaintTypesSelected === true) && (this.zeroPaintTypesSelected === true)) {
+        if ((this.zeroPaintTypesSelected === true) && (this.zeroPaintColourFamiliesSelected === true)) {
           this.zeroPaintsSelected = true;
         }
-      }  else {
-        this.allPaintTagsSelected = false;
-        this.zeroPaintTagsSelected = false;
       }
+
     } else if (category === 'colour') {
-      if (changedValue === false) {
-        this.allPaintColourFamiliesSelected = false;
-      } else {
+      if (this.filteredPaintColourFamiliesBucket.length > 0) {
+        // colours filter is not empty
         this.zeroPaintColourFamiliesSelected = false;
-      }
-      if (checkedItemsOfGroup === allItemsOfGroup) {
-        this.allPaintColourFamiliesSelected = true;
         this.zeroPaintsSelected = false;
-        if ((this.allPaintTagsSelected === true) && (this.allPaintTypesSelected === true)) {
-          this.allPaintsSelected = true;
+        let bucketSize = this.filteredPaintColourFamiliesBucket.length
+        console.log(bucketSize === this.allPaintColourFamilies.length)
+        if (bucketSize === this.allPaintColourFamilies.length) {
+          // all paint colours selected
+          this.allPaintColourFamiliesSelected = true;
+          console.log(this.allPaintColourFamiliesSelected)
+          // check if this checked was the last needed for all paint selections to fulfill
+          if ((this.allPaintTagsSelected === true) && (this.allPaintTypesSelected === true)) {
+            this.allPaintsSelected = true;
+          }
+        } else {
+          // some paint colours selected but not all
+          this.allPaintColourFamiliesSelected = false;
+          this.allPaintsSelected = false;
         }
-      } else if (checkedItemsOfGroup.length === 0) {
+      } else {
+        // colours filter is empty
         this.zeroPaintColourFamiliesSelected = true;
-        this.allPaintsSelected = false;
         if ((this.zeroPaintTagsSelected === true) && (this.zeroPaintTypesSelected === true)) {
           this.zeroPaintsSelected = true;
         }
-      } else {
-        this.allPaintColourFamiliesSelected = false;
-        this.zeroPaintColourFamiliesSelected = false;
       }
     }
   }
@@ -239,6 +299,7 @@ export class PaintsComponent implements OnInit {
       if ((this.zeroPaintTagsSelected === true) && (this.zeroPaintColourFamiliesSelected === true)) {
         this.zeroPaintsSelected = true;
       }
+      this.emptyThisBucket('types')
     } else if (category === 'tags') {
       this.form.controls.paintTags.reset();
       this.allPaintTagsSelected = false;
@@ -246,6 +307,7 @@ export class PaintsComponent implements OnInit {
       if ((this.zeroPaintTypesSelected === true) && (this.zeroPaintColourFamiliesSelected === true)) {
         this.zeroPaintsSelected = true;
       }
+      this.emptyThisBucket('tags')
     } else if (category === 'colour') {
       this.form.controls.paintColourFamilies.reset();
       this.allPaintColourFamiliesSelected = false;
@@ -253,6 +315,7 @@ export class PaintsComponent implements OnInit {
       if ((this.zeroPaintTagsSelected === true) && (this.zeroPaintTypesSelected === true)) {
         this.zeroPaintsSelected = true;
       }
+      this.emptyThisBucket('colour')
     }
   }
 
@@ -269,6 +332,7 @@ export class PaintsComponent implements OnInit {
     if ((this.allPaintTagsSelected === true) && (this.allPaintColourFamiliesSelected === true)) {
       this.allPaintsSelected = true;
     }
+    this.fillThisBucket('types')
   }
 
   selectAllTags() {
@@ -284,6 +348,7 @@ export class PaintsComponent implements OnInit {
     if ((this.allPaintTypesSelected === true) && (this.allPaintColourFamiliesSelected === true)) {
       this.allPaintsSelected = true;
     }
+    this.fillThisBucket('tags')
   }
 
   selectAllColourFamilies() {
@@ -299,6 +364,7 @@ export class PaintsComponent implements OnInit {
     if ((this.allPaintTagsSelected === true) && (this.allPaintTypesSelected === true)) {
       this.allPaintsSelected = true;
     }
+    this.fillThisBucket('colour')
   }
 
   selectThese(category) {
@@ -311,23 +377,36 @@ export class PaintsComponent implements OnInit {
     }
   }
 
-  checkIfSubmittable() {
+  checkIfNotSubmittable() {
+    return true
     // (allPaintsSelected === true) || (zeroPaintsSelected === true) || (allPaintTypesSelected === true) || (allPaintTagsSelected === true) || (allPaintColourFamiliesSelected === true) || (zeroPaintTypesSelected === true) || (zeroPaintTagsSelected === true) || (zeroPaintColourFamiliesSelected === true)
   }
 
   ngOnInit() {
-    this.types = this.paintToolsService.allTypes;
-    this.tags = this.paintToolsService.allTags;
-    this.colourFamilies = this.paintToolsService.allColourFamilies;
+    // set constants
+    this.allPaintTypes = this.paintToolsService.allTypes;
+    this.allPaintTags = this.paintToolsService.allTags;
+    this.allPaintColourFamilies = this.paintToolsService.allColourFamilies;
+
+    // set variables
     this.activeFilters = this.paintToolsService.filtersObj;
+
+    // all booleans
     this.allPaintsSelected = true;
     this.allPaintTypesSelected = true;
     this.allPaintTagsSelected = true;
     this.allPaintColourFamiliesSelected = true;
+
+    // zero booleans
     this.zeroPaintsSelected = false;
     this.zeroPaintTypesSelected = false;
     this.zeroPaintTagsSelected = false;
     this.zeroPaintColourFamiliesSelected = false;
+
+    // set initial temporary buckets
+    this.filteredPaintTagsBucket = this.allPaintTags;
+    this.filteredPaintTypesBucket = this.allPaintTypes;
+    this.filteredPaintColourFamiliesBucket = this.allPaintColourFamilies;
 
     // all checked by default
     this.selectAll()

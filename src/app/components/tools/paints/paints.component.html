@@ -9,7 +9,6 @@
     <div class="col-md-3">
       <h6>Narrow by Type</h6>
       <div class="btn-group">
-        <!-- [disabled]="allPaintTypesSelected === true" -->
         <button class='btn btn-secondary small' (click)="selectThese('types')" [disabled]="allPaintTypesSelected === true">select all types</button>
         <button class='btn btn-secondary small' (click)="clearThis('types')" [disabled]="zeroPaintTypesSelected === true">clear types</button>
       </div>
@@ -42,7 +41,7 @@
     <div class="col-md-2 buttons-col">
       <button class='btn btn-secondary btn-arrow-left backdrop-invisible' (click)="selectAll()" [disabled]="allPaintsSelected === true">all</button>
       <button class='btn btn-secondary btn-arrow-left backdrop-invisible' (click)="clearAll()" [disabled]="zeroPaintsSelected === true">clear</button>
-      <button class='btn btn-secondary btn-arrow-right backdrop-invisible' (click)="submit()" [disabled]="checkIfSubmittable()">submit</button>
+      <button class='btn btn-secondary btn-arrow-right backdrop-invisible' (click)="submit()" [disabled]="checkIfNotSubmittable()">submit</button>
     </div>
   </div>
 
