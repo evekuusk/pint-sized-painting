@@ -38,7 +38,7 @@ div.card {
 
 .btn-primary, .btn-secondary {
   color: $off-white;
-  &.disabled {
+  &.disabled, &:disabled {
     opacity: 1;
     &:hover {
       background-color: $medium-grey;

@@ -36,14 +36,38 @@ export class PaintToolsService {
   allColourFamiliesFilterSelections: object[];
 
   // filters
-  filteredBrands: string[];
-  filteredTypes: string[];
-  filteredTags: string[];
-  filteredColourFamilies: string[];
   filtersObj: object;
   filtersArr: string[];
 
+  // controls which paints are displayed in component
   filteredPaintsResult: Paint[];
+
+  updateFilteredPaints(filters) {
+    this.filtersObj = filters;
+    this.updateFilteredPaintsArr()
+    this.comparePaints()
+  }
+
+  updateFilteredPaintsArr() {
+    this.filtersArr = this.arrayToolsService.generateArrayFromObject(this.filtersObj)
+  }
+
+
+
+  comparePaints() { // UNFINISHED
+    let filteredTypes = this.filtersObj['filteredTypesResult'];
+    let filteredTags = this.filtersObj['filteredTagsResult'];
+    let filteredColourFamilies = this.filtersObj['filteredColourFamiliesResult'];
+
+    for (let i = 0; i < this.allPaints.length; i++) {
+      let thisPaintTypes = this.allPaints[i].types;
+      let thisPaintTags = this.allPaints[i].tags;
+      let thisPaintColourFamilies = this.allPaints[i].colourFamilies;
+
+      let matchingTypes = this.arrayToolsService.compareArraysOverlap(filteredTypes, thisPaintTypes)
+      console.log(matchingTypes)
+    }
+  }
 
 
   constructor(private arrayToolsService: ArrayToolsService) {
@@ -1229,7 +1253,7 @@ export class PaintToolsService {
 
     }
 
-    this.filtersArr = arrayToolsService.generateArrayFromObject(this.filtersObj)
+    this.updateFilteredPaintsArr()
 
     this.filteredPaintsResult = this.allPaints;
 
