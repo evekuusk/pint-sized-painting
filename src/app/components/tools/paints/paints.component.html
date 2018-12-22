@@ -54,5 +54,5 @@
 <h4 id="paints-list">{{isFilteredListTitle}} Paints</h4>
 
 <ul class="paint-swatches-list">
-<li *ngFor="let paint of paintToolsService.filteredPaintsResult" [ngClass]="[paint.className, 'paint-swatch']"><span class="colour" placement="top" ngbPopover="{{paint.types | join: ', '}}" popoverTitle="{{paint.brand | titlecase}}"></span><span class="name">{{paint.name}}</span></li>
+<li *ngFor="let paint of paintToolsService.filteredPaintsResult" [ngClass]="[paint.className, 'paint-swatch']"><span class="colour" placement="top" ngbPopover="{{paint.types | join: ', '}}" popoverTitle="{{paint.brand | titlecase}}" [ngClass]="{'metallic': paint.metallic === true,'texture': paint.texture === true}"></span><span class="name" [ngClass]="{'metallic': paint.metallic === true,'texture': paint.texture === true}">{{paint.name}}</span></li>
 </ul>

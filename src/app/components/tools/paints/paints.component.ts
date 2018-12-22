@@ -358,6 +358,9 @@ export class PaintsComponent implements OnInit {
     $('#filterPaintsForm').slideUp(200)
     this.selectAll()
     this.submit()
+    $('html, body').animate({
+      scrollTop: $('#main-nav').offset().top
+    }, 0);
   }
 
   onChange(e) {

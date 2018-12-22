@@ -965,16 +965,16 @@ ul.paint-swatches-list {
     }
 
     // *** paint types *** //
-    &.shade {
-      span.colour {
-
-      }
-    }
-    &.metallic {
-      span.colour {
-
-      }
-    }
+    // &.shade {
+    //   span.colour {
+    //
+    //   }
+    // }
+    // &.metallic {
+    //   span.colour {
+    //
+    //   }
+    // }
 
     span {
       display: block;
@@ -995,12 +995,36 @@ ul.paint-swatches-list {
         height: 5rem;
         width: 5rem;
       }
+      &.metallic {
+
+      }
+      &.texture {
+
+      }
+      &.shade {
+        
+      }
     }
     span.name {
       margin-top: 0.5rem;
       font-size: 0.8rem;
       height: 50%;
       border-bottom: 1px solid dimgrey;
+      &:after {
+        display: block;
+        font-size: 0.75rem;
+        color: $neutral-medium-white-text;
+      }
+      &.metallic {
+        &:after {
+          content: 'metallic';
+        }
+      }
+      &.texture {
+        &:after {
+          content: 'texture';
+        }
+      }
     }
   }
 }
