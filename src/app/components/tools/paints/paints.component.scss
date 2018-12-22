@@ -33,6 +33,11 @@ ul.paint-swatches-list {
         background-color: $agrellan-earth;
       }
     }
+    &.agrellan-badland {
+      span.colour {
+        background-color: $agrellan-badland;
+      }
+    }
     &.ahriman-blue {
       span.colour {
         background-color: $ahriman-blue;
@@ -46,6 +51,11 @@ ul.paint-swatches-list {
     &.armageddon-dunes {
       span.colour {
         background-color: $armageddon-dunes;
+      }
+    }
+    &.armageddon-dust {
+      span.colour {
+        background-color: $armageddon-dust;
       }
     }
     &.astorath-red {

@@ -73,8 +73,32 @@ export class ArrayToolsService {
     return tempArray;
   }
 
-  compareArraysOverlap(a, b) {
+  compareArraysOverlap(checkArr, masterArr) {
+    // console.log('need to know if (', checkArr, ') appears inside of (', masterArr, ')' )
 
+    checkArr = checkArr.sort()
+    masterArr = masterArr.sort()
+
+    if ((checkArr.length === 0) || masterArr.length === 0) {
+      // console.log('need to know if (', checkArr, ') appears inside of (', masterArr, ')...', false )
+      return false
+    }
+
+    for (let i = 0; i < masterArr.length; i++) {
+      if (checkArr[i] === undefined) {
+        // console.log('need to know if (', checkArr, ') appears inside of (', masterArr, ')...', true )
+        return true
+      }
+
+      let thisCheckVal = checkArr[i].trim()
+      let thisMasterVal = masterArr[i].trim()
+
+      if (thisMasterVal === thisCheckVal) {
+        continue
+      }
+    }
+    // console.log('need to know if (', checkArr, ') appears inside of (', masterArr, ')...', true )
+    return true
   }
 
 

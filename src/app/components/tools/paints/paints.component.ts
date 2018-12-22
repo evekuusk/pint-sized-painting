@@ -24,6 +24,7 @@ export class PaintsComponent implements OnInit {
   activeFiltersArr = this.paintToolsService.filtersArr;
   isFilteredListTitle: string;
   showAllPaints: boolean;
+  scrollToList: boolean;
 
   // filtering selections form
   form: FormGroup;
@@ -143,16 +144,6 @@ export class PaintsComponent implements OnInit {
     }
   }
 
-  checkIfNotSubmittable() {
-    if ((this.allPaintsSelected === true) || (this.zeroPaintsSelected === true)) {
-      return true
-    } else if ((this.allPaintTypesSelected === true) || (this.allPaintTagsSelected === true) || (this.allPaintColourFamiliesSelected === true)) {
-      return true
-    } else {
-      return false
-    }
-  }
-
   submit() {
     // paint types
     const selectedPaintTypes = this.form.value.paintTypes
@@ -186,6 +177,12 @@ export class PaintsComponent implements OnInit {
       this.isFilteredListTitle = "Filtered"
       this.showAllPaints = false;
     }
+    if (this.scrollToList === true) {
+      $('html, body').animate({
+        scrollTop: $('#paints-list').offset().top
+      }, 300);
+    }
+    this.scrollToList = true;
   }
 
 
@@ -336,12 +333,16 @@ export class PaintsComponent implements OnInit {
   }
 
   // *** STATUS HANDLERS *** //
+  // showAllPaints() {
+  //   this.paintToolsService.showAllPaints()
+  //   this.showAllPaints = true;
+  // }
+
   onToggleFilter(e) {
     this.selectAll()
     this.submit()
 
     let filterBool = e.checked;
-    console.log('filterBool: ', filterBool)
     if (filterBool === true) {
       this.showFilterOptions()
     } else {
@@ -350,11 +351,14 @@ export class PaintsComponent implements OnInit {
   }
 
   showFilterOptions() {
+    this.scrollToList = false;
     $('#filterPaintsForm').slideDown(200)
     this.clearAll()
+    this.submit()
   }
 
   hideFilterOptions() {
+    this.scrollToList = false;
     $('#filterPaintsForm').slideUp(200)
     this.selectAll()
     this.submit()
@@ -436,6 +440,7 @@ export class PaintsComponent implements OnInit {
     this.submit()
     this.isFilteredListTitle = 'All';
     this.showAllPaints = true;
+    this.scrollToList = false;
   }
 
 }
