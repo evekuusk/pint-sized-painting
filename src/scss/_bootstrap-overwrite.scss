@@ -79,10 +79,17 @@ div.card {
   }
 }
 
+
+// popover
 .popover-body, .popover-header {
   text-align: center;
 }
-
 .ngb-popover-window.bs-popover-bottom .arrow, ngb-popover-window.bs-popover-top .arrow {
   margin-left: -8px !important;
+}
+h3.popover-header {
+  color: $neutral-dark-text;
+}
+div.popover-body {
+  @include basicHeavyText;
 }

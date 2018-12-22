@@ -47,14 +47,19 @@ export class PaintToolsService {
     this.comparePaints()
   }
 
+  removeValueFromArray(a, v) {
+    return this.arrayToolsService.removeValueFromArray(a, v)
+  }
+
   updateFilteredPaintsArr() {
     this.filtersArr = this.arrayToolsService.generateArrayFromObject(this.filtersObj)
+    console.log(this.filtersArr)
   }
 
   comparePaints() { // UNFINISHED
-    let filteredTypes = this.filtersObj['filteredTypesResult'];
-    let filteredTags = this.filtersObj['filteredTagsResult'];
-    let filteredColourFamilies = this.filtersObj['filteredColourFamiliesResult'];
+    let filteredTypes = this.filtersObj['filteredTypes'];
+    let filteredTags = this.filtersObj['filteredTags'];
+    let filteredColourFamilies = this.filtersObj['filteredColourFamilies'];
 
     for (let i = 0; i < this.allPaints.length; i++) {
       let thisPaintTypes = this.allPaints[i].types;
@@ -62,7 +67,7 @@ export class PaintToolsService {
       let thisPaintColourFamilies = this.allPaints[i].colourFamilies;
 
       let matchingTypes = this.arrayToolsService.compareArraysOverlap(filteredTypes, thisPaintTypes)
-      console.log(matchingTypes)
+
     }
   }
 
@@ -1235,9 +1240,9 @@ export class PaintToolsService {
 
     // *** create filters object, array, and filtered paints result *** //
     this.filtersObj = {
-      filteredTypesResult: this.allTypes,
-      filteredTagsResult: this.allTags,
-      filteredColourFamiliesResult: this.allColourFamilies
+      filteredTypes: this.allTypes,
+      filteredTags: this.allTags,
+      filteredColourFamilies: this.allColourFamilies
 
     }
 

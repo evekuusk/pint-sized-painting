@@ -120,7 +120,8 @@
 }
 
 .mat-button-toggle {
-  font-family: Roboto, "Helvetica Neue", sans-serif
+  // font-family: Roboto, "Helvetica Neue", sans-serif
+  @include basicHeavyText;
 }
 
 .mat-card {
@@ -396,7 +397,8 @@ input.mat-input-element {
 }
 
 .mat-slide-toggle-content {
-  font-family: Roboto, "Helvetica Neue", sans-serif
+  // font-family: Roboto, "Helvetica Neue", sans-serif
+  @include basicHeavyText;
 }
 
 .mat-slider-thumb-label-text {
@@ -2089,15 +2091,15 @@ mat-footer-row, mat-header-row, mat-row, td.mat-cell, td.mat-footer-cell, th.mat
 }
 
 .mat-slide-toggle.mat-checked .mat-slide-toggle-thumb {
-  background-color: #ff4081
+  background-color: $pink-accent-highlight;
 }
 
 .mat-slide-toggle.mat-checked .mat-slide-toggle-bar {
-  background-color: rgba(255, 64, 129, .54)
+  background-color: rgba($pink-accent-medium-dark, .54)
 }
 
 .mat-slide-toggle.mat-checked .mat-ripple-element {
-  background-color: #ff4081
+  background-color: $pink-accent-highlight
 }
 
 .mat-slide-toggle.mat-primary.mat-checked .mat-slide-toggle-thumb {
@@ -2130,11 +2132,13 @@ mat-footer-row, mat-header-row, mat-row, td.mat-cell, td.mat-footer-cell, th.mat
 
 .mat-slide-toggle-thumb {
   box-shadow: 0 2px 1px -1px rgba(0, 0, 0, .2), 0 1px 1px 0 rgba(0, 0, 0, .14), 0 1px 3px 0 rgba(0, 0, 0, .12);
-  background-color: #fafafa
+  background-color: #fafafa;
+  border: 1px solid $neutral-off-white;
 }
 
 .mat-slide-toggle-bar {
-  background-color: rgba(0, 0, 0, .38)
+  background-color: rgba(0, 0, 0, .38);
+  border: 1px solid $pink-accent-medium-light;
 }
 
 .mat-slider-track-background {

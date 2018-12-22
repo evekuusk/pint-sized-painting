@@ -4,7 +4,10 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgArrayPipesModule, NgStringPipesModule } from 'angular-pipes';
+
+// angular material
 import {MatCheckboxModule} from '@angular/material';
+import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 
 // *** MAIN *** //
 import { AppRoutingModule } from './app-routing.module';
@@ -95,7 +98,8 @@ import { FormToolsService } from './services/form-tools.service';
     NgStringPipesModule,
     FormsModule,
     ReactiveFormsModule,
-    MatCheckboxModule
+    MatCheckboxModule,
+    MatSlideToggleModule
   ],
   providers: [ArrayToolsService, PaintToolsService, FormToolsService],
   bootstrap: [AppComponent]

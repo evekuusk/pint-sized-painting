@@ -936,8 +936,23 @@ ul.paint-swatches-list {
 }
 
 
-
 .btn-group {
   display: block;
   margin-bottom: 0.5rem;
+}
+
+#filterPaintsForm {
+  display: none;
+  margin-top: 3rem;
+  // transition: opacity 200ms;
+}
+
+#filterPaintsToggle {
+  // margin-bottom: 3rem;
+}
+
+small.allPaintsWarn {
+  margin-top: 1rem;
+  opacity: 0.85;
+  text-align: center;
 }

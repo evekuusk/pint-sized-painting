@@ -61,6 +61,18 @@ export class ArrayToolsService {
 
   }
 
+  removeValueFromArray(array, value) {
+    let tempArray = [];
+    for (let i = 0; i < array.length; i++) {
+      if (array[i].trim() === value.trim()) {
+        continue
+      } else {
+        tempArray.push(array[i])
+      }
+    }
+    return tempArray;
+  }
+
   compareArraysOverlap(a, b) {
 
   }
