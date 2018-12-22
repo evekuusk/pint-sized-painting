@@ -333,10 +333,6 @@ export class PaintsComponent implements OnInit {
   }
 
   // *** STATUS HANDLERS *** //
-  // showAllPaints() {
-  //   this.paintToolsService.showAllPaints()
-  //   this.showAllPaints = true;
-  // }
 
   onToggleFilter(e) {
     this.selectAll()
