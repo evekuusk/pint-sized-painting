@@ -101,6 +101,10 @@ export class ArrayToolsService {
     return true
   }
 
+  returnArrayOverlappingValues(arr1, arr2) {
+
+  }
+
   dynamicSort(property) {
     var sortOrder = 1;
     if(property[0] === "-") {
@@ -112,6 +116,23 @@ export class ArrayToolsService {
         return result * sortOrder;
     }
 }
+
+
+  checkIfArrayContains(array, value) {
+    let bool = array.indexOf(value)
+    bool < 0 ? bool = false : bool = true;
+    return bool
+  }
+
+  getLongestArray(arr) {
+    let longestArr = arr.sort((a, b) => a.length - b.length).reverse();
+    return longestArr[0];
+  }
+
+  sortArrayByLength(arr) {
+    let sortedByLengthArr = arr.sort((a, b) => a.length - b.length).reverse();
+    return sortedByLengthArr;
+  }
 
 
   constructor() { }
