@@ -31,6 +31,7 @@ ul.paint-swatches-list {
     &.agrellan-earth {
       span.colour {
         background-color: $agrellan-earth;
+        @include texture($agrellan-earth);
       }
     }
     &.agrellan-badland {
@@ -106,6 +107,7 @@ ul.paint-swatches-list {
     &.balthasar-gold {
       span.colour {
         background-color: $balthasar-gold;
+        @include metallicShine($balthasar-gold);
       }
     }
     &.baneblade-brown {
@@ -146,6 +148,7 @@ ul.paint-swatches-list {
     &.brass-scorpion {
       span.colour {
         background-color: $brass-scorpion;
+        @include metallicShine($brass-scorpion);
       }
     }
     &.bugmans-glow {
@@ -351,6 +354,7 @@ ul.paint-swatches-list {
     &.fulgurite-copper {
       span.colour {
         background-color: $fulgurite-copper;
+        @include metallicShine($fulgurite-copper);
       }
     }
     &.gauss-blaster-green {
@@ -361,6 +365,7 @@ ul.paint-swatches-list {
     &.gehennas-gold {
       span.colour {
         background-color: $gehennas-gold;
+        @include metallicShine($gehennas-gold);
       }
     }
     &.genestealer-purple {
@@ -371,6 +376,7 @@ ul.paint-swatches-list {
     &.golden-griffon {
       span.colour {
         background-color: $golden-griffon;
+        @include metallicShine($golden-griffon);
       }
     }
     &.golgfag-brown {
@@ -391,6 +397,7 @@ ul.paint-swatches-list {
     &.hashut-copper {
       span.colour {
         background-color: $hashut-copper;
+        @include metallicShine($hashut-copper);
       }
     }
     &.hellion-green {
@@ -431,6 +438,7 @@ ul.paint-swatches-list {
     &.ironbreaker {
       span.colour {
         background-color: $ironbreaker;
+        @include metallicShine($ironbreaker);
       }
     }
     &.jokaero-orange {
@@ -481,11 +489,13 @@ ul.paint-swatches-list {
     &.leadbelcher {
       span.colour {
         background-color: $leadbelcher;
+        @include metallicShine($leadbelcher);
       }
     }
     &.liberator-gold {
       span.colour {
         background-color: $liberator-gold;
+        @include metallicShine($liberator-gold);
       }
     }
     &.longbeard-grey {
@@ -561,6 +571,7 @@ ul.paint-swatches-list {
     &.necron-compound {
       span.colour {
         background-color: $necron-compound;
+        @include metallicShine($necron-compound);
       }
     }
     &.niblet-green {
@@ -631,11 +642,13 @@ ul.paint-swatches-list {
     &.relictor-gold {
       span.colour {
         background-color: $relictor-gold;
+        @include metallicShine($relictor-gold);
       }
     }
     &.retributor-armour {
       span.colour {
         background-color: $retributor-armour;
+        @include metallicShine($retributor-armour);
       }
     }
     &.rhinox-hide {
@@ -646,11 +659,13 @@ ul.paint-swatches-list {
     &.runefang-steel {
       span.colour {
         background-color: $runefang-steel;
+        @include metallicShine($runefang-steel);
       }
     }
     &.runelord-brass {
       span.colour {
         background-color: $runelord-brass;
+        @include metallicShine($runelord-brass);
       }
     }
     &.russ-grey {
@@ -671,6 +686,7 @@ ul.paint-swatches-list {
     &.screaming-bell {
       span.colour {
         background-color: $screaming-bell;
+        @include metallicShine($screaming-bell);
       }
     }
     &.screaming-skull {
@@ -711,6 +727,7 @@ ul.paint-swatches-list {
     &.skullcrusher-brass {
       span.colour {
         background-color: $skullcrusher-brass;
+        @include metallicShine($skullcrusher-brass);
       }
     }
     &.slaanesh-grey {
@@ -766,6 +783,7 @@ ul.paint-swatches-list {
     &.stormhost-silver {
       span.colour {
         background-color: $stormhost-silver;
+        @include metallicShine($stormhost-silver);
       }
     }
     &.stormvermin-fur {
@@ -786,6 +804,7 @@ ul.paint-swatches-list {
     &.sycorax-bronze {
       span.colour {
         background-color: $sycorax-bronze;
+        @include metallicShine($sycorax-bronze);
       }
     }
     &.sylvaneth-bark {
@@ -901,6 +920,7 @@ ul.paint-swatches-list {
     &.warplock-bronze {
       span.colour {
         background-color: $warplock-bronze;
+        @include metallicShine($warplock-bronze);
       }
     }
     &.warpstone-glow {
@@ -964,18 +984,6 @@ ul.paint-swatches-list {
       }
     }
 
-    // *** paint types *** //
-    // &.shade {
-    //   span.colour {
-    //
-    //   }
-    // }
-    // &.metallic {
-    //   span.colour {
-    //
-    //   }
-    // }
-
     span {
       display: block;
     }
@@ -996,13 +1004,13 @@ ul.paint-swatches-list {
         width: 5rem;
       }
       &.metallic {
-
+        // @include metallicShine;
       }
       &.texture {
 
       }
       &.shade {
-        
+
       }
     }
     span.name {

@@ -31,6 +31,8 @@
       <label formArrayName="paintColourFamilies" *ngFor="let colour of form.controls.paintColourFamilies.controls; let i = index" class="filterCheckbox">
         <mat-checkbox [formControlName]="i" labelPosition='before' id="paint-colour-families-checkbox-{{i}}" (change)="onChange($event)">{{paintColourFamilies[i].name}}</mat-checkbox>
       </label>
+      <br /><br />
+      <h6>Refine by Colour Tone (warm/cool/neutral)</h6>
     </div>
 
     <div class="col-md-5">

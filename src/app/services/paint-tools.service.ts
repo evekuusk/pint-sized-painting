@@ -19,10 +19,10 @@ class Paint {
   texture: boolean;
 }
 
-
 @Injectable({
   providedIn: 'root'
 })
+
 export class PaintToolsService {
   // *** INIT CONSTANTS *** //
   allBrands: string[];
@@ -132,35 +132,31 @@ export class PaintToolsService {
     }
 
     if (this.strictFiltering === true) {
+      // *** STRICT FILTERING ON:  RETURN ONLY PAINTS THAT MATCH ALL SELECTIONS *** //
       for (let i = 0; i < filteredTypes.length; i++) {
         let thisTypeValue = filteredTypes[i]
         let thisTypePaintList = this.paintTypesMap[thisTypeValue]
         for (let j = 0; j < thisTypePaintList.length; j++) {
           let thisMatchingPaint = thisTypePaintList[j]
           let alreadyInList = this.arrayToolsService.checkIfArrayContains(tempFilteredBucket['typesMatch'], thisMatchingPaint)
-
           if (alreadyInList === false) {
             tempFilteredBucket['typesMatch'].push(thisMatchingPaint)
           }
         }
         tempFilteredBucket['typesMatch'] = tempFilteredBucket['typesMatch'].sort(this.arrayToolsService.dynamicSort('name'))
       }
-
       for (let i = 0; i < filteredTags.length; i++) {
         let thisTagValue = filteredTags[i]
         let thisTagPaintList = this.paintTagsMap[thisTagValue]
         for (let j = 0; j < thisTagPaintList.length; j++) {
           let thisMatchingPaint = thisTagPaintList[j]
           let alreadyInList = this.arrayToolsService.checkIfArrayContains(tempFilteredBucket['tagsMatch'], thisMatchingPaint)
-
           if (alreadyInList === false) {
             tempFilteredBucket['tagsMatch'].push(thisMatchingPaint)
           }
         }
         tempFilteredBucket['tagsMatch'] = tempFilteredBucket['tagsMatch'].sort(this.arrayToolsService.dynamicSort('name'))
       }
-
-
       for (let i = 0; i < filteredColourFamilies.length; i++) {
         let tempMatchColourFamiliesBucket = [];
         let thisColourFamilyValue = filteredColourFamilies[i]
@@ -175,13 +171,11 @@ export class PaintToolsService {
         }
         tempFilteredBucket['colourFamiliesMatch'] = tempFilteredBucket['colourFamiliesMatch'].sort(this.arrayToolsService.dynamicSort('name'))
       }
-
       let filtersSortedByLength = this.sortFiltersLength(tempFilteredBucket)
       let trimmedSortedFilters = this.removeEmptyPaintFilters(filtersSortedByLength)
       if (trimmedSortedFilters.length === 2) {
         trimmedSortedFilters = this.removeEmptyPaintFilters(trimmedSortedFilters)
       }
-
       if (trimmedSortedFilters.length === 1) {
         let numPaints = trimmedSortedFilters[0].length
         for (let i = 0; i < numPaints; i++) {
@@ -193,11 +187,8 @@ export class PaintToolsService {
         let firstWaveOverlap = this.checkOverlappingPaints(trimmedSortedFilters[0], trimmedSortedFilters[1])
         filteredResultBucket = this.checkOverlappingPaints(firstWaveOverlap, trimmedSortedFilters[2])
       }
-      // filteredResultBucket = this.arrayToolsService.removeDuplicates(filteredResultBucket)
-      // this.filteredPaintsResult = filteredResultBucket.sort(this.arrayToolsService.dynamicSort('name'));
     } else {
-      console.log('strict filtering off...')
-
+      // *** STRICT FILTERING OFF: RETURN ALL PAINTS MATCHING ANY SELECTION *** //
       for (let i = 0; i < filteredTypes.length; i++) {
         let thisTypeValue = filteredTypes[i]
         let thisTypePaintList = this.paintTypesMap[thisTypeValue]
@@ -206,7 +197,6 @@ export class PaintToolsService {
           filteredResultBucket.push(thisMatchingPaint)
         }
       }
-
       for (let i = 0; i < filteredTags.length; i++) {
         let thisTagValue = filteredTags[i]
         let thisTagPaintList = this.paintTagsMap[thisTagValue]
@@ -215,7 +205,6 @@ export class PaintToolsService {
           filteredResultBucket.push(thisMatchingPaint)
         }
       }
-
       for (let i = 0; i < filteredColourFamilies.length; i++) {
         let thisColourFamilyValue = filteredColourFamilies[i]
         let thisColourFamilyPaintList = this.paintColourFamiliesMap[thisColourFamilyValue]
@@ -224,16 +213,9 @@ export class PaintToolsService {
           filteredResultBucket.push(thisMatchingPaint)
         }
       }
-
-      // filteredResultBucket = this.arrayToolsService.removeDuplicates(filteredResultBucket)
-
-
-
     }
     filteredResultBucket = this.arrayToolsService.removeDuplicates(filteredResultBucket)
     this.filteredPaintsResult = filteredResultBucket.sort(this.arrayToolsService.dynamicSort('name'));
-
-
   }
 
   removeEmptyPaintFilters(filters) {
@@ -306,7 +288,7 @@ export class PaintToolsService {
         className: "agrax-earthshade",
         brand: "citadel",
         types: ['shade', 'shade gloss'],
-        tags: ['earthy', 'muddy'],
+        tags: ['earth', 'mud', 'shadow'],
         colourFamilies: ['brown'],
         temperatureRatio: [0,0],
         warm: false,
@@ -318,8 +300,8 @@ export class PaintToolsService {
         className: "agrellan-badland",
         brand: "citadel",
         types: ['texture'],
-        tags: ['brown', 'neutral'],
-        colourFamilies: ['brown'],
+        tags: ['neutral'],
+        colourFamilies: ['brown', 'beige'],
         temperatureRatio: [0,0],
         warm: false,
         cool: false, metallic: false, texture: true
@@ -330,8 +312,8 @@ export class PaintToolsService {
         className: "agrellan-earth",
         brand: "citadel",
         types: ['texture'],
-        tags: ['brown', 'neutral'],
-        colourFamilies: ['brown'],
+        tags: ['neutral'],
+        colourFamilies: ['brown', 'beige'],
         temperatureRatio: [0,0],
         warm: false,
         cool: false, metallic: false, texture: true
@@ -414,7 +396,7 @@ export class PaintToolsService {
         className: "astrogranite",
         brand: "citadel",
         types: ['texture'],
-        tags: ['stone'],
+        tags: ['stone', 'neutral'],
         colourFamilies: ['grey'],
         temperatureRatio: [0,0],
         warm: false,
@@ -426,7 +408,7 @@ export class PaintToolsService {
         className: "astrogranite-debris",
         brand: "citadel",
         types: ['texture'],
-        tags: ['stone'],
+        tags: ['stone', 'neutral'],
         colourFamilies: ['grey'],
         temperatureRatio: [0,0],
         warm: false,
@@ -462,7 +444,7 @@ export class PaintToolsService {
         className: "averland-sunset",
         brand: "citadel",
         types: ['base', 'air'],
-        tags: ['bright', 'medium'],
+        tags: ['bright', 'medium', 'gold'],
         colourFamilies: ['yellow'],
         temperatureRatio: [0,0],
         warm: false,
@@ -486,8 +468,8 @@ export class PaintToolsService {
         className: "balor-brown",
         brand: "citadel",
         types: ['layer', 'air'],
-        tags: ['muddy', 'leather'],
-        colourFamilies: ['brown'],
+        tags: ['mud', 'leather'],
+        colourFamilies: ['brown', 'yellow'],
         temperatureRatio: [0,0],
         warm: false,
         cool: false, metallic: false, texture: false
@@ -510,7 +492,7 @@ export class PaintToolsService {
         className: "baneblade-brown",
         brand: "citadel",
         types: ['layer', 'air'],
-        tags: ['leather', 'muddy', 'light'],
+        tags: ['leather', 'mud', 'light'],
         colourFamilies: ['brown', 'beige'],
         temperatureRatio: [0,0],
         warm: false,
@@ -522,8 +504,8 @@ export class PaintToolsService {
         className: "bestigor-flesh",
         brand: "citadel",
         types: ['layer'],
-        tags: ['skin'],
-        colourFamilies: ['orange', 'yellow', 'beige'],
+        tags: ['skin', 'medium', 'flesh'],
+        colourFamilies: ['orange', 'yellow', 'beige', 'peach'],
         temperatureRatio: [0,0],
         warm: false,
         cool: false, metallic: false, texture: false
@@ -546,8 +528,8 @@ export class PaintToolsService {
         className: "blackfire-earth",
         brand: "citadel",
         types: ['texture'],
-        tags: ['muddy'],
-        colourFamilies: ['brown'],
+        tags: ['mud'],
+        colourFamilies: ['brown', 'orange'],
         temperatureRatio: [0,0],
         warm: false,
         cool: false, metallic: false, texture: true
@@ -582,7 +564,7 @@ export class PaintToolsService {
         className: "blue-horror",
         brand: "citadel",
         types: ['edge'],
-        tags: ['light', 'pale'],
+        tags: ['light', 'pale', 'neutral'],
         colourFamilies: ['blue'],
         temperatureRatio: [0,0],
         warm: false,
@@ -606,8 +588,8 @@ export class PaintToolsService {
         className: "bugmans-glow",
         brand: "citadel",
         types: ['base'],
-        tags: ['skin'],
-        colourFamilies: ['brown', 'red', 'pink', 'orange', 'beige'],
+        tags: ['skin', 'flesh', 'guts'],
+        colourFamilies: ['brown', 'pink', 'orange', 'beige', 'peach'],
         temperatureRatio: [0,0],
         warm: false,
         cool: false, metallic: false, texture: false
@@ -618,8 +600,8 @@ export class PaintToolsService {
         className: "cadian-fleshtone",
         brand: "citadel",
         types: ['layer'],
-        tags: ['bright', 'light'],
-        colourFamilies: ['orange', 'brown', 'beige'],
+        tags: ['bright', 'light', 'skin', 'flesh'],
+        colourFamilies: ['orange', 'brown', 'beige', 'pink', 'peach'],
         temperatureRatio: [0,0],
         warm: false,
         cool: false, metallic: false, texture: false
@@ -834,7 +816,7 @@ export class PaintToolsService {
         className: "deathclaw-brown",
         brand: "citadel",
         types: ['layer', 'air'],
-        tags: ['peach', 'skin', 'medium'],
+        tags: ['skin', 'medium', 'flesh'],
         colourFamilies: ['brown', 'pink', 'peach'],
         temperatureRatio: [0,0],
         warm: false,
@@ -846,7 +828,7 @@ export class PaintToolsService {
         className: "deathworld-forest",
         brand: "citadel",
         types: ['base', 'air'],
-        tags: ['muddy'],
+        tags: ['mud'],
         colourFamilies: ['brown'],
         temperatureRatio: [0,0],
         warm: false,
@@ -870,7 +852,7 @@ export class PaintToolsService {
         className: "deepkin-flesh",
         brand: "citadel",
         types: ['layer'],
-        tags: ['light', 'bright', 'pale', 'bone', 'stone', 'skin'],
+        tags: ['light', 'bright', 'pale', 'bone', 'stone', 'skin', 'flesh'],
         colourFamilies: ['white', 'beige', 'grey'],
         temperatureRatio: [0,0],
         warm: false,
@@ -882,8 +864,8 @@ export class PaintToolsService {
         className: "doombull-brown",
         brand: "citadel",
         types: ['layer'],
-        tags: ['leather', 'muddy'],
-        colourFamilies: ['brown'],
+        tags: ['leather'],
+        colourFamilies: ['brown', 'red'],
         temperatureRatio: [0,0],
         warm: false,
         cool: false, metallic: false, texture: false
@@ -918,7 +900,7 @@ export class PaintToolsService {
         className: "druchii-violet",
         brand: "citadel",
         types: ['shade'],
-        tags: ['intense', 'bright'],
+        tags: ['intense', 'bright', 'guts', 'shadow'],
         colourFamilies: ['purple'],
         temperatureRatio: [0,0],
         warm: false,
@@ -930,7 +912,7 @@ export class PaintToolsService {
         className: "dryad-bark",
         brand: "citadel",
         types: ['base', 'air'],
-        tags: ['wood', 'leather'],
+        tags: ['wood', 'leather', 'neutral'],
         colourFamilies: ['brown'],
         temperatureRatio: [0,0],
         warm: false,
@@ -942,7 +924,7 @@ export class PaintToolsService {
         className: "eldar-flesh",
         brand: "citadel",
         types: ['dry'],
-        tags: ['skin', 'light', 'pale'],
+        tags: ['skin', 'light', 'pale', 'flesh'],
         colourFamilies: ['orange', 'yellow', 'beige'],
         temperatureRatio: [0,0],
         warm: false,
@@ -1050,7 +1032,7 @@ export class PaintToolsService {
         className: "flayed-one-flesh",
         brand: "citadel",
         types: ['layer'],
-        tags: ['skin', 'bone', 'pale', 'light'],
+        tags: ['skin', 'bone', 'pale', 'light', 'flesh'],
         colourFamilies: ['yellow', 'beige'],
         temperatureRatio: [0,0],
         warm: false,
@@ -1266,7 +1248,7 @@ export class PaintToolsService {
         className: "ionrach-skin",
         brand: "citadel",
         types: ['base'],
-        tags: ['skin', 'light', 'pale', 'bone', 'stone'],
+        tags: ['skin', 'light', 'pale', 'bone', 'stone', 'flesh'],
         colourFamilies: ['beige', 'pink', 'brown'],
         temperatureRatio: [0,0],
         warm: false,
@@ -1362,7 +1344,7 @@ export class PaintToolsService {
         className: "kislev-flesh",
         brand: "citadel",
         types: ['layer', 'air'],
-        tags: ['skin'],
+        tags: ['skin', 'flesh'],
         colourFamilies: ['brown', 'orange', 'beige', 'yellow', 'peach'],
         temperatureRatio: [0,0],
         warm: false,
@@ -1482,7 +1464,7 @@ export class PaintToolsService {
         className: "lustrian-undergrowth",
         brand: "citadel",
         types: ['texture'],
-        tags: ['leaves', 'dark', 'muddy'],
+        tags: ['leaves', 'dark'],
         colourFamilies: ['green'],
         temperatureRatio: [0,0],
         warm: false,
@@ -1506,8 +1488,8 @@ export class PaintToolsService {
         className: "martian-ironcrust",
         brand: "citadel",
         types: ['texture'],
-        tags: ['earth', 'muddy'],
-        colourFamilies: ['red'],
+        tags: ['earth'],
+        colourFamilies: ['red', 'pink', 'peach'],
         temperatureRatio: [0,0],
         warm: false,
         cool: false, metallic: false, texture: true
@@ -1518,8 +1500,8 @@ export class PaintToolsService {
         className: "martian-ironearth",
         brand: "citadel",
         types: ['texture'],
-        tags: ['earth', 'muddy'],
-        colourFamilies: ['red'],
+        tags: ['earth'],
+        colourFamilies: ['red', 'pink', 'peach'],
         temperatureRatio: [0,0],
         warm: false,
         cool: false, metallic: false, texture: true
@@ -1686,7 +1668,7 @@ export class PaintToolsService {
         className: "pallid-wych-flesh",
         brand: "citadel",
         types: ['layer'],
-        tags: ['skin', 'bone', 'stone'],
+        tags: ['skin', 'bone', 'stone', 'flesh'],
         colourFamilies: ['beige', 'yellow', 'grey'],
         temperatureRatio: [0,0],
         warm: false,
@@ -1722,7 +1704,7 @@ export class PaintToolsService {
         className: "rakarth-flesh",
         brand: "citadel",
         types: ['base'],
-        tags: ['skin', 'stone', 'neutral'],
+        tags: ['skin', 'stone', 'neutral', 'flesh'],
         colourFamilies: ['beige', 'grey', 'brown'],
         temperatureRatio: [0,0],
         warm: false,
@@ -1734,7 +1716,7 @@ export class PaintToolsService {
         className: "ratskin-flesh",
         brand: "citadel",
         types: ['base'],
-        tags: ['skin', 'dark'],
+        tags: ['skin', 'dark', 'flesh'],
         colourFamilies: ['beige', 'peach', 'pink', 'orange'],
         temperatureRatio: [0,0],
         warm: false,
@@ -1746,7 +1728,7 @@ export class PaintToolsService {
         className: "reikland-fleshshade",
         brand: "citadel",
         types: ['shade', 'shade gloss'],
-        tags: ['bright'],
+        tags: ['bright', 'flesh', 'shadow'],
         colourFamilies: ['orange', 'red', 'pink'],
         temperatureRatio: [0,0],
         warm: false,
@@ -1842,7 +1824,7 @@ export class PaintToolsService {
         className: "screamer-pink",
         brand: "citadel",
         types: ['base'],
-        tags: ['medium', 'bright', 'dark', 'intense'],
+        tags: ['medium', 'bright', 'dark', 'intense', 'guts'],
         colourFamilies: ['pink'],
         temperatureRatio: [0,0],
         warm: false,
@@ -2046,7 +2028,7 @@ export class PaintToolsService {
         className: "stirland-battlemire",
         brand: "citadel",
         types: ['texture'],
-        tags: ['muddy'],
+        tags: ['mud'],
         colourFamilies: ['brown'],
         temperatureRatio: [0,0],
         warm: false,
@@ -2058,7 +2040,7 @@ export class PaintToolsService {
         className: "stirland-mud",
         brand: "citadel",
         types: ['texture'],
-        tags: ['muddy'],
+        tags: ['mud'],
         colourFamilies: ['brown'],
         temperatureRatio: [0,0],
         warm: false,
@@ -2106,7 +2088,7 @@ export class PaintToolsService {
         className: "straken-green",
         brand: "citadel",
         types: ['layer', 'air'],
-        tags: ['neutral', 'muddy'],
+        tags: ['neutral'],
         colourFamilies: ['green'],
         temperatureRatio: [0,0],
         warm: false,
@@ -2540,7 +2522,7 @@ export class PaintToolsService {
         className: "zamesi-desert",
         brand: "citadel",
         types: ['layer'],
-        tags: ['sand', 'dirt', 'earthy'],
+        tags: ['sand', 'dirt', 'earth'],
         colourFamilies: ['brown'],
         temperatureRatio: [0,0],
         warm: false,
@@ -2552,7 +2534,7 @@ export class PaintToolsService {
         className: "zandri-dust",
         brand: "citadel",
         types: ['base', 'air'],
-        tags: ['dust', 'sand', 'earthy', 'light', 'neutral'],
+        tags: ['dust', 'sand', 'earth', 'light', 'neutral'],
         colourFamilies: ['brown'],
         temperatureRatio: [0,0],
         warm: false,

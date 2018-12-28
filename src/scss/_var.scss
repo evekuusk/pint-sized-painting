@@ -1,1 +1,28 @@
 $footer-height: 50px;
+
+@mixin metallicShine($base_colour) {
+  transform: rotate(30deg);
+  background: $base_colour;
+  background: linear-gradient(
+    to right,
+    $base_colour 35%,
+    lighten($base_colour, 5%) 42%,
+    $base_colour 60%,
+    saturate(lighten($base_colour, 20%), 5%) 72%,
+    lighten($base_colour, 45%) 80%,
+    saturate($base_colour, 10%) 100%
+  );
+}
+
+@mixin texture($base_colour) {
+  background: $base_colour;
+  background: radial-gradient(
+    $base_colour 35%,
+    lighten($base_colour, 5%) 40%,
+    $base_colour 45%,
+    darken($base_colour, 10%) 65%,
+    lighten($base_colour, 10%) 80%,
+    darken($base_colour, 15%) 90%,
+    $base_colour 100%
+  );
+}
