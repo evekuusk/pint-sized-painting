@@ -4,6 +4,11 @@
 <hr />
 <mat-slide-toggle [checked]="checked" (change)="onToggleFilter($event)" id="filterPaintsToggle">Filter Paints</mat-slide-toggle>
 
+&nbsp; &nbsp; &nbsp;
+
+<mat-slide-toggle [checked]="paintToolsService.strictFiltering" (change)="onToggleStrictFiltering($event)" id="strictFilterToggle">Strict Filtering</mat-slide-toggle>
+<p *ngIf="paintToolsService.strictFiltering === false" style="margin-top: 0.5rem;"><small>Turning off strict filtering will return all paints matching any selections.</small></p>
+
 <form [formGroup]="form" id="filterPaintsForm">
   <div class="row">
 
@@ -52,6 +57,7 @@
 
 <hr />
 <h4 id="paints-list">{{isFilteredListTitle}} Paints</h4>
+<h5 *ngIf="paintToolsService.filteredPaintsResult.length === 0">No paints to show.  Try another selection!</h5>
 
 <ul class="paint-swatches-list">
 <li *ngFor="let paint of paintToolsService.filteredPaintsResult" [ngClass]="[paint.className, 'paint-swatch']"><span class="colour" placement="top" ngbPopover="{{paint.types | join: ', '}}" popoverTitle="{{paint.brand | titlecase}}" [ngClass]="{'metallic': paint.metallic === true,'texture': paint.texture === true}"></span><span class="name" [ngClass]="{'metallic': paint.metallic === true,'texture': paint.texture === true}">{{paint.name}}</span></li>

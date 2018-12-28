@@ -40,6 +40,7 @@ export class PaintToolsService {
 
   // *** CONTROLS WHICH PAINTS ARE VIEWED IN COMPONENT *** //
   filteredPaintsResult: Paint[];
+  strictFiltering: boolean;
 
   // *** PAINT MAPS *** //
   paintTypesMap = {};
@@ -130,71 +131,120 @@ export class PaintToolsService {
       colourFamilies: filteredColourFamilies
     }
 
-    for (let i = 0; i < filteredTypes.length; i++) {
-      let thisTypeValue = filteredTypes[i]
-      let thisTypePaintList = this.paintTypesMap[thisTypeValue]
-      for (let j = 0; j < thisTypePaintList.length; j++) {
-        let thisMatchingPaint = thisTypePaintList[j]
-        let alreadyInList = this.arrayToolsService.checkIfArrayContains(tempFilteredBucket['typesMatch'], thisMatchingPaint)
+    if (this.strictFiltering === true) {
+      for (let i = 0; i < filteredTypes.length; i++) {
+        let thisTypeValue = filteredTypes[i]
+        let thisTypePaintList = this.paintTypesMap[thisTypeValue]
+        for (let j = 0; j < thisTypePaintList.length; j++) {
+          let thisMatchingPaint = thisTypePaintList[j]
+          let alreadyInList = this.arrayToolsService.checkIfArrayContains(tempFilteredBucket['typesMatch'], thisMatchingPaint)
 
-        if (alreadyInList === false) {
-          tempFilteredBucket['typesMatch'].push(thisMatchingPaint)
+          if (alreadyInList === false) {
+            tempFilteredBucket['typesMatch'].push(thisMatchingPaint)
+          }
+        }
+        tempFilteredBucket['typesMatch'] = tempFilteredBucket['typesMatch'].sort(this.arrayToolsService.dynamicSort('name'))
+      }
+
+      for (let i = 0; i < filteredTags.length; i++) {
+        let thisTagValue = filteredTags[i]
+        let thisTagPaintList = this.paintTagsMap[thisTagValue]
+        for (let j = 0; j < thisTagPaintList.length; j++) {
+          let thisMatchingPaint = thisTagPaintList[j]
+          let alreadyInList = this.arrayToolsService.checkIfArrayContains(tempFilteredBucket['tagsMatch'], thisMatchingPaint)
+
+          if (alreadyInList === false) {
+            tempFilteredBucket['tagsMatch'].push(thisMatchingPaint)
+          }
+        }
+        tempFilteredBucket['tagsMatch'] = tempFilteredBucket['tagsMatch'].sort(this.arrayToolsService.dynamicSort('name'))
+      }
+
+
+      for (let i = 0; i < filteredColourFamilies.length; i++) {
+        let tempMatchColourFamiliesBucket = [];
+        let thisColourFamilyValue = filteredColourFamilies[i]
+        let thisColourFamilyPaintList = this.paintColourFamiliesMap[thisColourFamilyValue]
+        for (let j = 0; j < thisColourFamilyPaintList.length; j++) {
+          let thisMatchingPaint = thisColourFamilyPaintList[j]
+          let alreadyInList = this.arrayToolsService.checkIfArrayContains(tempFilteredBucket['colourFamiliesMatch'], thisMatchingPaint)
+
+          if (alreadyInList === false) {
+            tempFilteredBucket['colourFamiliesMatch'].push(thisMatchingPaint)
+          }
+        }
+        tempFilteredBucket['colourFamiliesMatch'] = tempFilteredBucket['colourFamiliesMatch'].sort(this.arrayToolsService.dynamicSort('name'))
+      }
+
+      let filtersSortedByLength = this.sortFiltersLength(tempFilteredBucket)
+      let trimmedSortedFilters = this.removeEmptyPaintFilters(filtersSortedByLength)
+      if (trimmedSortedFilters.length === 2) {
+        trimmedSortedFilters = this.removeEmptyPaintFilters(trimmedSortedFilters)
+      }
+
+      if (trimmedSortedFilters.length === 1) {
+        let numPaints = trimmedSortedFilters[0].length
+        for (let i = 0; i < numPaints; i++) {
+          filteredResultBucket.push(trimmedSortedFilters[0][i])
+        }
+      } else if (trimmedSortedFilters.length === 2) {
+        filteredResultBucket = this.checkOverlappingPaints(trimmedSortedFilters[0], trimmedSortedFilters[1])
+      } else if (trimmedSortedFilters.length === 3) {
+        let firstWaveOverlap = this.checkOverlappingPaints(trimmedSortedFilters[0], trimmedSortedFilters[1])
+        filteredResultBucket = this.checkOverlappingPaints(firstWaveOverlap, trimmedSortedFilters[2])
+      }
+      // filteredResultBucket = this.arrayToolsService.removeDuplicates(filteredResultBucket)
+      // this.filteredPaintsResult = filteredResultBucket.sort(this.arrayToolsService.dynamicSort('name'));
+    } else {
+      console.log('strict filtering off...')
+
+      for (let i = 0; i < filteredTypes.length; i++) {
+        let thisTypeValue = filteredTypes[i]
+        let thisTypePaintList = this.paintTypesMap[thisTypeValue]
+        for (let j = 0; j < thisTypePaintList.length; j++) {
+          let thisMatchingPaint = thisTypePaintList[j]
+          filteredResultBucket.push(thisMatchingPaint)
         }
       }
-      tempFilteredBucket['typesMatch'] = tempFilteredBucket['typesMatch'].sort(this.arrayToolsService.dynamicSort('name'))
-    }
 
-    for (let i = 0; i < filteredTags.length; i++) {
-      let thisTagValue = filteredTags[i]
-      let thisTagPaintList = this.paintTagsMap[thisTagValue]
-      for (let j = 0; j < thisTagPaintList.length; j++) {
-        let thisMatchingPaint = thisTagPaintList[j]
-        let alreadyInList = this.arrayToolsService.checkIfArrayContains(tempFilteredBucket['tagsMatch'], thisMatchingPaint)
-
-        if (alreadyInList === false) {
-          tempFilteredBucket['tagsMatch'].push(thisMatchingPaint)
+      for (let i = 0; i < filteredTags.length; i++) {
+        let thisTagValue = filteredTags[i]
+        let thisTagPaintList = this.paintTagsMap[thisTagValue]
+        for (let j = 0; j < thisTagPaintList.length; j++) {
+          let thisMatchingPaint = thisTagPaintList[j]
+          filteredResultBucket.push(thisMatchingPaint)
         }
       }
-      tempFilteredBucket['tagsMatch'] = tempFilteredBucket['tagsMatch'].sort(this.arrayToolsService.dynamicSort('name'))
-    }
 
-
-    for (let i = 0; i < filteredColourFamilies.length; i++) {
-      let tempMatchColourFamiliesBucket = [];
-      let thisColourFamilyValue = filteredColourFamilies[i]
-      let thisColourFamilyPaintList = this.paintColourFamiliesMap[thisColourFamilyValue]
-      for (let j = 0; j < thisColourFamilyPaintList.length; j++) {
-        let thisMatchingPaint = thisColourFamilyPaintList[j]
-        let alreadyInList = this.arrayToolsService.checkIfArrayContains(tempFilteredBucket['colourFamiliesMatch'], thisMatchingPaint)
-
-        if (alreadyInList === false) {
-          tempFilteredBucket['colourFamiliesMatch'].push(thisMatchingPaint)
+      for (let i = 0; i < filteredColourFamilies.length; i++) {
+        let thisColourFamilyValue = filteredColourFamilies[i]
+        let thisColourFamilyPaintList = this.paintColourFamiliesMap[thisColourFamilyValue]
+        for (let j = 0; j < thisColourFamilyPaintList.length; j++) {
+          let thisMatchingPaint = thisColourFamilyPaintList[j]
+          filteredResultBucket.push(thisMatchingPaint)
         }
       }
-      tempFilteredBucket['colourFamiliesMatch'] = tempFilteredBucket['colourFamiliesMatch'].sort(this.arrayToolsService.dynamicSort('name'))
-    }
 
-    let filtersSortedByLength = this.sortFiltersLength(tempFilteredBucket)
+      // filteredResultBucket = this.arrayToolsService.removeDuplicates(filteredResultBucket)
 
-    let trimmedSortedFilters = filtersSortedByLength
-    for (let i = 0; i <= 2; i++) {
-      if (filtersSortedByLength[i] != undefined) {
-        if (filtersSortedByLength[i].length === 0) {
-          trimmedSortedFilters.splice(i, 1)
-        }
-      }
-    }
 
-    if (trimmedSortedFilters.length === 1) {
-      filteredResultBucket = trimmedSortedFilters[0]
-    } else if (trimmedSortedFilters.length === 2) {
-      filteredResultBucket = this.checkOverlappingPaints(trimmedSortedFilters[0], trimmedSortedFilters[1])
-    } else if (trimmedSortedFilters.length === 3) {
-      let firstWaveOverlap = this.checkOverlappingPaints(trimmedSortedFilters[0], trimmedSortedFilters[1])
-      filteredResultBucket = this.checkOverlappingPaints(firstWaveOverlap, trimmedSortedFilters[2])
+
     }
     filteredResultBucket = this.arrayToolsService.removeDuplicates(filteredResultBucket)
     this.filteredPaintsResult = filteredResultBucket.sort(this.arrayToolsService.dynamicSort('name'));
+
+
+  }
+
+  removeEmptyPaintFilters(filters) {
+    for (let i = 0; i < 3; i++) {
+      if (filters[i] != undefined) {
+        if (filters[i].length === 0) {
+          filters.splice(i, 1)
+        }
+      }
+    }
+    return filters
   }
 
   checkOverlappingPaints(firstArr, secondArr) {
@@ -2174,7 +2224,15 @@ export class PaintToolsService {
         hex: "#236b84",
         name: "Thousand Sons Blue",
         className: "thousand-sons-blue",
-        brand: "citadel", types: [], tags: [], colourFamilies: [], temperatureRatio: [0,0], warm: false, cool: false, metallic: false, texture: false
+        brand: "citadel",
+        types: ['base'],
+        tags: ['dark'],
+        colourFamilies: ['blue'],
+        temperatureRatio: [0,0],
+        warm: false,
+        cool: false,
+        metallic: false,
+        texture: false
       },
       {
         hex: "#5e858a",
@@ -2554,6 +2612,6 @@ export class PaintToolsService {
     this.buildTagsMap()
     this.buildColourFamiliesMap()
     this.fillSelectionMaps()
-
+    this.strictFiltering = true;
   }
 }

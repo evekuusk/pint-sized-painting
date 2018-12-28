@@ -346,6 +346,16 @@ export class PaintsComponent implements OnInit {
     }
   }
 
+  onToggleStrictFiltering(e) {
+    let strictFilterBool = e.checked;
+    if (strictFilterBool === true) {
+      this.paintToolsService.strictFiltering = true;
+    } else {
+      this.paintToolsService.strictFiltering = false;
+    }
+    console.log(this.paintToolsService.strictFiltering)
+  }
+
   showFilterOptions() {
     this.scrollToList = false;
     $('#filterPaintsForm').slideDown(200)
