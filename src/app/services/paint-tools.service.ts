@@ -17,6 +17,8 @@ class Paint {
   colourFamilies: string[];
   metallic: boolean;
   texture: boolean;
+  technical: boolean;
+  shade: boolean;
 }
 
 @Injectable({
@@ -268,7 +270,7 @@ export class PaintToolsService {
         colourFamilies: ['black'],
         temperatureRatio: [0,0],
         warm: false,
-        cool: false, metallic: false, texture: false
+        cool: false, shade: false, technical: false, metallic: false, texture: false
       },
       {
         hex: "#a9aba6",
@@ -280,7 +282,7 @@ export class PaintToolsService {
         colourFamilies: ['grey'],
         temperatureRatio: [0,0],
         warm: false,
-        cool: false, metallic: false, texture: false
+        cool: false, shade: false, technical: false, metallic: false, texture: false
       },
       {
         hex: "#605a42",
@@ -292,7 +294,7 @@ export class PaintToolsService {
         colourFamilies: ['brown'],
         temperatureRatio: [0,0],
         warm: false,
-        cool: false, metallic: false, texture: false
+        cool: false, shade: true, technical: false, metallic: false, texture: false
       },
       {
         hex: "#9f8e7e",
@@ -304,7 +306,7 @@ export class PaintToolsService {
         colourFamilies: ['brown', 'beige'],
         temperatureRatio: [0,0],
         warm: false,
-        cool: false, metallic: false, texture: true
+        cool: false, shade: false, technical: false, metallic: false, texture: true
       },
       {
         hex: "#9f8e7e",
@@ -316,7 +318,7 @@ export class PaintToolsService {
         colourFamilies: ['brown', 'beige'],
         temperatureRatio: [0,0],
         warm: false,
-        cool: false, metallic: false, texture: true
+        cool: false, shade: false, technical: false, metallic: false, texture: true
       },
       {
         hex: "#228d9d",
@@ -328,7 +330,7 @@ export class PaintToolsService {
         colourFamilies: ['blue', 'turquoise'],
         temperatureRatio: [0,0],
         warm: false,
-        cool: false, metallic: false, texture: false
+        cool: false, shade: false, technical: false, metallic: false, texture: false
       },
       {
         hex: "#4b6c97",
@@ -340,7 +342,7 @@ export class PaintToolsService {
         colourFamilies: ['blue'],
         temperatureRatio: [0,0],
         warm: false,
-        cool: false, metallic: false, texture: false
+        cool: false, shade: false, technical: false, metallic: false, texture: false
       },
       {
         hex: "#4663a9",
@@ -352,7 +354,7 @@ export class PaintToolsService {
         colourFamilies: ['blue'],
         temperatureRatio: [0,0],
         warm: false,
-        cool: false, metallic: false, texture: false
+        cool: false, shade: false, technical: false, metallic: false, texture: false
       },
       {
         hex: "#d8b227",
@@ -364,7 +366,7 @@ export class PaintToolsService {
         colourFamilies: ['yellow', 'brown'],
         temperatureRatio: [0,0],
         warm: false,
-        cool: false, metallic: false, texture: true
+        cool: false, shade: false, technical: false, metallic: false, texture: true
       },
       {
         hex: "#d8b227",
@@ -376,7 +378,7 @@ export class PaintToolsService {
         colourFamilies: ['yellow', 'brown'],
         temperatureRatio: [0,0],
         warm: false,
-        cool: false, metallic: false, texture: true
+        cool: false, shade: false, technical: false, metallic: false, texture: true
       },
       {
         hex: "#b8473f",
@@ -388,7 +390,7 @@ export class PaintToolsService {
         colourFamilies: ['red'],
         temperatureRatio: [0,0],
         warm: false,
-        cool: false, metallic: false, texture: false
+        cool: false, shade: false, technical: false, metallic: false, texture: false
       },
       {
         hex: "#87888a",
@@ -400,7 +402,7 @@ export class PaintToolsService {
         colourFamilies: ['grey'],
         temperatureRatio: [0,0],
         warm: false,
-        cool: false, metallic: false, texture: true
+        cool: false, shade: false, technical: false, metallic: false, texture: true
       },
       {
         hex: "#87888a",
@@ -412,7 +414,7 @@ export class PaintToolsService {
         colourFamilies: ['grey'],
         temperatureRatio: [0,0],
         warm: false,
-        cool: false, metallic: false, texture: true
+        cool: false, shade: false, technical: false, metallic: false, texture: true
       },
       {
         hex: "#718b32",
@@ -424,7 +426,7 @@ export class PaintToolsService {
         colourFamilies: ['green'],
         temperatureRatio: [0,0],
         warm: false,
-        cool: false, metallic: false, texture: false
+        cool: false, shade: true, technical: false, metallic: false, texture: false
       },
       {
         hex: "#e3af27",
@@ -436,7 +438,7 @@ export class PaintToolsService {
         colourFamilies: ['yellow'],
         temperatureRatio: [0,0],
         warm: false,
-        cool: false, metallic: false, texture: false
+        cool: false, shade: false, technical: false, metallic: false, texture: false
       },
       {
         hex: "#fac322",
@@ -448,7 +450,7 @@ export class PaintToolsService {
         colourFamilies: ['yellow'],
         temperatureRatio: [0,0],
         warm: false,
-        cool: false, metallic: false, texture: false
+        cool: false, shade: false, technical: false, metallic: false, texture: false
       },
       {
         hex: "#78c7d3",
@@ -460,7 +462,7 @@ export class PaintToolsService {
         colourFamilies: ['blue'],
         temperatureRatio: [0,0],
         warm: false,
-        cool: false, metallic: false, texture: false
+        cool: false, shade: false, technical: false, metallic: false, texture: false
       },
       {
         hex: "#a17326",
@@ -472,7 +474,7 @@ export class PaintToolsService {
         colourFamilies: ['brown', 'yellow'],
         temperatureRatio: [0,0],
         warm: false,
-        cool: false, metallic: false, texture: false
+        cool: false, shade: false, technical: false, metallic: false, texture: false
       },
       {
         hex: "#8b5728",
@@ -484,7 +486,7 @@ export class PaintToolsService {
         colourFamilies: ['brown', 'yellow'],
         temperatureRatio: [0,0],
         warm: false,
-        cool: false, metallic: true, texture: false
+        cool: false, shade: false, technical: false, metallic: true, texture: false
       },
       {
         hex: "#a6917e",
@@ -496,7 +498,7 @@ export class PaintToolsService {
         colourFamilies: ['brown', 'beige'],
         temperatureRatio: [0,0],
         warm: false,
-        cool: false, metallic: false, texture: false
+        cool: false, shade: false, technical: false, metallic: false, texture: false
       },
       {
         hex: "#da9b66",
@@ -508,7 +510,7 @@ export class PaintToolsService {
         colourFamilies: ['orange', 'yellow', 'beige', 'peach'],
         temperatureRatio: [0,0],
         warm: false,
-        cool: false, metallic: false, texture: false
+        cool: false, shade: false, technical: false, metallic: false, texture: false
       },
       {
         hex: "#20965a",
@@ -520,7 +522,7 @@ export class PaintToolsService {
         colourFamilies: ['green'],
         temperatureRatio: [0,0],
         warm: false,
-        cool: false, metallic: false, texture: false
+        cool: false, shade: true, technical: false, metallic: false, texture: false
       },
       {
         hex: "#b76c32",
@@ -532,7 +534,7 @@ export class PaintToolsService {
         colourFamilies: ['brown', 'orange'],
         temperatureRatio: [0,0],
         warm: false,
-        cool: false, metallic: false, texture: true
+        cool: false, shade: false, technical: false, metallic: false, texture: true
       },
       {
         hex: "#782d2d",
@@ -544,7 +546,7 @@ export class PaintToolsService {
         colourFamilies: ['red'],
         temperatureRatio: [0,0],
         warm: false,
-        cool: false, metallic: false, texture: false
+        cool: false, shade: false, technical: true, metallic: false, texture: false
       },
       {
         hex: "#e62633",
@@ -556,7 +558,7 @@ export class PaintToolsService {
         colourFamilies: ['red'],
         temperatureRatio: [0,0],
         warm: false,
-        cool: false, metallic: false, texture: false
+        cool: false, shade: false, technical: false, metallic: false, texture: false
       },
       {
         hex: "#b9cadc",
@@ -568,7 +570,7 @@ export class PaintToolsService {
         colourFamilies: ['blue'],
         temperatureRatio: [0,0],
         warm: false,
-        cool: false, metallic: false, texture: false
+        cool: false, shade: false, technical: false, metallic: false, texture: false
       },
       {
         hex: "#9e6629",
@@ -580,7 +582,7 @@ export class PaintToolsService {
         colourFamilies: ['orange', 'brown', 'yellow'],
         temperatureRatio: [0,0],
         warm: false,
-        cool: false, metallic: true, texture: false
+        cool: false, shade: false, technical: false, metallic: true, texture: false
       },
       {
         hex: "#9b675c",
@@ -592,7 +594,7 @@ export class PaintToolsService {
         colourFamilies: ['brown', 'pink', 'orange', 'beige', 'peach'],
         temperatureRatio: [0,0],
         warm: false,
-        cool: false, metallic: false, texture: false
+        cool: false, shade: false, technical: false, metallic: false, texture: false
       },
       {
         hex: "#d28969",
@@ -604,7 +606,7 @@ export class PaintToolsService {
         colourFamilies: ['orange', 'brown', 'beige', 'pink', 'peach'],
         temperatureRatio: [0,0],
         warm: false,
-        cool: false, metallic: false, texture: false
+        cool: false, shade: false, technical: false, metallic: false, texture: false
       },
       {
         hex: "#527ba7",
@@ -616,7 +618,7 @@ export class PaintToolsService {
         colourFamilies: ['blue'],
         temperatureRatio: [0,0],
         warm: false,
-        cool: false, metallic: false, texture: false
+        cool: false, shade: false, technical: false, metallic: false, texture: false
       },
       {
         hex: "#5d81bf",
@@ -628,7 +630,7 @@ export class PaintToolsService {
         colourFamilies: ['blue'],
         temperatureRatio: [0,0],
         warm: false,
-        cool: false, metallic: false, texture: false
+        cool: false, shade: false, technical: false, metallic: false, texture: false
       },
       {
         hex: "#22533a",
@@ -640,7 +642,7 @@ export class PaintToolsService {
         colourFamilies: ['green'],
         temperatureRatio: [0,0],
         warm: false,
-        cool: false, metallic: false, texture: false
+        cool: false, shade: false, technical: false, metallic: false, texture: false
       },
       {
         hex: "#b12975",
@@ -652,7 +654,7 @@ export class PaintToolsService {
         colourFamilies: ['red', 'pink'],
         temperatureRatio: [0,0],
         warm: false,
-        cool: false, metallic: false, texture: false
+        cool: false, shade: true, technical: false, metallic: false, texture: false
       },
       {
         hex: "#fdcd21",
@@ -664,7 +666,7 @@ export class PaintToolsService {
         colourFamilies: ['yellow'],
         temperatureRatio: [0,0],
         warm: false,
-        cool: false, metallic: false, texture: false
+        cool: false, shade: true, technical: false, metallic: false, texture: false
       },
       {
         hex: "#53633e",
@@ -676,7 +678,7 @@ export class PaintToolsService {
         colourFamilies: ['green', 'brown'],
         temperatureRatio: [0,0],
         warm: false,
-        cool: false, metallic: false, texture: false
+        cool: false, shade: false, technical: false, metallic: false, texture: false
       },
       {
         hex: "#a8b8b8",
@@ -688,7 +690,7 @@ export class PaintToolsService {
         colourFamilies: ['grey'],
         temperatureRatio: [0,0],
         warm: false,
-        cool: false, metallic: false, texture: false
+        cool: false, shade: false, technical: false, metallic: false, texture: false
       },
       {
         hex: "#ffffff",
@@ -700,7 +702,7 @@ export class PaintToolsService {
         colourFamilies: ['white'],
         temperatureRatio: [0,0],
         warm: false,
-        cool: false, metallic: false, texture: false
+        cool: false, shade: false, technical: false, metallic: false, texture: false
       },
       {
         hex: "#f6c0d8",
@@ -712,7 +714,7 @@ export class PaintToolsService {
         colourFamilies: ['pink'],
         temperatureRatio: [0,0],
         warm: false,
-        cool: false, metallic: false, texture: false
+        cool: false, shade: false, technical: false, metallic: false, texture: false
       },
       {
         hex: "#212121",
@@ -724,7 +726,7 @@ export class PaintToolsService {
         colourFamilies: ['black'],
         temperatureRatio: [0,0],
         warm: false,
-        cool: false, metallic: false, texture: false
+        cool: false, shade: false, technical: false, metallic: false, texture: false
       },
       {
         hex: "#6ca6d8",
@@ -736,7 +738,7 @@ export class PaintToolsService {
         colourFamilies: ['blue'],
         temperatureRatio: [0,0],
         warm: false,
-        cool: false, metallic: false, texture: false
+        cool: false, shade: false, technical: false, metallic: false, texture: false
       },
       {
         hex: "#218078",
@@ -748,7 +750,7 @@ export class PaintToolsService {
         colourFamilies: ['green'],
         temperatureRatio: [0,0],
         warm: false,
-        cool: false, metallic: false, texture: false
+        cool: false, shade: true, technical: false, metallic: false, texture: false
       },
       {
         hex: "#ffffff",
@@ -760,7 +762,7 @@ export class PaintToolsService {
         colourFamilies: ['white'],
         temperatureRatio: [0,0],
         warm: false,
-        cool: false, metallic: false, texture: false
+        cool: false, shade: false, technical: false, metallic: false, texture: false
       },
       {
         hex: "#85819a",
@@ -772,7 +774,7 @@ export class PaintToolsService {
         colourFamilies: ['purple', 'grey'],
         temperatureRatio: [0,0],
         warm: false,
-        cool: false, metallic: false, texture: false
+        cool: false, shade: false, technical: false, metallic: false, texture: false
       },
       {
         hex: "#5b6b6a",
@@ -784,7 +786,7 @@ export class PaintToolsService {
         colourFamilies: ['grey', 'blue', 'green', 'turquoise'],
         temperatureRatio: [0,0],
         warm: false,
-        cool: false, metallic: false, texture: false
+        cool: false, shade: false, technical: false, metallic: false, texture: false
       },
       {
         hex: "#8b8e87",
@@ -796,7 +798,7 @@ export class PaintToolsService {
         colourFamilies: ['grey'],
         temperatureRatio: [0,0],
         warm: false,
-        cool: false, metallic: false, texture: false
+        cool: false, shade: false, technical: false, metallic: false, texture: false
       },
       {
         hex: "#858b67",
@@ -808,7 +810,7 @@ export class PaintToolsService {
         colourFamilies: ['green'],
         temperatureRatio: [0,0],
         warm: false,
-        cool: false, metallic: false, texture: false
+        cool: false, shade: false, technical: false, metallic: false, texture: false
       },
       {
         hex: "#c17d68",
@@ -820,7 +822,7 @@ export class PaintToolsService {
         colourFamilies: ['brown', 'pink', 'peach'],
         temperatureRatio: [0,0],
         warm: false,
-        cool: false, metallic: false, texture: false
+        cool: false, shade: false, technical: false, metallic: false, texture: false
       },
       {
         hex: "#7b8048",
@@ -832,7 +834,7 @@ export class PaintToolsService {
         colourFamilies: ['brown'],
         temperatureRatio: [0,0],
         warm: false,
-        cool: false, metallic: false, texture: false
+        cool: false, shade: false, technical: false, metallic: false, texture: false
       },
       {
         hex: "#c8b2d6",
@@ -844,7 +846,7 @@ export class PaintToolsService {
         colourFamilies: ['purple'],
         temperatureRatio: [0,0],
         warm: false,
-        cool: false, metallic: false, texture: false
+        cool: false, shade: false, technical: false, metallic: false, texture: false
       },
       {
         hex: "#e2e2d8",
@@ -856,7 +858,7 @@ export class PaintToolsService {
         colourFamilies: ['white', 'beige', 'grey'],
         temperatureRatio: [0,0],
         warm: false,
-        cool: false, metallic: false, texture: false
+        cool: false, shade: false, technical: false, metallic: false, texture: false
       },
       {
         hex: "#722b29",
@@ -868,7 +870,7 @@ export class PaintToolsService {
         colourFamilies: ['brown', 'red'],
         temperatureRatio: [0,0],
         warm: false,
-        cool: false, metallic: false, texture: false
+        cool: false, shade: false, technical: false, metallic: false, texture: false
       },
       {
         hex: "#fff16a",
@@ -880,7 +882,7 @@ export class PaintToolsService {
         colourFamilies: ['yellow'],
         temperatureRatio: [0,0],
         warm: false,
-        cool: false, metallic: false, texture: false
+        cool: false, shade: false, technical: false, metallic: false, texture: false
       },
       {
         hex: "#2769a3",
@@ -892,7 +894,7 @@ export class PaintToolsService {
         colourFamilies: ['blue'],
         temperatureRatio: [0,0],
         warm: false,
-        cool: false, metallic: false, texture: false
+        cool: false, shade: true, technical: false, metallic: false, texture: false
       },
       {
         hex: "#7c3d84",
@@ -904,7 +906,7 @@ export class PaintToolsService {
         colourFamilies: ['purple'],
         temperatureRatio: [0,0],
         warm: false,
-        cool: false, metallic: false, texture: false
+        cool: false, shade: true, technical: false, metallic: false, texture: false
       },
       {
         hex: "#544e48",
@@ -916,7 +918,7 @@ export class PaintToolsService {
         colourFamilies: ['brown'],
         temperatureRatio: [0,0],
         warm: false,
-        cool: false, metallic: false, texture: false
+        cool: false, shade: false, technical: false, metallic: false, texture: false
       },
       {
         hex: "#efcc94",
@@ -928,7 +930,7 @@ export class PaintToolsService {
         colourFamilies: ['orange', 'yellow', 'beige'],
         temperatureRatio: [0,0],
         warm: false,
-        cool: false, metallic: false, texture: false
+        cool: false, shade: false, technical: false, metallic: false, texture: false
       },
       {
         hex: "#91a149",
@@ -940,7 +942,7 @@ export class PaintToolsService {
         colourFamilies: ['green'],
         temperatureRatio: [0,0],
         warm: false,
-        cool: false, metallic: false, texture: false
+        cool: false, shade: false, technical: false, metallic: false, texture: false
       },
       {
         hex: "#c45985",
@@ -952,7 +954,7 @@ export class PaintToolsService {
         colourFamilies: ['pink'],
         temperatureRatio: [0,0],
         warm: false,
-        cool: false, metallic: false, texture: false
+        cool: false, shade: false, technical: false, metallic: false, texture: false
       },
       {
         hex: "#6b6c6e",
@@ -964,7 +966,7 @@ export class PaintToolsService {
         colourFamilies: ['grey'],
         temperatureRatio: [0,0],
         warm: false,
-        cool: false, metallic: false, texture: false
+        cool: false, shade: false, technical: false, metallic: false, texture: false
       },
       {
         hex: "#bac9dc",
@@ -976,7 +978,7 @@ export class PaintToolsService {
         colourFamilies: ['blue'],
         temperatureRatio: [0,0],
         warm: false,
-        cool: false, metallic: false, texture: false
+        cool: false, shade: false, technical: false, metallic: false, texture: false
       },
       {
         hex: "#c63031",
@@ -988,7 +990,7 @@ export class PaintToolsService {
         colourFamilies: ['red'],
         temperatureRatio: [0,0],
         warm: false,
-        cool: false, metallic: false, texture: false
+        cool: false, shade: false, technical: false, metallic: false, texture: false
       },
       {
         hex: "#89a9c2",
@@ -1000,7 +1002,7 @@ export class PaintToolsService {
         colourFamilies: ['grey'],
         temperatureRatio: [0,0],
         warm: false,
-        cool: false, metallic: false, texture: false
+        cool: false, shade: false, technical: false, metallic: false, texture: false
       },
       {
         hex: "#f29461",
@@ -1012,7 +1014,7 @@ export class PaintToolsService {
         colourFamilies: ['orange'],
         temperatureRatio: [0,0],
         warm: false,
-        cool: false, metallic: false, texture: false
+        cool: false, shade: false, technical: false, metallic: false, texture: false
       },
       {
         hex: "#ffef20",
@@ -1024,7 +1026,7 @@ export class PaintToolsService {
         colourFamilies: ['yellow'],
         temperatureRatio: [0,0],
         warm: false,
-        cool: false, metallic: false, texture: false
+        cool: false, shade: false, technical: false, metallic: false, texture: false
       },
       {
         hex: "#ecc896",
@@ -1036,7 +1038,7 @@ export class PaintToolsService {
         colourFamilies: ['yellow', 'beige'],
         temperatureRatio: [0,0],
         warm: false,
-        cool: false, metallic: false, texture: false
+        cool: false, shade: false, technical: false, metallic: false, texture: false
       },
       {
         hex: "#bf7337",
@@ -1048,7 +1050,7 @@ export class PaintToolsService {
         colourFamilies: ['orange'],
         temperatureRatio: [0,0],
         warm: false,
-        cool: false, metallic: false, texture: false
+        cool: false, shade: true, technical: false, metallic: false, texture: false
       },
       {
         hex: "#f6c0d8",
@@ -1060,7 +1062,7 @@ export class PaintToolsService {
         colourFamilies: ['pink'],
         temperatureRatio: [0,0],
         warm: false,
-        cool: false, metallic: false, texture: false
+        cool: false, shade: false, technical: false, metallic: false, texture: false
       },
       {
         hex: "#e5b376",
@@ -1072,7 +1074,7 @@ export class PaintToolsService {
         colourFamilies: ['yellow', 'orange'],
         temperatureRatio: [0,0],
         warm: false,
-        cool: false, metallic: true, texture: false
+        cool: false, shade: false, technical: false, metallic: true, texture: false
       },
       {
         hex: "#9ecbb6",
@@ -1084,7 +1086,7 @@ export class PaintToolsService {
         colourFamilies: ['green'],
         temperatureRatio: [0,0],
         warm: false,
-        cool: false, metallic: false, texture: false
+        cool: false, shade: false, technical: false, metallic: false, texture: false
       },
       {
         hex: "#c8822a",
@@ -1096,7 +1098,7 @@ export class PaintToolsService {
         colourFamilies: ['yellow', 'orange'],
         temperatureRatio: [0,0],
         warm: false,
-        cool: false, metallic: true, texture: false
+        cool: false, shade: false, technical: false, metallic: true, texture: false
       },
       {
         hex: "#8d70b0",
@@ -1108,7 +1110,7 @@ export class PaintToolsService {
         colourFamilies: ['purple'],
         temperatureRatio: [0,0],
         warm: false,
-        cool: false, metallic: false, texture: false
+        cool: false, shade: false, technical: false, metallic: false, texture: false
       },
       {
         hex: "#b79d60",
@@ -1120,7 +1122,7 @@ export class PaintToolsService {
         colourFamilies: ['brown', 'yellow'],
         temperatureRatio: [0,0],
         warm: false,
-        cool: false, metallic: true, texture: false
+        cool: false, shade: false, technical: false, metallic: true, texture: false
       },
       {
         hex: "#a66a48",
@@ -1132,7 +1134,7 @@ export class PaintToolsService {
         colourFamilies: ['brown'],
         temperatureRatio: [0,0],
         warm: false,
-        cool: false, metallic: false, texture: false
+        cool: false, shade: false, technical: false, metallic: false, texture: false
       },
       {
         hex: "#81665d",
@@ -1144,7 +1146,7 @@ export class PaintToolsService {
         colourFamilies: ['brown'],
         temperatureRatio: [0,0],
         warm: false,
-        cool: false, metallic: false, texture: false
+        cool: false, shade: false, technical: false, metallic: false, texture: false
       },
       {
         hex: "#228bcc",
@@ -1156,7 +1158,7 @@ export class PaintToolsService {
         colourFamilies: ['blue'],
         temperatureRatio: [0,0],
         warm: false,
-        cool: false, metallic: false, texture: false
+        cool: false, shade: false, technical: false, metallic: false, texture: false
       },
       {
         hex: "#b0682e",
@@ -1168,7 +1170,7 @@ export class PaintToolsService {
         colourFamilies: ['red', 'brown', 'orange'],
         temperatureRatio: [0,0],
         warm: false,
-        cool: false, metallic: true, texture: false
+        cool: false, shade: false, technical: false, metallic: true, texture: false
       },
       {
         hex: "#9ecbb6",
@@ -1180,7 +1182,7 @@ export class PaintToolsService {
         colourFamilies: ['green'],
         temperatureRatio: [0,0],
         warm: false,
-        cool: false, metallic: false, texture: false
+        cool: false, shade: false, technical: false, metallic: false, texture: false
       },
       {
         hex: "#fff16a",
@@ -1192,7 +1194,7 @@ export class PaintToolsService {
         colourFamilies: ['yellow'],
         temperatureRatio: [0,0],
         warm: false,
-        cool: false, metallic: false, texture: false
+        cool: false, shade: false, technical: false, metallic: false, texture: false
       },
       {
         hex: "#569659",
@@ -1204,7 +1206,7 @@ export class PaintToolsService {
         colourFamilies: ['green'],
         temperatureRatio: [0,0],
         warm: false,
-        cool: false, metallic: false, texture: false
+        cool: false, shade: false, technical: true, metallic: false, texture: false
       },
       {
         hex: "#668fbc",
@@ -1216,7 +1218,7 @@ export class PaintToolsService {
         colourFamilies: ['blue'],
         temperatureRatio: [0,0],
         warm: false,
-        cool: false, metallic: false, texture: false
+        cool: false, shade: false, technical: false, metallic: false, texture: false
       },
       {
         hex: "#269cca",
@@ -1228,7 +1230,7 @@ export class PaintToolsService {
         colourFamilies: ['blue'],
         temperatureRatio: [0,0],
         warm: false,
-        cool: false, metallic: false, texture: false
+        cool: false, shade: false, technical: false, metallic: false, texture: false
       },
       {
         hex: "#2c5c5c",
@@ -1240,7 +1242,7 @@ export class PaintToolsService {
         colourFamilies: ['blue', 'green', 'turquoise'],
         temperatureRatio: [0,0],
         warm: false,
-        cool: false, metallic: false, texture: false
+        cool: false, shade: false, technical: false, metallic: false, texture: false
       },
       {
         hex: "#e2d2c2",
@@ -1252,7 +1254,7 @@ export class PaintToolsService {
         colourFamilies: ['beige', 'pink', 'brown'],
         temperatureRatio: [0,0],
         warm: false,
-        cool: false, metallic: false, texture: false
+        cool: false, shade: false, technical: false, metallic: false, texture: false
       },
       {
         hex: "#8d9295",
@@ -1264,7 +1266,7 @@ export class PaintToolsService {
         colourFamilies: ['grey'],
         temperatureRatio: [0,0],
         warm: false,
-        cool: false, metallic: true, texture: false
+        cool: false, shade: false, technical: false, metallic: true, texture: false
       },
       {
         hex: "#e84832",
@@ -1276,7 +1278,7 @@ export class PaintToolsService {
         colourFamilies: ['orange'],
         temperatureRatio: [0,0],
         warm: false,
-        cool: false, metallic: false, texture: false
+        cool: false, shade: false, technical: false, metallic: false, texture: false
       },
       {
         hex: "#229574",
@@ -1288,7 +1290,7 @@ export class PaintToolsService {
         colourFamilies: ['green'],
         temperatureRatio: [0,0],
         warm: false,
-        cool: false, metallic: false, texture: false
+        cool: false, shade: false, technical: false, metallic: false, texture: false
       },
       {
         hex: "#2b4064",
@@ -1300,7 +1302,7 @@ export class PaintToolsService {
         colourFamilies: ['blue'],
         temperatureRatio: [0,0],
         warm: false,
-        cool: false, metallic: false, texture: false
+        cool: false, shade: false, technical: false, metallic: false, texture: false
       },
       {
         hex: "#c8ac7c",
@@ -1312,7 +1314,7 @@ export class PaintToolsService {
         colourFamilies: ['brown'],
         temperatureRatio: [0,0],
         warm: false,
-        cool: false, metallic: false, texture: false
+        cool: false, shade: false, technical: false, metallic: false, texture: false
       },
       {
         hex: "#7d2d22",
@@ -1324,7 +1326,7 @@ export class PaintToolsService {
         colourFamilies: ['red'],
         temperatureRatio: [0,0],
         warm: false,
-        cool: false, metallic: false, texture: false
+        cool: false, shade: false, technical: false, metallic: false, texture: false
       },
       {
         hex: "#f5ad9a",
@@ -1336,7 +1338,7 @@ export class PaintToolsService {
         colourFamilies: ['red'],
         temperatureRatio: [0,0],
         warm: false,
-        cool: false, metallic: false, texture: false
+        cool: false, shade: false, technical: false, metallic: false, texture: false
       },
       {
         hex: "#cfac84",
@@ -1348,7 +1350,7 @@ export class PaintToolsService {
         colourFamilies: ['brown', 'orange', 'beige', 'yellow', 'peach'],
         temperatureRatio: [0,0],
         warm: false,
-        cool: false, metallic: false, texture: false
+        cool: false, shade: false, technical: false, metallic: false, texture: false
       },
       {
         hex: "#cfc98f",
@@ -1360,7 +1362,7 @@ export class PaintToolsService {
         colourFamilies: ['brown'],
         temperatureRatio: [0,0],
         warm: false,
-        cool: false, metallic: false, texture: false
+        cool: false, shade: false, technical: false, metallic: false, texture: false
       },
       {
         hex: "#ffef20",
@@ -1372,7 +1374,7 @@ export class PaintToolsService {
         colourFamilies: ['yellow'],
         temperatureRatio: [0,0],
         warm: false,
-        cool: false, metallic: false, texture: false
+        cool: false, shade: false, technical: false, metallic: false, texture: false
       },
       {
         hex: "#5d6768",
@@ -1384,7 +1386,7 @@ export class PaintToolsService {
         colourFamilies: ['grey'],
         temperatureRatio: [0,0],
         warm: false,
-        cool: false, metallic: true, texture: false
+        cool: false, shade: false, technical: false, metallic: true, texture: false
       },
       {
         hex: "#c29c53",
@@ -1396,7 +1398,7 @@ export class PaintToolsService {
         colourFamilies: ['brown', 'yellow'],
         temperatureRatio: [0,0],
         warm: false,
-        cool: false, metallic: true, texture: false
+        cool: false, shade: false, technical: false, metallic: true, texture: false
       },
       {
         hex: "#e9e6d5",
@@ -1408,7 +1410,7 @@ export class PaintToolsService {
         colourFamilies: ['grey'],
         temperatureRatio: [0,0],
         warm: false,
-        cool: false, metallic: false, texture: false
+        cool: false, shade: false, technical: false, metallic: false, texture: false
       },
       {
         hex: "#718643",
@@ -1420,7 +1422,7 @@ export class PaintToolsService {
         colourFamilies: ['green'],
         temperatureRatio: [0,0],
         warm: false,
-        cool: false, metallic: false, texture: false
+        cool: false, shade: false, technical: false, metallic: false, texture: false
       },
       {
         hex: "#54add7",
@@ -1432,7 +1434,7 @@ export class PaintToolsService {
         colourFamilies: ['blue'],
         temperatureRatio: [0,0],
         warm: false,
-        cool: false, metallic: false, texture: false
+        cool: false, shade: false, technical: false, metallic: false, texture: false
       },
       {
         hex: "#c8b2d6",
@@ -1444,7 +1446,7 @@ export class PaintToolsService {
         colourFamilies: ['purple'],
         temperatureRatio: [0,0],
         warm: false,
-        cool: false, metallic: false, texture: false
+        cool: false, shade: false, technical: false, metallic: false, texture: false
       },
       {
         hex: "#f5ad97",
@@ -1456,7 +1458,7 @@ export class PaintToolsService {
         colourFamilies: ['orange'],
         temperatureRatio: [0,0],
         warm: false,
-        cool: false, metallic: false, texture: false
+        cool: false, shade: false, technical: false, metallic: false, texture: false
       },
       {
         hex: "#616f24",
@@ -1468,7 +1470,7 @@ export class PaintToolsService {
         colourFamilies: ['green'],
         temperatureRatio: [0,0],
         warm: false,
-        cool: false, metallic: false, texture: true
+        cool: false, shade: false, technical: false, metallic: false, texture: true
       },
       {
         hex: "#38538a",
@@ -1480,7 +1482,7 @@ export class PaintToolsService {
         colourFamilies: ['blue'],
         temperatureRatio: [0,0],
         warm: false,
-        cool: false, metallic: false, texture: false
+        cool: false, shade: false, technical: false, metallic: false, texture: false
       },
       {
         hex: "#ab675a",
@@ -1492,7 +1494,7 @@ export class PaintToolsService {
         colourFamilies: ['red', 'pink', 'peach'],
         temperatureRatio: [0,0],
         warm: false,
-        cool: false, metallic: false, texture: true
+        cool: false, shade: false, technical: false, metallic: false, texture: true
       },
       {
         hex: "#ab675a",
@@ -1504,7 +1506,7 @@ export class PaintToolsService {
         colourFamilies: ['red', 'pink', 'peach'],
         temperatureRatio: [0,0],
         warm: false,
-        cool: false, metallic: false, texture: true
+        cool: false, shade: false, technical: false, metallic: false, texture: true
       },
       {
         hex: "#5c6667",
@@ -1516,7 +1518,7 @@ export class PaintToolsService {
         colourFamilies: ['grey'],
         temperatureRatio: [0,0],
         warm: false,
-        cool: false, metallic: false, texture: false
+        cool: false, shade: false, technical: false, metallic: false, texture: false
       },
       {
         hex: "#a8312b",
@@ -1528,7 +1530,7 @@ export class PaintToolsService {
         colourFamilies: ['red'],
         temperatureRatio: [0,0],
         warm: false,
-        cool: false, metallic: false, texture: false
+        cool: false, shade: false, technical: false, metallic: false, texture: false
       },
       {
         hex: "#6cb549",
@@ -1540,7 +1542,7 @@ export class PaintToolsService {
         colourFamilies: ['green'],
         temperatureRatio: [0,0],
         warm: false,
-        cool: false, metallic: false, texture: false
+        cool: false, shade: false, technical: false, metallic: false, texture: false
       },
       {
         hex: "#7b3229",
@@ -1552,7 +1554,7 @@ export class PaintToolsService {
         colourFamilies: ['brown'],
         temperatureRatio: [0,0],
         warm: false,
-        cool: false, metallic: false, texture: false
+        cool: false, shade: false, technical: false, metallic: false, texture: false
       },
       {
         hex: "#5d506a",
@@ -1564,7 +1566,7 @@ export class PaintToolsService {
         colourFamilies: ['purple'],
         temperatureRatio: [0,0],
         warm: false,
-        cool: false, metallic: false, texture: false
+        cool: false, shade: false, technical: false, metallic: false, texture: false
       },
       {
         hex: "#8d9295",
@@ -1576,7 +1578,7 @@ export class PaintToolsService {
         colourFamilies: ['grey'],
         temperatureRatio: [0,0],
         warm: false,
-        cool: false, metallic: true, texture: false
+        cool: false, shade: false, technical: false, metallic: true, texture: false
       },
       {
         hex: "#649b43",
@@ -1588,7 +1590,7 @@ export class PaintToolsService {
         colourFamilies: ['green'],
         temperatureRatio: [0,0],
         warm: false,
-        cool: false, metallic: false, texture: false
+        cool: false, shade: false, technical: false, metallic: false, texture: false
       },
       {
         hex: "#5f7d88",
@@ -1600,7 +1602,7 @@ export class PaintToolsService {
         colourFamilies: ['blue'],
         temperatureRatio: [0,0],
         warm: false,
-        cool: false, metallic: false, texture: false
+        cool: false, shade: false, technical: true, metallic: false, texture: false
       },
       {
         hex: "#80bfaa",
@@ -1612,7 +1614,7 @@ export class PaintToolsService {
         colourFamilies: ['green'],
         temperatureRatio: [0,0],
         warm: false,
-        cool: false, metallic: false, texture: false
+        cool: false, shade: false, technical: true, metallic: false, texture: false
       },
       {
         hex: "#212121",
@@ -1624,7 +1626,7 @@ export class PaintToolsService {
         colourFamilies: ['black'],
         temperatureRatio: [0,0],
         warm: false,
-        cool: false, metallic: false, texture: false
+        cool: false, shade: true, technical: false, metallic: false, texture: false
       },
       {
         hex: "#b09b3e",
@@ -1636,7 +1638,7 @@ export class PaintToolsService {
         colourFamilies: ['green'],
         temperatureRatio: [0,0],
         warm: false,
-        cool: false, metallic: false, texture: false
+        cool: false, shade: false, technical: true, metallic: false, texture: false
       },
       {
         hex: "#9ead74",
@@ -1648,7 +1650,7 @@ export class PaintToolsService {
         colourFamilies: ['green'],
         temperatureRatio: [0,0],
         warm: false,
-        cool: false, metallic: false, texture: false
+        cool: false, shade: false, technical: false, metallic: false, texture: false
       },
       {
         hex: "#b4b859",
@@ -1660,7 +1662,7 @@ export class PaintToolsService {
         colourFamilies: ['green'],
         temperatureRatio: [0,0],
         warm: false,
-        cool: false, metallic: false, texture: false
+        cool: false, shade: false, technical: false, metallic: false, texture: false
       },
       {
         hex: "#dcdacb",
@@ -1672,7 +1674,7 @@ export class PaintToolsService {
         colourFamilies: ['beige', 'yellow', 'grey'],
         temperatureRatio: [0,0],
         warm: false,
-        cool: false, metallic: false, texture: false
+        cool: false, shade: false, technical: false, metallic: false, texture: false
       },
       {
         hex: "#a24c71",
@@ -1684,7 +1686,7 @@ export class PaintToolsService {
         colourFamilies: ['pink'],
         temperatureRatio: [0,0],
         warm: false,
-        cool: false, metallic: false, texture: false
+        cool: false, shade: false, technical: false, metallic: false, texture: false
       },
       {
         hex: "#ffffff",
@@ -1696,7 +1698,7 @@ export class PaintToolsService {
         colourFamilies: ['white'],
         temperatureRatio: [0,0],
         warm: false,
-        cool: false, metallic: false, texture: false
+        cool: false, shade: false, technical: false, metallic: false, texture: false
       },
       {
         hex: "#b7afa2",
@@ -1708,7 +1710,7 @@ export class PaintToolsService {
         colourFamilies: ['beige', 'grey', 'brown'],
         temperatureRatio: [0,0],
         warm: false,
-        cool: false, metallic: false, texture: false
+        cool: false, shade: false, technical: false, metallic: false, texture: false
       },
       {
         hex: "#bd8061",
@@ -1720,7 +1722,7 @@ export class PaintToolsService {
         colourFamilies: ['beige', 'peach', 'pink', 'orange'],
         temperatureRatio: [0,0],
         warm: false,
-        cool: false, metallic: false, texture: false
+        cool: false, shade: false, technical: false, metallic: false, texture: false
       },
       {
         hex: "#b94129",
@@ -1732,7 +1734,7 @@ export class PaintToolsService {
         colourFamilies: ['orange', 'red', 'pink'],
         temperatureRatio: [0,0],
         warm: false,
-        cool: false, metallic: false, texture: false
+        cool: false, shade: true, technical: false, metallic: false, texture: false
       },
       {
         hex: "#c4aa79",
@@ -1744,7 +1746,7 @@ export class PaintToolsService {
         colourFamilies: ['yellow', 'brown', 'orange'],
         temperatureRatio: [0,0],
         warm: false,
-        cool: false, metallic: true, texture: false
+        cool: false, shade: false, technical: false, metallic: true, texture: false
       },
       {
         hex: "#d1a13d",
@@ -1756,7 +1758,7 @@ export class PaintToolsService {
         colourFamilies: ['yellow', 'orange'],
         temperatureRatio: [0,0],
         warm: false,
-        cool: false, metallic: true, texture: false
+        cool: false, shade: false, technical: false, metallic: true, texture: false
       },
       {
         hex: "#664e4e",
@@ -1768,7 +1770,7 @@ export class PaintToolsService {
         colourFamilies: ['brown'],
         temperatureRatio: [0,0],
         warm: false,
-        cool: false, metallic: false, texture: false
+        cool: false, shade: false, technical: false, metallic: false, texture: false
       },
       {
         hex: "#b3bcc1",
@@ -1780,7 +1782,7 @@ export class PaintToolsService {
         colourFamilies: ['grey'],
         temperatureRatio: [0,0],
         warm: false,
-        cool: false, metallic: true, texture: false
+        cool: false, shade: false, technical: false, metallic: true, texture: false
       },
       {
         hex: "#bfb3a7",
@@ -1792,7 +1794,7 @@ export class PaintToolsService {
         colourFamilies: ['beige', 'brown', 'grey'],
         temperatureRatio: [0,0],
         warm: false,
-        cool: false, metallic: true, texture: false
+        cool: false, shade: false, technical: false, metallic: true, texture: false
       },
       {
         hex: "#6a8799",
@@ -1804,7 +1806,7 @@ export class PaintToolsService {
         colourFamilies: ['grey'],
         temperatureRatio: [0,0],
         warm: false,
-        cool: false, metallic: false, texture: false
+        cool: false, shade: false, technical: false, metallic: false, texture: false
       },
       {
         hex: "#ec783b",
@@ -1816,7 +1818,7 @@ export class PaintToolsService {
         colourFamilies: ['orange'],
         temperatureRatio: [0,0],
         warm: false,
-        cool: false, metallic: false, texture: false
+        cool: false, shade: false, technical: false, metallic: false, texture: false
       },
       {
         hex: "#92385b",
@@ -1828,7 +1830,7 @@ export class PaintToolsService {
         colourFamilies: ['pink'],
         temperatureRatio: [0,0],
         warm: false,
-        cool: false, metallic: false, texture: false
+        cool: false, shade: false, technical: false, metallic: false, texture: false
       },
       {
         hex: "#b75b2a",
@@ -1840,7 +1842,7 @@ export class PaintToolsService {
         colourFamilies: ['orange', 'red'],
         temperatureRatio: [0,0],
         warm: false,
-        cool: false, metallic: true, texture: false
+        cool: false, shade: false, technical: false, metallic: true, texture: false
       },
       {
         hex: "#e0ddb2",
@@ -1852,7 +1854,7 @@ export class PaintToolsService {
         colourFamilies: ['white', 'yellow', 'beige'],
         temperatureRatio: [0,0],
         warm: false,
-        cool: false, metallic: false, texture: false
+        cool: false, shade: false, technical: false, metallic: false, texture: false
       },
       {
         hex: "#d47d3a",
@@ -1864,7 +1866,7 @@ export class PaintToolsService {
         colourFamilies: ['brown'],
         temperatureRatio: [0,0],
         warm: false,
-        cool: false, metallic: false, texture: false
+        cool: false, shade: true, technical: false, metallic: false, texture: false
       },
       {
         hex: "#dcb66f",
@@ -1876,7 +1878,7 @@ export class PaintToolsService {
         colourFamilies: ['yellow'],
         temperatureRatio: [0,0],
         warm: false,
-        cool: false, metallic: false, texture: false
+        cool: false, shade: false, technical: false, metallic: false, texture: false
       },
       {
         hex: "#749d7b",
@@ -1888,7 +1890,7 @@ export class PaintToolsService {
         colourFamilies: ['green'],
         temperatureRatio: [0,0],
         warm: false,
-        cool: false, metallic: false, texture: false
+        cool: false, shade: false, technical: false, metallic: false, texture: false
       },
       {
         hex: "#665f59",
@@ -1900,7 +1902,7 @@ export class PaintToolsService {
         colourFamilies: ['grey'],
         temperatureRatio: [0,0],
         warm: false,
-        cool: false, metallic: false, texture: false
+        cool: false, shade: false, technical: false, metallic: false, texture: false
       },
       {
         hex: "#78c7d4",
@@ -1912,7 +1914,7 @@ export class PaintToolsService {
         colourFamilies: ['blue'],
         temperatureRatio: [0,0],
         warm: false,
-        cool: false, metallic: false, texture: false
+        cool: false, shade: false, technical: false, metallic: false, texture: false
       },
       {
         hex: "#a26127",
@@ -1924,7 +1926,7 @@ export class PaintToolsService {
         colourFamilies: ['brown'],
         temperatureRatio: [0,0],
         warm: false,
-        cool: false, metallic: false, texture: false
+        cool: false, shade: false, technical: false, metallic: false, texture: false
       },
       {
         hex: "#ecb362",
@@ -1936,7 +1938,7 @@ export class PaintToolsService {
         colourFamilies: ['yellow'],
         temperatureRatio: [0,0],
         warm: false,
-        cool: false, metallic: true, texture: false
+        cool: false, shade: false, technical: false, metallic: true, texture: false
       },
       {
         hex: "#a39da7",
@@ -1948,7 +1950,7 @@ export class PaintToolsService {
         colourFamilies: ['grey'],
         temperatureRatio: [0,0],
         warm: false,
-        cool: false, metallic: false, texture: false
+        cool: false, shade: false, technical: false, metallic: false, texture: false
       },
       {
         hex: "#2d7b87",
@@ -1960,7 +1962,7 @@ export class PaintToolsService {
         colourFamilies: ['green'],
         temperatureRatio: [0,0],
         warm: false,
-        cool: false, metallic: false, texture: false
+        cool: false, shade: false, technical: false, metallic: false, texture: false
       },
       {
         hex: "#2163f8",
@@ -1972,7 +1974,7 @@ export class PaintToolsService {
         colourFamilies: ['blue'],
         temperatureRatio: [0,0],
         warm: false,
-        cool: false, metallic: false, texture: false
+        cool: false, shade: false, technical: true, metallic: false, texture: false
       },
       {
         hex: "#ff6648",
@@ -1984,7 +1986,7 @@ export class PaintToolsService {
         colourFamilies: ['red', 'orange'],
         temperatureRatio: [0,0],
         warm: false,
-        cool: false, metallic: false, texture: false
+        cool: false, shade: false, technical: true, metallic: false, texture: false
       },
       {
         hex: "#ba6457",
@@ -1996,7 +1998,7 @@ export class PaintToolsService {
         colourFamilies: ['orange', 'red', 'pink'],
         temperatureRatio: [0,0],
         warm: false,
-        cool: false, metallic: false, texture: false
+        cool: false, shade: false, technical: false, metallic: false, texture: false
       },
       {
         hex: "#7c6d4e",
@@ -2008,7 +2010,7 @@ export class PaintToolsService {
         colourFamilies: ['brown'],
         temperatureRatio: [0,0],
         warm: false,
-        cool: false, metallic: false, texture: false
+        cool: false, shade: false, technical: false, metallic: false, texture: false
       },
       {
         hex: "#225c74",
@@ -2020,7 +2022,7 @@ export class PaintToolsService {
         colourFamilies: ['green'],
         temperatureRatio: [0,0],
         warm: false,
-        cool: false, metallic: false, texture: false
+        cool: false, shade: false, technical: false, metallic: false, texture: false
       },
       {
         hex: "#624b21",
@@ -2032,7 +2034,7 @@ export class PaintToolsService {
         colourFamilies: ['brown'],
         temperatureRatio: [0,0],
         warm: false,
-        cool: false, metallic: false, texture: true
+        cool: false, shade: false, technical: false, metallic: false, texture: true
       },
       {
         hex: "#624b21",
@@ -2044,7 +2046,7 @@ export class PaintToolsService {
         colourFamilies: ['brown'],
         temperatureRatio: [0,0],
         warm: false,
-        cool: false, metallic: false, texture: true
+        cool: false, shade: false, technical: false, metallic: false, texture: true
       },
       {
         hex: "#7a99b8",
@@ -2056,7 +2058,7 @@ export class PaintToolsService {
         colourFamilies: ['blue'],
         temperatureRatio: [0,0],
         warm: false,
-        cool: false, metallic: false, texture: false
+        cool: false, shade: false, technical: false, metallic: false, texture: false
       },
       {
         hex: "#b7c2c6",
@@ -2068,7 +2070,7 @@ export class PaintToolsService {
         colourFamilies: ['grey'],
         temperatureRatio: [0,0],
         warm: false,
-        cool: false, metallic: true, texture: false
+        cool: false, shade: false, technical: false, metallic: true, texture: false
       },
       {
         hex: "#8d847b",
@@ -2080,7 +2082,7 @@ export class PaintToolsService {
         colourFamilies: ['brown'],
         temperatureRatio: [0,0],
         warm: false,
-        cool: false, metallic: false, texture: false
+        cool: false, shade: false, technical: false, metallic: false, texture: false
       },
       {
         hex: "#819532",
@@ -2092,7 +2094,7 @@ export class PaintToolsService {
         colourFamilies: ['green'],
         temperatureRatio: [0,0],
         warm: false,
-        cool: false, metallic: false, texture: false
+        cool: false, shade: false, technical: false, metallic: false, texture: false
       },
       {
         hex: "#53ab78",
@@ -2104,7 +2106,7 @@ export class PaintToolsService {
         colourFamilies: ['green'],
         temperatureRatio: [0,0],
         warm: false,
-        cool: false, metallic: false, texture: false
+        cool: false, shade: false, technical: false, metallic: false, texture: false
       },
       {
         hex: "#baa384",
@@ -2116,7 +2118,7 @@ export class PaintToolsService {
         colourFamilies: ['beige', 'brown'],
         temperatureRatio: [0,0],
         warm: false,
-        cool: false, metallic: true, texture: false
+        cool: false, shade: false, technical: false, metallic: true, texture: false
       },
       {
         hex: "#726656",
@@ -2128,7 +2130,7 @@ export class PaintToolsService {
         colourFamilies: ['brown'],
         temperatureRatio: [0,0],
         warm: false,
-        cool: false, metallic: false, texture: false
+        cool: false, shade: false, technical: false, metallic: false, texture: false
       },
       {
         hex: "#b48e21",
@@ -2140,7 +2142,7 @@ export class PaintToolsService {
         colourFamilies: ['brown'],
         temperatureRatio: [0,0],
         warm: false,
-        cool: false, metallic: false, texture: false
+        cool: false, shade: false, technical: false, metallic: false, texture: false
       },
       {
         hex: "#c88129",
@@ -2152,7 +2154,7 @@ export class PaintToolsService {
         colourFamilies: ['brown'],
         temperatureRatio: [0,0],
         warm: false,
-        cool: false, metallic: false, texture: false
+        cool: false, shade: false, technical: false, metallic: false, texture: false
       },
       {
         hex: "#548cc7",
@@ -2164,7 +2166,7 @@ export class PaintToolsService {
         colourFamilies: ['blue'],
         temperatureRatio: [0,0],
         warm: false,
-        cool: false, metallic: false, texture: false
+        cool: false, shade: false, technical: false, metallic: false, texture: false
       },
       {
         hex: "#53a69c",
@@ -2176,7 +2178,7 @@ export class PaintToolsService {
         colourFamilies: ['blue'],
         temperatureRatio: [0,0],
         warm: false,
-        cool: false, metallic: false, texture: false
+        cool: false, shade: false, technical: false, metallic: false, texture: false
       },
       {
         hex: "#d9c592",
@@ -2188,7 +2190,7 @@ export class PaintToolsService {
         colourFamilies: ['grey', 'brown', 'beige'],
         temperatureRatio: [0,0],
         warm: false,
-        cool: false, metallic: false, texture: false
+        cool: false, shade: false, technical: false, metallic: false, texture: false
       },
       {
         hex: "#617b8c",
@@ -2200,7 +2202,7 @@ export class PaintToolsService {
         colourFamilies: ['grey', 'blue'],
         temperatureRatio: [0,0],
         warm: false,
-        cool: false, metallic: false, texture: false
+        cool: false, shade: false, technical: false, metallic: false, texture: false
       },
       {
         hex: "#236b84",
@@ -2212,7 +2214,7 @@ export class PaintToolsService {
         colourFamilies: ['blue'],
         temperatureRatio: [0,0],
         warm: false,
-        cool: false,
+        cool: false, shade: false, technical: false,
         metallic: false,
         texture: false
       },
@@ -2226,7 +2228,7 @@ export class PaintToolsService {
         colourFamilies: ['blue'],
         temperatureRatio: [0,0],
         warm: false,
-        cool: false, metallic: false, texture: false
+        cool: false, shade: false, technical: false, metallic: false, texture: false
       },
       {
         hex: "#ec783b",
@@ -2238,7 +2240,7 @@ export class PaintToolsService {
         colourFamilies: ['orange'],
         temperatureRatio: [0,0],
         warm: false,
-        cool: false, metallic: false, texture: false
+        cool: false, shade: false, technical: false, metallic: false, texture: false
       },
       {
         hex: "#9c514c",
@@ -2250,7 +2252,7 @@ export class PaintToolsService {
         colourFamilies: ['brown'],
         temperatureRatio: [0,0],
         warm: false,
-        cool: false, metallic: false, texture: false
+        cool: false, shade: false, technical: false, metallic: false, texture: false
       },
       {
         hex: "#5d5646",
@@ -2262,7 +2264,7 @@ export class PaintToolsService {
         colourFamilies: ['brown'],
         temperatureRatio: [0,0],
         warm: false,
-        cool: false, metallic: false, texture: false
+        cool: false, shade: false, technical: true, metallic: false, texture: false
       },
       {
         hex: "#dad294",
@@ -2274,7 +2276,7 @@ export class PaintToolsService {
         colourFamilies: ['beige', 'yellow'],
         temperatureRatio: [0,0],
         warm: false,
-        cool: false, metallic: false, texture: false
+        cool: false, shade: false, technical: false, metallic: false, texture: false
       },
       {
         hex: "#d7e6e1",
@@ -2286,7 +2288,7 @@ export class PaintToolsService {
         colourFamilies: ['grey'],
         temperatureRatio: [0,0],
         warm: false,
-        cool: false, metallic: false, texture: false
+        cool: false, shade: false, technical: false, metallic: false, texture: false
       },
       {
         hex: "#cfc98f",
@@ -2298,7 +2300,7 @@ export class PaintToolsService {
         colourFamilies: ['brown'],
         temperatureRatio: [0,0],
         warm: false,
-        cool: false, metallic: false, texture: false
+        cool: false, shade: false, technical: false, metallic: false, texture: false
       },
       {
         hex: "#dfb877",
@@ -2310,7 +2312,7 @@ export class PaintToolsService {
         colourFamilies: ['yellow', 'orange'],
         temperatureRatio: [0,0],
         warm: false,
-        cool: false, metallic: false, texture: false
+        cool: false, shade: false, technical: false, metallic: false, texture: false
       },
       {
         hex: "#cbc990",
@@ -2322,7 +2324,7 @@ export class PaintToolsService {
         colourFamilies: ['brown', 'beige', 'yellow'],
         temperatureRatio: [0,0],
         warm: false,
-        cool: false, metallic: false, texture: false
+        cool: false, shade: false, technical: false, metallic: false, texture: false
       },
       {
         hex: "#ffffff",
@@ -2334,7 +2336,7 @@ export class PaintToolsService {
         colourFamilies: ['white'],
         temperatureRatio: [0,0],
         warm: false,
-        cool: false, metallic: false, texture: true
+        cool: false, shade: false, technical: false, metallic: false, texture: true
       },
       {
         hex: "#96534d",
@@ -2346,7 +2348,7 @@ export class PaintToolsService {
         colourFamilies: ['brown'],
         temperatureRatio: [0,0],
         warm: false,
-        cool: false, metallic: false, texture: false
+        cool: false, shade: false, technical: false, metallic: false, texture: false
       },
       {
         hex: "#466c45",
@@ -2358,7 +2360,7 @@ export class PaintToolsService {
         colourFamilies: ['green'],
         temperatureRatio: [0,0],
         warm: false,
-        cool: false, metallic: false, texture: false
+        cool: false, shade: false, technical: false, metallic: false, texture: false
       },
       {
         hex: "#558d6a",
@@ -2370,7 +2372,7 @@ export class PaintToolsService {
         colourFamilies: ['green'],
         temperatureRatio: [0,0],
         warm: false,
-        cool: false, metallic: false, texture: false
+        cool: false, shade: false, technical: false, metallic: false, texture: false
       },
       {
         hex: "#86838a",
@@ -2382,7 +2384,7 @@ export class PaintToolsService {
         colourFamilies: ['grey'],
         temperatureRatio: [0,0],
         warm: false,
-        cool: false, metallic: false, texture: false
+        cool: false, shade: false, technical: false, metallic: false, texture: false
       },
       {
         hex: "#6d5354",
@@ -2394,7 +2396,7 @@ export class PaintToolsService {
         colourFamilies: ['purple', 'brown', 'beige'],
         temperatureRatio: [0,0],
         warm: false,
-        cool: false, metallic: true, texture: false
+        cool: false, shade: false, technical: false, metallic: true, texture: false
       },
       {
         hex: "#438442",
@@ -2406,7 +2408,7 @@ export class PaintToolsService {
         colourFamilies: ['green'],
         temperatureRatio: [0,0],
         warm: false,
-        cool: false, metallic: false, texture: false
+        cool: false, shade: false, technical: false, metallic: false, texture: false
       },
       {
         hex: "#20c721",
@@ -2418,7 +2420,7 @@ export class PaintToolsService {
         colourFamilies: ['green'],
         temperatureRatio: [0,0],
         warm: false,
-        cool: false, metallic: false, texture: false
+        cool: false, shade: false, technical: true, metallic: false, texture: false
       },
       {
         hex: "#59b64e",
@@ -2430,7 +2432,7 @@ export class PaintToolsService {
         colourFamilies: ['green'],
         temperatureRatio: [0,0],
         warm: false,
-        cool: false, metallic: false, texture: false
+        cool: false, shade: false, technical: false, metallic: false, texture: false
       },
       {
         hex: "#9c3127",
@@ -2442,7 +2444,7 @@ export class PaintToolsService {
         colourFamilies: ['red'],
         temperatureRatio: [0,0],
         warm: false,
-        cool: false, metallic: false, texture: false
+        cool: false, shade: false, technical: false, metallic: false, texture: false
       },
       {
         hex: "#ffffff",
@@ -2454,7 +2456,7 @@ export class PaintToolsService {
         colourFamilies: ['white'],
         temperatureRatio: [0,0],
         warm: false,
-        cool: false, metallic: false, texture: false
+        cool: false, shade: false, technical: false, metallic: false, texture: false
       },
       {
         hex: "#e63f36",
@@ -2466,7 +2468,7 @@ export class PaintToolsService {
         colourFamilies: ['red', 'orange'],
         temperatureRatio: [0,0],
         warm: false,
-        cool: false, metallic: false, texture: false
+        cool: false, shade: false, technical: false, metallic: false, texture: false
       },
       {
         hex: "#e1e0de",
@@ -2478,7 +2480,7 @@ export class PaintToolsService {
         colourFamilies: ['white'],
         temperatureRatio: [0,0],
         warm: false,
-        cool: false, metallic: false, texture: false
+        cool: false, shade: false, technical: false, metallic: false, texture: false
       },
       {
         hex: "#633e71",
@@ -2490,7 +2492,7 @@ export class PaintToolsService {
         colourFamilies: ['purple'],
         temperatureRatio: [0,0],
         warm: false,
-        cool: false, metallic: false, texture: false
+        cool: false, shade: false, technical: false, metallic: false, texture: false
       },
       {
         hex: "#8b6439",
@@ -2502,7 +2504,7 @@ export class PaintToolsService {
         colourFamilies: [],
         temperatureRatio: [0,0],
         warm: false,
-        cool: false, metallic: false, texture: false
+        cool: false, shade: false, technical: false, metallic: false, texture: false
       },
       {
         hex: "#ffde21",
@@ -2514,7 +2516,7 @@ export class PaintToolsService {
         colourFamilies: ['yellow'],
         temperatureRatio: [0,0],
         warm: false,
-        cool: false, metallic: false, texture: false
+        cool: false, shade: false, technical: false, metallic: false, texture: false
       },
       {
         hex: "#e4b028",
@@ -2526,7 +2528,7 @@ export class PaintToolsService {
         colourFamilies: ['brown'],
         temperatureRatio: [0,0],
         warm: false,
-        cool: false, metallic: false, texture: false
+        cool: false, shade: false, technical: false, metallic: false, texture: false
       },
       {
         hex: "#b3a46d",
@@ -2538,7 +2540,7 @@ export class PaintToolsService {
         colourFamilies: ['brown'],
         temperatureRatio: [0,0],
         warm: false,
-        cool: false, metallic: false, texture: false
+        cool: false, shade: false, technical: false, metallic: false, texture: false
       }
     ];
 

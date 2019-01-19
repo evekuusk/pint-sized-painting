@@ -26,6 +26,7 @@ ul.paint-swatches-list {
     &.agrax-earthshade {
       span.colour {
         background-color: $agrax-earthshade;
+        @include shade($agrax-earthshade);
       }
     }
     &.agrellan-earth {
@@ -37,6 +38,7 @@ ul.paint-swatches-list {
     &.agrellan-badland {
       span.colour {
         background-color: $agrellan-badland;
+        @include texture($agrellan-badland);
       }
     }
     &.ahriman-blue {
@@ -57,11 +59,13 @@ ul.paint-swatches-list {
     &.armageddon-dunes {
       span.colour {
         background-color: $armageddon-dunes;
+        @include texture($armageddon-dunes);
       }
     }
     &.armageddon-dust {
       span.colour {
         background-color: $armageddon-dust;
+        @include texture($armageddon-dust);
       }
     }
     &.astorath-red {
@@ -72,16 +76,19 @@ ul.paint-swatches-list {
     &.astrogranite {
       span.colour {
         background-color: $astrogranite;
+        @include texture($astrogranite);
       }
     }
     &.astrogranite-debris {
       span.colour {
         background-color: $astrogranite-debris;
+        @include texture($astrogranite-debris);
       }
     }
     &.athonian-camoshade {
       span.colour {
         background-color: $athonian-camoshade;
+        @include shade($athonian-camoshade);
       }
     }
     &.auric-armour-gold {
@@ -123,16 +130,19 @@ ul.paint-swatches-list {
     &.biel-tan-green {
       span.colour {
         background-color: $biel-tan-green;
+        @include shade($biel-tan-green);
       }
     }
     &.blackfire-earth {
       span.colour {
         background-color: $blackfire-earth;
+        @include texture($blackfire-earth);
       }
     }
     &.blood-for-the-blood-god {
       span.colour {
         background-color: $blood-for-the-blood-god;
+        @include technical($blood-for-the-blood-god);
       }
     }
     &.bloodletter {
@@ -179,11 +189,13 @@ ul.paint-swatches-list {
     &.carroburg-crimson {
       span.colour {
         background-color: $carroburg-crimson;
+        @include shade($carroburg-crimson);
       }
     }
     &.casandora-yellow {
       span.colour {
         background-color: $casandora-yellow;
+        @include shade($casandora-yellow);
       }
     }
     &.castellan-green {
@@ -219,6 +231,7 @@ ul.paint-swatches-list {
     &.coelia-greenshade {
       span.colour {
         background-color: $coelia-greenshade;
+        @include shade($coelia-greenshade);
       }
     }
     &.corax-white {
@@ -279,11 +292,13 @@ ul.paint-swatches-list {
     &.drakenhof-nightshade {
       span.colour {
         background-color: $drakenhof-nightshade;
+        @include shade($drakenhof-nightshade);
       }
     }
     &.druchii-violet {
       span.colour {
         background-color: $druchii-violet;
+        @include shade($druchii-violet);
       }
     }
     &.dryad-bark {
@@ -344,6 +359,7 @@ ul.paint-swatches-list {
     &.fuegan-orange {
       span.colour {
         background-color: $fuegan-orange;
+        @include shade($fuegan-orange);
       }
     }
     &.fulgrim-pink {
@@ -413,6 +429,7 @@ ul.paint-swatches-list {
     &.hexwraith-flame {
       span.colour {
         background-color: $hexwraith-flame;
+        @include technical($hexwraith-flame);
       }
     }
     &.hoethe-blue {
@@ -526,6 +543,7 @@ ul.paint-swatches-list {
     &.lustrian-undergrowth {
       span.colour {
         background-color: $lustrian-undergrowth;
+        @include texture($lustrian-undergrowth);
       }
     }
     &.macragge-blue {
@@ -536,11 +554,13 @@ ul.paint-swatches-list {
     &.martian-ironcrust {
       span.colour {
         background-color: $martian-ironcrust;
+        @include texture($martian-ironcrust);
       }
     }
     &.martian-ironearth {
       span.colour {
         background-color: $martian-ironearth;
+        @include texture($martian-ironearth);
       }
     }
     &.mechanicus-standard-grey {
@@ -582,21 +602,25 @@ ul.paint-swatches-list {
     &.nighthaunt-gloom {
       span.colour {
         background-color: $nighthaunt-gloom;
+        @include technical($nighthaunt-gloom);
       }
     }
     &.nihilakh-oxide {
       span.colour {
         background-color: $nihilakh-oxide;
+        @include technical($nihilakh-oxide);
       }
     }
     &.nuln-oil {
       span.colour {
         background-color: $nuln-oil;
+        @include shade($nuln-oil);
       }
     }
     &.nurgles-rot {
       span.colour {
         background-color: $nurgles-rot;
+        @include technical($nurgles-rot);
       }
     }
     &.nurgling-green {
@@ -637,6 +661,7 @@ ul.paint-swatches-list {
     &.reikland-fleshshade {
       span.colour {
         background-color: $reikland-fleshshade;
+        @include shade($reikland-fleshshade);
       }
     }
     &.relictor-gold {
@@ -697,6 +722,7 @@ ul.paint-swatches-list {
     &.seraphim-sepia {
       span.colour {
         background-color: $seraphim-sepia;
+        @include shade($seraphim-sepia);
       }
     }
     &.sigmarite {
@@ -743,11 +769,13 @@ ul.paint-swatches-list {
     &.soulstone-blue {
       span.colour {
         background-color: $soulstone-blue;
+        @include technical($soulstone-blue);
       }
     }
     &.spiritstone-red {
       span.colour {
         background-color: $spiritstone-red;
+        @include technical($spiritstone-red);
       }
     }
     &.squig-orange {
@@ -768,11 +796,13 @@ ul.paint-swatches-list {
     &.stirland-battlemire {
       span.colour {
         background-color: $stirland-battlemire;
+        @include texture($stirland-battlemire);
       }
     }
     &.stirland-mud {
       span.colour {
         background-color: $stirland-mud;
+        @include texture($stirland-mud);
       }
     }
     &.stormfang {
@@ -865,6 +895,7 @@ ul.paint-swatches-list {
     &.typhus-corrosion {
       span.colour {
         background-color: $typhus-corrosion;
+        @include technical($typhus-corrosion);
       }
     }
     &.tyrant-skull {
@@ -895,6 +926,7 @@ ul.paint-swatches-list {
     &.valhallan-blizzard {
       span.colour {
         background-color: $valhallan-blizzard;
+        @include texture($valhallan-blizzard);
       }
     }
     &.verminlord-hide {
@@ -931,6 +963,7 @@ ul.paint-swatches-list {
     &.waystone-green {
       span.colour {
         background-color: $waystone-green;
+        @include technical($waystone-green);
       }
     }
     &.waywatcher-green {
@@ -1004,7 +1037,7 @@ ul.paint-swatches-list {
         width: 5rem;
       }
       &.metallic {
-        // @include metallicShine;
+
       }
       &.texture {
 
@@ -1033,6 +1066,16 @@ ul.paint-swatches-list {
           content: 'texture';
         }
       }
+      &.technical {
+        &:after {
+          content: 'technical';
+        }
+      }
+      &.shade {
+        &:after {
+          content: 'shade';
+        }
+      }
     }
   }
 }
@@ -1046,11 +1089,10 @@ ul.paint-swatches-list {
 #filterPaintsForm {
   display: none;
   margin-top: 3rem;
-  // transition: opacity 200ms;
 }
 
 #filterPaintsToggle {
-  // margin-bottom: 3rem;
+
 }
 
 small.allPaintsWarn {

@@ -23,6 +23,8 @@ import { PaintsPageComponent } from './components/pages/tools-page/children/pain
 
 // gallery
 import { GalleryPageComponent } from './components/pages/gallery-page/gallery-page.component';
+import { GalleryListPageComponent } from './components/pages/gallery-page/children/gallery-list-page/gallery-list-page.component';
+import { GalleryDetailPageComponent } from './components/pages/gallery-page/children/gallery-detail-page/gallery-detail-page.component';
 
 // services
 import { ServicesPageComponent } from './components/pages/services-page/services-page.component';
@@ -80,7 +82,47 @@ const routes: Routes = [
   },
   {
     path: 'gallery',
-    component: GalleryPageComponent
+    component: GalleryPageComponent,
+    children: [
+      {
+        path: '',
+        component: GalleryListPageComponent
+      },
+      {
+        path: '**',
+        component: GalleryDetailPageComponent
+      }
+    ]
+    // children: [
+    //   {
+    //     path: '',
+    //     component: GalleryListPageComponent
+    //   },
+    //   {
+    //     path: 'chaos',
+    //     component: GalleryListPageComponent,
+    //     children: [
+    //       {
+    //         path: '',
+    //         component: GalleryListPageComponent
+    //       },
+    //       {
+    //         path: 'daemons-of-nurgle',
+    //         component: GalleryListPageComponent,
+    //         children: [
+    //           {
+    //             path: '',
+    //             component: GalleryListPageComponent
+    //           },
+    //           {
+    //             path: 'blightkings',
+    //             component: GalleryDetailPageComponent
+    //           }
+    //         ]
+    //       }
+    //     ]
+    //   }
+    // ]
   },
   {
     path: 'services',

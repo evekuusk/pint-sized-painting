@@ -62,5 +62,5 @@
 <h5 *ngIf="paintToolsService.filteredPaintsResult.length === 0">No paints to show.  Try another selection!</h5>
 
 <ul class="paint-swatches-list">
-<li *ngFor="let paint of paintToolsService.filteredPaintsResult" [ngClass]="[paint.className, 'paint-swatch']"><span class="colour" placement="top" ngbPopover="{{paint.types | join: ', '}}" popoverTitle="{{paint.brand | titlecase}}" [ngClass]="{'metallic': paint.metallic === true,'texture': paint.texture === true}"></span><span class="name" [ngClass]="{'metallic': paint.metallic === true,'texture': paint.texture === true}">{{paint.name}}</span></li>
+<li *ngFor="let paint of paintToolsService.filteredPaintsResult" [ngClass]="[paint.className, 'paint-swatch']"><span class="colour" placement="top" ngbPopover="{{paint.types | join: ', '}}" popoverTitle="{{paint.brand | titlecase}}" [ngClass]="{'metallic': paint.metallic === true,'texture': paint.texture === true, 'technical': paint.technical === true, 'shade': paint.shade === true}"></span><span class="name" [ngClass]="{'metallic': paint.metallic === true,'texture': paint.texture === true, 'technical': paint.technical === true, 'shade': paint.shade === true}">{{paint.name}}</span></li>
 </ul>

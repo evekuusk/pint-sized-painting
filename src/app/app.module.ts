@@ -48,6 +48,8 @@ import { ToolsDetailPageComponent } from './components/pages/tools-page/children
 
 // gallery
 import { GalleryPageComponent } from './components/pages/gallery-page/gallery-page.component';
+import { GalleryListPageComponent } from './components/pages/gallery-page/children/gallery-list-page/gallery-list-page.component';
+import { GalleryDetailPageComponent } from './components/pages/gallery-page/children/gallery-detail-page/gallery-detail-page.component';
 
 // services
 import { ServicesPageComponent } from './components/pages/services-page/services-page.component';
@@ -59,6 +61,7 @@ import { PricesPageComponent } from './components/pages/services-page/children/p
 import { ArrayToolsService } from './services/array-tools.service';
 import { PaintToolsService } from './services/paint-tools.service';
 import { FormToolsService } from './services/form-tools.service';
+import { GalleryToolsService } from './services/gallery-tools.service';
 
 
 
@@ -87,7 +90,9 @@ import { FormToolsService } from './services/form-tools.service';
     ServicesListPageComponent,
     ServicesDetailPageComponent,
     SideMenuLayoutComponent,
-    BackToTopComponent
+    BackToTopComponent,
+    GalleryListPageComponent,
+    GalleryDetailPageComponent
   ],
   imports: [
     BrowserModule,
@@ -101,7 +106,7 @@ import { FormToolsService } from './services/form-tools.service';
     MatCheckboxModule,
     MatSlideToggleModule
   ],
-  providers: [ArrayToolsService, PaintToolsService, FormToolsService],
+  providers: [ArrayToolsService, PaintToolsService, FormToolsService, GalleryToolsService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

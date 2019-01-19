@@ -20,9 +20,24 @@ $footer-height: 50px;
     $base_colour 35%,
     lighten($base_colour, 5%) 40%,
     $base_colour 45%,
-    darken($base_colour, 10%) 65%,
+    darken($base_colour, 15%) 65%,
     lighten($base_colour, 10%) 80%,
     darken($base_colour, 15%) 90%,
     $base_colour 100%
   );
+}
+
+@mixin technical($base_colour) {
+  background: $base_colour;
+  background: linear-gradient(
+    to right, $base_colour,
+    lighten($base_colour, 10%),
+    $base_colour,
+    darken($base_colour, 12%),
+  );
+}
+
+@mixin shade($base_colour) {
+  background: $base_colour;
+  background: radial-gradient($base_colour, darken($base_colour, 20%));
 }

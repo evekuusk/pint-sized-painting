@@ -4,6 +4,14 @@
   font-family: 'Montserrat', sans-serif;
   font-weight: 300;
   font-size: 0.95rem;
+  a {
+    color: $pink-accent-dark;
+    transition: color 200ms;
+    &:hover {
+      color: $pink-accent-medium-light;
+      text-decoration: none;
+    }
+  }
 }
 
 @mixin basicHeavyText {
