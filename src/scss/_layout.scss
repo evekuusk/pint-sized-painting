@@ -30,3 +30,83 @@ main {
   display: flex;
   flex-direction: column;
 }
+
+// --- gallery modal --- //
+ul#modal-gallery {
+  @include basicGallery;
+  background: rgba($pink-accent-light, 0.25);
+  border-radius: 5px;
+  li {
+    margin: 1rem;
+    img {
+      width: 20rem;
+      &:not(.selected) {
+        &:hover {
+          @include pinkGlow;
+        }
+      }
+      &.selected {
+        &:hover {
+          cursor: default;
+        }
+      }
+    }
+  }
+}
+
+div#gallery-modal-content {
+  h2.mat-dialog-title {
+    text-transform: uppercase;
+    margin-bottom: 0.5rem;
+  }
+  p.description {
+    border-bottom: 1px solid grey;
+    border-radius: 5px;
+    padding-bottom: 1rem;
+  }
+  div.mat-dialog-content {
+    // max-height: 100%;
+  }
+  div#current-img-view {
+    margin: 1rem auto;
+    height: 55vh;
+    text-align: center;
+    img {
+      width: auto;
+      height: 100%;
+    }
+  }
+  div#paint-layers {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    flex: 1;
+    div.paint-layer-wrapper {
+    border: 1px solid dimgrey;
+    border-radius: 5px;
+    margin: 1rem;
+    padding: 1.5rem;
+    background: $neutral-dark;
+      h5 {
+        color: $off-white;
+      }
+      ul.paint-swatches-list {
+        li.paint-swatch {
+          span {
+            color: $off-white;
+          }
+          span.name {
+            border-bottom: 0;
+            font-size: 1rem;
+            &:after {
+              content: '';
+            }
+          }
+          span.type {
+            font-size: 0.9rem;
+          }
+        }
+      }
+    }
+  }
+}

@@ -41,3 +41,36 @@ $footer-height: 50px;
   background: $base_colour;
   background: radial-gradient($base_colour, darken($base_colour, 20%));
 }
+
+@mixin pinkGlow {
+  box-shadow: 0 0 14px $pink-accent-light;
+}
+
+@mixin brightPinkGlow {
+  box-shadow: 0 0 15px lighten($pink-accent-highlight, 15%);
+}
+
+@mixin basicGallery {
+  padding-left: 0;
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: center;
+  li {
+    img {
+      height: auto;
+      max-width: 100%;
+      border: 2px solid $neutral-off-white;
+      transition: box-shadow 200ms;
+      &:hover {
+        cursor: pointer;
+      }
+      &.mini-featured-img {
+        &:hover {
+          @include brightPinkGlow;
+        }
+      }
+    }
+  }
+}

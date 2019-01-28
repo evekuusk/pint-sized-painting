@@ -48,6 +48,17 @@ export class PaintToolsService {
   paintTypesMap = {};
   paintTagsMap = {};
   paintColourFamiliesMap = {};
+  paintsMapByName = {};
+
+  // *** PAINTS MODAL *** //
+  paintLayers: Paint[][];
+
+  buildPaintsNameMap() {
+    for (let i = 0; i < this.allPaints.length; i++) {
+      let keyName = this.allPaints[i]['className']
+      this.paintsMapByName[keyName] = this.allPaints[i];
+    }
+  }
 
   buildTypesMap() {
     for (let i = 0; i < this.allTypes.length; i++) {
@@ -255,6 +266,35 @@ export class PaintToolsService {
     let sortedArr = this.arrayToolsService.sortArrayByLength(tempFilteredBucketArr)
     return sortedArr
   }
+
+  // *** GALLERY MODAL PAINTS TOOLS *** //
+    identifyPaintLayers(paints) {
+      let tempPaintLayers = []
+      for (let paint in paints) {
+        console.log('paint: ', paints[paint])
+        let layerNum = paints[paint]['layer']
+        if (tempPaintLayers[layerNum] == undefined) {
+          tempPaintLayers[layerNum] = []
+        }
+        let paintName = paints[paint]['paint']
+        let paintType = paints[paint]['type']
+        let tempPaint = this.identifyPaintById(paintName)
+        console.log(paintName)
+        console.log('tempPaint: ', tempPaint)
+        tempPaint['typeUsed'] = paintType
+        tempPaintLayers[layerNum].push(tempPaint)
+      }
+      this.paintLayers = tempPaintLayers
+    }
+
+    getPaintLayers(paints) {
+      this.identifyPaintLayers(paints)
+      return this.paintLayers
+    }
+
+    identifyPaintById(id) {
+      return this.paintsMapByName[id]
+    }
 
 
   constructor(private arrayToolsService: ArrayToolsService) {
@@ -2596,6 +2636,9 @@ export class PaintToolsService {
     this.buildTagsMap()
     this.buildColourFamiliesMap()
     this.fillSelectionMaps()
+    this.buildPaintsNameMap()
     this.strictFiltering = true;
+
+    this.paintLayers = []
   }
 }

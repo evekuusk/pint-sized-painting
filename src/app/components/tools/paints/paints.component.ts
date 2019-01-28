@@ -17,6 +17,12 @@ import * as $ from 'jquery';
   providers: [ PaintToolsService ]
 })
 export class PaintsComponent implements OnInit {
+  // find active site section
+  pathname: string;
+  currentSiteSectionArr: string[];
+  currentSiteSection: string;
+
+  // general
   allPaintTypes: string[];
   allPaintTags: string[];
   allPaintColourFamilies: string[];
@@ -53,6 +59,7 @@ export class PaintsComponent implements OnInit {
   zeroPaintColourFamiliesSelected: boolean;
 
   // *** PROCESS AND DOM HANDLING *** //
+
   getCheckboxSiblings(elem) {
   	var siblings = [];
   	var sibling = elem.parentNode.firstChild;
@@ -226,6 +233,7 @@ export class PaintsComponent implements OnInit {
 
 
 // *** SELECTIONS *** //
+
   selectAll() {
     this.selectAllTypes()
     this.selectAllTags()
@@ -406,6 +414,11 @@ export class PaintsComponent implements OnInit {
     this.checkSelectedBoolsInCategory(formArrayNameStr, changedCheckValue)
   }
 
+  // updatePaintLayers() {
+  //   this.paintLayersList = this.paintToolsService.getPaintLayers()
+  //   console.log('paintLayersList: ', this.paintLayersList)
+  // }
+
   constructor(private paintToolsService: PaintToolsService, private formBuilder: FormBuilder, private formToolsService: FormToolsService) {
     const paintTypeControls = this.paintTypes.map(c => new FormControl(false));
     const paintTagControls = this.paintTags.map(c => new FormControl(false));
@@ -416,9 +429,19 @@ export class PaintsComponent implements OnInit {
       paintTags: new FormArray(paintTagControls),
       paintColourFamilies: new FormArray(paintColourFamilyControls)
     });
+
+    // this.paintLayersList = this.paintToolsService.paintLayers;
   }
 
   ngOnInit() {
+    // site section
+    this.pathname = window.location.pathname;
+    if (this.pathname[0] === '/') {
+      this.pathname = this.pathname.substring(1);
+    }
+    this.currentSiteSectionArr = this.pathname.split('/')
+    this.currentSiteSection = this.currentSiteSectionArr[0]
+
     // set constants
     this.allPaintTypes = this.paintToolsService.allTypes;
     this.allPaintTags = this.paintToolsService.allTags;

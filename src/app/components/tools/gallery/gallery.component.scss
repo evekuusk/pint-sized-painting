@@ -1,0 +1,11 @@
+@import '../../../../scss/_global-component-import';
+
+ul#gallery {
+  width: 100%;
+  @include basicGallery;
+  li {
+    img {
+      width: 15rem;
+    }
+  }
+}

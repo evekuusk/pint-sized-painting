@@ -8,6 +8,7 @@ import { NgArrayPipesModule, NgStringPipesModule } from 'angular-pipes';
 // angular material
 import {MatCheckboxModule} from '@angular/material';
 import {MatSlideToggleModule} from '@angular/material/slide-toggle';
+import {MatDialogModule} from '@angular/material/dialog';
 
 // *** MAIN *** //
 import { AppRoutingModule } from './app-routing.module';
@@ -23,6 +24,7 @@ import { SideMenuLayoutComponent } from './components/layout/side-menu-layout/si
 
 // *** TOOLS *** //
 import { PaintsComponent } from './components/tools/paints/paints.component';
+
 
 // *** TUTORIALS *** //
 import { TutorialsComponent } from './components/tutorials/tutorials.component';
@@ -45,6 +47,8 @@ import { ToolsPageComponent } from './components/pages/tools-page/tools-page.com
 import { PaintsPageComponent } from './components/pages/tools-page/children/paints-page/paints-page.component';
 import { ToolsListPageComponent } from './components/pages/tools-page/children/tools-list-page/tools-list-page.component';
 import { ToolsDetailPageComponent } from './components/pages/tools-page/children/tools-detail-page/tools-detail-page.component';
+import { GalleryComponent } from './components/tools/gallery/gallery.component';
+import { GalleryModal } from './components/tools/gallery/gallery.component';
 
 // gallery
 import { GalleryPageComponent } from './components/pages/gallery-page/gallery-page.component';
@@ -62,6 +66,7 @@ import { ArrayToolsService } from './services/array-tools.service';
 import { PaintToolsService } from './services/paint-tools.service';
 import { FormToolsService } from './services/form-tools.service';
 import { GalleryToolsService } from './services/gallery-tools.service';
+
 
 
 
@@ -92,7 +97,9 @@ import { GalleryToolsService } from './services/gallery-tools.service';
     SideMenuLayoutComponent,
     BackToTopComponent,
     GalleryListPageComponent,
-    GalleryDetailPageComponent
+    GalleryDetailPageComponent,
+    GalleryComponent,
+    GalleryModal
   ],
   imports: [
     BrowserModule,
@@ -104,9 +111,13 @@ import { GalleryToolsService } from './services/gallery-tools.service';
     FormsModule,
     ReactiveFormsModule,
     MatCheckboxModule,
-    MatSlideToggleModule
+    MatSlideToggleModule,
+    MatDialogModule
   ],
   providers: [ArrayToolsService, PaintToolsService, FormToolsService, GalleryToolsService],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [
+        GalleryModal
+    ]
 })
 export class AppModule { }

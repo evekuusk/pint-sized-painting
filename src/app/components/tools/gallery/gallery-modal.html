@@ -1,0 +1,57 @@
+<div id="gallery-modal-content">
+  <h2 mat-dialog-title>{{data.title}} ({{data.model}})</h2>
+  <p class="description">{{data.description}}</p>
+
+  <div mat-dialog-content>
+    <div id="current-img-view">
+      <img src="{{currentImage.url}}" alt="{{currentImage.alt}}" />
+      <figcaption>{{currentImage.alt}}</figcaption>
+
+    </div>
+    <br />
+    <hr />
+
+    <h4>All Photos Of This Mini</h4>
+    <h5 *ngIf="data.images.length == 1">No more images of this miniature to show</h5>
+    <ul id="modal-gallery" *ngIf="data.images.length > 1">
+      <li *ngFor="let image of data.images">
+        <img src="{{image.url}}" alt="{{image.alt}}" (click)="updateCurrentImage($event)" [ngClass]="{'selected': image.url == currentImage.url}"/>
+      </li>
+    </ul>
+
+    <hr />
+    <h4>About This Mini</h4>
+    <!-- *** PAINTS *** -->
+    <h5>Paints Used <span *ngIf="data.primer != undefined">(Primed with {{data.primer}})</span></h5>
+    <h6 *ngIf="data.paintLayers.length == 0">No used paints known on this miniature</h6>
+    <div id="paint-layers">
+      <div *ngFor="let layer of data.paintLayers; let i = index" class="paint-layer-wrapper">
+        <h5>Paint Layer {{i + 1}}</h5>
+        <ul class="paint-swatches-list">
+        <li *ngFor="let paint of layer" [ngClass]="[paint.className, 'paint-swatch']"><span class="colour" placement="top" ngbPopover="{{paint.types | join: ', '}}" popoverTitle="{{paint.brand | titlecase}}" [ngClass]="{'metallic': paint.metallic === true,'texture': paint.texture === true, 'technical': paint.technical === true, 'shade': paint.shade === true}"></span><span class="name" [ngClass]="{'metallic': paint.metallic === true,'texture': paint.texture === true, 'technical': paint.technical === true, 'shade': paint.shade === true}">{{paint.name}}</span><span class="type">{{paint.typeUsed}}</span></li>
+        </ul>
+      </div>
+    </div>
+    <br />
+      <!-- *** TUTORIALS *** -->
+      <h5>Related Tutorials & Guides</h5>
+      <div *ngIf="data.tutorials.length == 0">
+        <h6>No associated tutorials to show for this miniature</h6>
+      </div>
+
+      <div *ngIf="data.tutorials.length > 0">
+        <h5>Associated Tutorials</h5>
+        <ul>
+          <li *ngFor="let tutorial of data.tutorials">
+
+
+            {{tutorial}}
+
+          </li>
+        </ul>
+      </div>
+      <br />
+      <h4>About The Model</h4>
+      <h5>{{data.model}}</h5>
+    </div>
+</div>

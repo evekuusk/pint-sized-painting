@@ -1,66 +1,73 @@
-<h3>Find Paints</h3>
-<p>Filter through all available paint swatches to build a palette</p>
+<div *ngIf="currentSiteSection === 'tools'">
+  <h3>Find Paints</h3>
+  <p>Filter through all available paint swatches to build a palette</p>
 
-<hr />
-<mat-slide-toggle [checked]="checked" (change)="onToggleFilter($event)" id="filterPaintsToggle">Filter Paints</mat-slide-toggle>
+  <hr />
+  <mat-slide-toggle [checked]="checked" (change)="onToggleFilter($event)" id="filterPaintsToggle">Filter Paints</mat-slide-toggle>
 
-&nbsp; &nbsp; &nbsp;
+  &nbsp; &nbsp; &nbsp;
 
-<mat-slide-toggle [checked]="paintToolsService.strictFiltering" (change)="onToggleStrictFiltering($event)" id="strictFilterToggle">Strict Filtering</mat-slide-toggle>
-<p *ngIf="paintToolsService.strictFiltering === false" style="margin-top: 0.5rem;"><small>Turning off strict filtering will return all paints matching any selections.</small></p>
+  <mat-slide-toggle [checked]="paintToolsService.strictFiltering" (change)="onToggleStrictFiltering($event)" id="strictFilterToggle">Strict Filtering</mat-slide-toggle>
+  <p *ngIf="paintToolsService.strictFiltering === false" style="margin-top: 0.5rem;"><small>Turning off strict filtering will return all paints matching any selections.</small></p>
 
-<form [formGroup]="form" id="filterPaintsForm">
-  <div class="row">
+  <form [formGroup]="form" id="filterPaintsForm">
+    <div class="row">
 
-    <div class="col-md-5">
-      <h6>Narrow by Type</h6>
-      <div class="btn-group">
-        <button class='btn btn-secondary small' (click)="selectThese('types')" [disabled]="allPaintTypesSelected === true">select all types</button>
-        <button class='btn btn-secondary small' (click)="clearThis('types')" [disabled]="zeroPaintTypesSelected === true">clear types</button>
-      </div>
-      <label formArrayName="paintTypes" *ngFor="let type of form.controls.paintTypes.controls; let i = index" class="filterCheckbox">
-        <mat-checkbox [formControlName]="i" labelPosition='before' id="paint-types-checkbox-{{i}}" (change)="onChange($event)">{{paintTypes[i].name}}</mat-checkbox>
-      </label>
+      <div class="col-md-5">
+        <h6>Narrow by Type</h6>
+        <div class="btn-group">
+          <button class='btn btn-secondary small' (click)="selectThese('types')" [disabled]="allPaintTypesSelected === true">select all types</button>
+          <button class='btn btn-secondary small' (click)="clearThis('types')" [disabled]="zeroPaintTypesSelected === true">clear types</button>
+        </div>
+        <label formArrayName="paintTypes" *ngFor="let type of form.controls.paintTypes.controls; let i = index" class="filterCheckbox">
+          <mat-checkbox [formControlName]="i" labelPosition='before' id="paint-types-checkbox-{{i}}" (change)="onChange($event)">{{paintTypes[i].name}}</mat-checkbox>
+        </label>
 
+          <br /><br />
+        <h6>Narrow by Colour</h6>
+        <div class="btn-group">
+          <button class='btn btn-secondary small' (click)="selectThese('colour')" [disabled]="allPaintColourFamiliesSelected === true">select all colours</button>
+          <button class='btn btn-secondary small' (click)="clearThis('colour')" [disabled]="zeroPaintColourFamiliesSelected === true">clear colours</button>
+        </div>
+        <label formArrayName="paintColourFamilies" *ngFor="let colour of form.controls.paintColourFamilies.controls; let i = index" class="filterCheckbox">
+          <mat-checkbox [formControlName]="i" labelPosition='before' id="paint-colour-families-checkbox-{{i}}" (change)="onChange($event)">{{paintColourFamilies[i].name}}</mat-checkbox>
+        </label>
         <br /><br />
-      <h6>Narrow by Colour</h6>
-      <div class="btn-group">
-        <button class='btn btn-secondary small' (click)="selectThese('colour')" [disabled]="allPaintColourFamiliesSelected === true">select all colours</button>
-        <button class='btn btn-secondary small' (click)="clearThis('colour')" [disabled]="zeroPaintColourFamiliesSelected === true">clear colours</button>
+        <h6>Refine by Colour Tone (warm/cool/neutral)</h6>
       </div>
-      <label formArrayName="paintColourFamilies" *ngFor="let colour of form.controls.paintColourFamilies.controls; let i = index" class="filterCheckbox">
-        <mat-checkbox [formControlName]="i" labelPosition='before' id="paint-colour-families-checkbox-{{i}}" (change)="onChange($event)">{{paintColourFamilies[i].name}}</mat-checkbox>
-      </label>
-      <br /><br />
-      <h6>Refine by Colour Tone (warm/cool/neutral)</h6>
-    </div>
 
-    <div class="col-md-5">
-      <h6>Narrow by Tags</h6>
-      <div class="btn-group">
-        <button class='btn btn-secondary small' (click)="selectThese('tags')" [disabled]="allPaintTagsSelected === true">select all tags</button>
-        <button class='btn btn-secondary small' (click)="clearThis('tags')" [disabled]="zeroPaintTagsSelected === true">clear tags</button>
+      <div class="col-md-5">
+        <h6>Narrow by Tags</h6>
+        <div class="btn-group">
+          <button class='btn btn-secondary small' (click)="selectThese('tags')" [disabled]="allPaintTagsSelected === true">select all tags</button>
+          <button class='btn btn-secondary small' (click)="clearThis('tags')" [disabled]="zeroPaintTagsSelected === true">clear tags</button>
+        </div>
+        <label formArrayName="paintTags" *ngFor="let tag of form.controls.paintTags.controls; let i = index" class="filterCheckbox">
+          <mat-checkbox [formControlName]="i" labelPosition='before' id="paint-tags-checkbox-{{i}}" (change)="onChange($event)">{{paintTags[i].name}}</mat-checkbox>
+        </label>
       </div>
-      <label formArrayName="paintTags" *ngFor="let tag of form.controls.paintTags.controls; let i = index" class="filterCheckbox">
-        <mat-checkbox [formControlName]="i" labelPosition='before' id="paint-tags-checkbox-{{i}}" (change)="onChange($event)">{{paintTags[i].name}}</mat-checkbox>
-      </label>
+
+      <div class="col-md-2 buttons-col">
+        <button class='btn btn-secondary btn-arrow-left backdrop-invisible' (click)="selectAll()" [disabled]="allPaintsSelected === true">all</button>
+        <button class='btn btn-secondary btn-arrow-left backdrop-invisible' (click)="clearAll()" [disabled]="zeroPaintsSelected === true">clear</button>
+        <button class='btn btn-secondary btn-arrow-right backdrop-invisible' (click)="submit()" [disabled]="zeroPaintsSelected === true">submit</button>
+        <small class="allPaintsWarn" *ngIf="allPaintTypesSelected === true || allPaintTagsSelected === true || allPaintColourFamiliesSelected === true">All selections in a category are active, this will return all paints!</small>
+        <small class="allPaintsWarn" *ngIf="zeroPaintsSelected === true">No paints are selected</small>
+      </div>
     </div>
 
-    <div class="col-md-2 buttons-col">
-      <button class='btn btn-secondary btn-arrow-left backdrop-invisible' (click)="selectAll()" [disabled]="allPaintsSelected === true">all</button>
-      <button class='btn btn-secondary btn-arrow-left backdrop-invisible' (click)="clearAll()" [disabled]="zeroPaintsSelected === true">clear</button>
-      <button class='btn btn-secondary btn-arrow-right backdrop-invisible' (click)="submit()" [disabled]="zeroPaintsSelected === true">submit</button>
-      <small class="allPaintsWarn" *ngIf="allPaintTypesSelected === true || allPaintTagsSelected === true || allPaintColourFamiliesSelected === true">All selections in a category are active, this will return all paints!</small>
-      <small class="allPaintsWarn" *ngIf="zeroPaintsSelected === true">No paints are selected</small>
-    </div>
-  </div>
+  </form>
 
-</form>
+  <hr />
+  <h4 id="paints-list">{{isFilteredListTitle}} Paints</h4>
+  <h5 *ngIf="paintToolsService.filteredPaintsResult.length === 0">No paints to show.  Try another selection!</h5>
 
-<hr />
-<h4 id="paints-list">{{isFilteredListTitle}} Paints</h4>
-<h5 *ngIf="paintToolsService.filteredPaintsResult.length === 0">No paints to show.  Try another selection!</h5>
+  <ul class="paint-swatches-list">
+  <li *ngFor="let paint of paintToolsService.filteredPaintsResult" [ngClass]="[paint.className, 'paint-swatch']"><span class="colour" placement="top" ngbPopover="{{paint.types | join: ', '}}" popoverTitle="{{paint.brand | titlecase}}" [ngClass]="{'metallic': paint.metallic === true,'texture': paint.texture === true, 'technical': paint.technical === true, 'shade': paint.shade === true}"></span><span class="name" [ngClass]="{'metallic': paint.metallic === true,'texture': paint.texture === true, 'technical': paint.technical === true, 'shade': paint.shade === true}">{{paint.name}}</span></li>
+  </ul>
 
-<ul class="paint-swatches-list">
-<li *ngFor="let paint of paintToolsService.filteredPaintsResult" [ngClass]="[paint.className, 'paint-swatch']"><span class="colour" placement="top" ngbPopover="{{paint.types | join: ', '}}" popoverTitle="{{paint.brand | titlecase}}" [ngClass]="{'metallic': paint.metallic === true,'texture': paint.texture === true, 'technical': paint.technical === true, 'shade': paint.shade === true}"></span><span class="name" [ngClass]="{'metallic': paint.metallic === true,'texture': paint.texture === true, 'technical': paint.technical === true, 'shade': paint.shade === true}">{{paint.name}}</span></li>
-</ul>
+</div>
+
+<div *ngIf="currentSiteSection === 'gallery'">
+
+</div>
